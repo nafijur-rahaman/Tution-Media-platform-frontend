@@ -1,10 +1,10 @@
 const loadUserDetails = () => {
   const user_id = localStorage.getItem("user_id");
-  console.log(user_id);
+  // console.log(user_id);
   fetch(`https://tution-media-platform.onrender.com/api/student/list/${user_id}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
 
       const profileHtml = `
         <h3 class="name">${data.user.username}</h3>
@@ -30,13 +30,11 @@ const loadUserDetails = () => {
         <h2>Username: ${data.user.username}</h2>
         <h3>Email: ${data.user.email}</h3>
         <h4>Mobile: ${data.mobile_no}</h4>
-        <a href="update_student.html" class="inline-btn">Update Profile</a>
-        <a href="student_update_pass.html" class="inline-btn">Update Password</a>
+        <a href="update.html" class="inline-btn">Update Profile</a>
+        <a href="update.html" class="inline-btn">Update Password</a>
       `;
     })
-    .catch((error) => {
-      console.error("Error fetching user details:", error);
-    });
+    
 };
 
 document.addEventListener("DOMContentLoaded", loadUserDetails);

@@ -47,9 +47,15 @@ const handleTeacherRegistration = (event) => {
                 method: "POST",
                 body: info,
             })
-            .then((res) => res.json())  // parse the response as JSON
+            .then((res) => {
+                alert(
+                    "Registration Successfull. Please check email for confirmation email"
+                  );
+                  window.location.href = "login.html";
+            }) 
             .then((data) => {
-                console.log(data)
+                // console.log(data)
+                
             })
         
         } else {

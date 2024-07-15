@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', getPostDetail);
 
         applyButton.addEventListener('click', () => {
             
-            document.getElementById('tutor-id').value = 2;
+            document.getElementById('tutor-id').value = tutorId;
             document.getElementById('tuition-id').value = tuitionId;
             
             console.log(tutorId)
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', getPostDetail);
                     },
                     body: JSON.stringify(data)
                 });
-                
+                console.log(data)
                 if (response.ok) {
                     alert('Application submitted successfully!');
                     applyModal.classList.add('hidden');
@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', getPostDetail);
             event.preventDefault();
     
             // Check user status in localStorage
-            const userStatus = localStorage.getItem('userStatus');
-    
+            const userStatus = localStorage.getItem('status');
+           
             // Check if user status allows commenting
             if (userStatus === 'applied') {
                 alert('You cannot comment until your application is accepted.');
@@ -143,46 +143,35 @@ document.addEventListener('DOMContentLoaded', getPostDetail);
                 // Continue with form submission
                 submitReview();
             } else {
+                console.log(userStatus)
                 alert('User status not recognized. Please log in again.');
                 // Handle other cases as needed (e.g., redirect to login page)
             }
         });
     
         function submitReview() {
-            // Get form data
+            const tutorId = localStorage.getItem('user_id');
+
             const rating = document.getElementById('rating').value;
             const comments = document.getElementById('comments').value;
-    
-            // Validate data (you can add more validation as per your requirements)
-            if (!rating) {
-                alert('Please select a rating.');
-                return;
-            }
-    
-            if (!comments.trim()) {
-                alert('Please enter your comments.');
-                return;
-            }
-    
-            // Prepare data to send to backend (adjust URL as per your API endpoint)
+          
+            
             const formData = {
                 rating: rating,
-                comments: comments
+                comments: comments,
+                reviewer:tutorId
             };
     
-            // Send POST request to backend
+
             fetch('https://tution-media-platform.onrender.com/api/tution/reviews/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Add any additional headers as needed
+                 
                 },
                 body: JSON.stringify(formData)
             })
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
                 return response.json();
             })
             .then(data => {

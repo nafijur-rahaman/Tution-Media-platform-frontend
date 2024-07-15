@@ -52,7 +52,9 @@ const loadUserDetails = () => {
 document.addEventListener("DOMContentLoaded", loadUserDetails);
 
 
-console.log("appliaction")
+console.log("table")
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const tutorId = localStorage.getItem('user_id');
   
@@ -64,37 +66,39 @@ document.addEventListener('DOMContentLoaded', () => {
           return res.json();
       })
       .then(data => {
-          console.log(data);
           const tuitionList = document.getElementById('tuition-list');
           data.forEach(application => {
             console.log(application.tuition.data)
+            if(application.status=="accepted"){
+
+              const tr = document.createElement('tr');
+              const tdId = document.createElement('td');
+              tdId.classList.add('px-4', 'py-2', 'border');
+              tdId.textContent = application.id;
+  
+              const tdTuition = document.createElement('td');
+              tdTuition.classList.add('px-4', 'py-2', 'border');
+              tdTuition.textContent = application.tuition_title
+  
+              const tdsalary = document.createElement('td');
+              tdsalary.classList.add('px-4', 'py-2', 'border');
+              tdsalary.textContent = application.tuition.salary
+  
+                const tdStatus = document.createElement('td');
+                tdStatus.classList.add('px-4', 'py-2', 'border');
+                tdStatus.textContent = application.status;
+  
+                localStorage.setItem("status", application.status);
+  
+                tr.appendChild(tdId);
+                tr.appendChild(tdTuition);
+                tr.appendChild(tdsalary);
+                tr.appendChild(tdStatus);
+  
+                tuitionList.appendChild(tr);
+            }
             
             
-            const tr = document.createElement('tr');
-            const tdId = document.createElement('td');
-            tdId.classList.add('px-4', 'py-2', 'border');
-            tdId.textContent = application.id;
-
-            const tdTuition = document.createElement('td');
-            tdTuition.classList.add('px-4', 'py-2', 'border');
-            tdTuition.textContent = application.tuition.title
-
-            const tdsalary = document.createElement('td');
-            tdsalary.classList.add('px-4', 'py-2', 'border');
-            tdsalary.textContent = application.tuition.salary
-
-              const tdStatus = document.createElement('td');
-              tdStatus.classList.add('px-4', 'py-2', 'border');
-              tdStatus.textContent = application.status;
-
-              localStorage.setItem("status", application.status);
-
-              tr.appendChild(tdId);
-              tr.appendChild(tdTuition);
-              tr.appendChild(tdsalary);
-              tr.appendChild(tdStatus);
-
-              tuitionList.appendChild(tr);
           });
       })
       .catch(error => {

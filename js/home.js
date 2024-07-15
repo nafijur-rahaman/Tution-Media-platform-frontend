@@ -27,9 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
          <a href="tuitions.html"><i class="fas fa-school"></i><span>Tuitions</span></a>
          <a href="student_profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
          <a onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
-         <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
          <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
-         <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+         
                 `;
     }else if(token2){
 
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="teacher_profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
         <a onclick="TutorHandleLogout()"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
         <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
-        <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+       
                `;
 
         
@@ -52,12 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
          <a href="tuitions.html"><i class="fas fa-school"></i><span>Tuitions</span></a>
          <a href="student_registration.html"><i class="fas fa-user-plus"></i><span>Register</span></a>
          <a href="login.html"><i class="fas fa-sign-in-alt"></i><span>Login</span></a>
-         <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
-         <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
-         <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+         <a href="update.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+         <a href=".html"><i class="fas fa-question"></i><span>About</span></a>
+         <a href="update.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
                 `;
     }
   
+
 
     const loadReview = () => {
         fetch("https://tution-media-platform.onrender.com/api/tution/reviews/")
@@ -73,11 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
           div.classList.add("review-card");
           div.innerHTML = `
               
-                  <h4>${review.reviewer}</h4>
-                  <p>
+                  <h4 style="font-size:20px; color:white">${review.reviewer_name}</h4>
+                  <p style="font-size:20px; color:white" style="font-size:20px">
                    ${review.comments}
                   </p>
-                  <h6>${review.rating}</h6>
+                  <h6  style="font-size:20px">${review.rating}</h6>
               `;
           parent.appendChild(div);
         });

@@ -54,10 +54,6 @@
          <i class="fas fa-question"></i>
          <span>About</span>
       </a>
-      <a href="contact.html" class="flex items-center gap-2 text-gray-800">
-         <i class="fas fa-headset"></i>
-         <span>Contact Us</span>
-      </a>
    </nav>
 </div>
 
@@ -109,35 +105,39 @@
 
 
  <! <!-- Review Form Section -->
- <div id="review-form" class="mt-6">
-   <h2 class="text-xl font-semibold text-gray-800 mb-4">Submit a Review</h2>
-   <form id="submit-review-form">
-       <div class="mb-4">
-           <label for="rating" class="block text-gray-700">Rating:</label>
-           <select id="rating" name="rating" class="w-full p-2 border border-gray-300 rounded">
-               <option value="" disabled selected>Select rating...</option>
-               <option value="1">⭐</option>
-               <option value="2">⭐⭐</option>
-               <option value="3">⭐⭐⭐</option>
-               <option value="4">⭐⭐⭐⭐</option>
-               <option value="5">⭐⭐⭐⭐⭐</option>
-           </select>
-           <small class="text-gray-600">Select stars (⭐ to ⭐⭐⭐⭐⭐) for your review.</small>
-       </div>
-       <div class="mb-4">
-           <label for="comments" class="block text-gray-700">Comments:</label>
-           <textarea id="comments" name="comments" placeholder="Enter your comments..." class="w-full p-2 border border-gray-300 rounded"></textarea>
-       </div>
-       <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Submit Review</button>
-   </form>
+ <div id="review-form" class="mt-6" style="margin-bottom: 150px;">
+   <div class="text-center mb-12">
+      <h1 style="font-size: 50px;" class="font-bold text-gray-800">Submit a Review</h1>
+   </div>
+   <form id="submit-review-form" class="max-w-xl mx-auto p-6 border border-gray-300 rounded-lg bg-white shadow-lg">
+      <div class="mb-6">
+          <label style="font-size: 30px;" for="rating" class="block text-gray-700 mb-2">Rating:</label>
+          <select style="font-size: 20px;" id="rating" name="rating" class="w-full p-6 border border-gray-300 rounded-lg">
+              <option style="font-size: 25px;" style="width:50px" value="" disabled selected>Select rating...</option>
+              <option style="font-size: 20px;" value="1">⭐</option>
+              <option style="font-size: 20px;" value="2">⭐⭐</option>
+              <option style="font-size: 20px;" value="3">⭐⭐⭐</option>
+              <option style="font-size: 20px;" value="4">⭐⭐⭐⭐</option>
+              <option style="font-size: 20px;" value="5">⭐⭐⭐⭐⭐</option>
+          </select>
+          <small style="font-size: 15px;" class="text-gray-600">Select stars (⭐ to ⭐⭐⭐⭐⭐) for your review.</small>
+      </div>
+      <div class="mb-6">
+          <label style="font-size: 30px;" for="comments" class="block text-gray-700 mb-2">Comments:</label>
+          <textarea style="font-size: 30px;" id="comments" name="comments" placeholder="Enter your comments..." class="w-full p-6 border border-gray-300 rounded-lg h-48"></textarea>
+      </div>
+      <button style="font-size: 20px;" type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg">Submit Review</button>
+  </form>
+  
+  
 </div>
 
 
 
 
 
-<footer class="footer mt-8 bg-white text-center py-4">
-   &copy; 2022 by <span class="text-gray-700">Mr. Web Designer</span> | All rights reserved!
+<footer class="footer">
+   &copy; Copyright @ 2022 by <span>Tuition Media Platform</span> | All rights reserved!
 </footer>
 
 <!-- Scripts -->

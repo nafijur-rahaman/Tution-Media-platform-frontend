@@ -1,4 +1,4 @@
-alert()
+
 
 const handleLogin = (event) => {
     event.preventDefault();
@@ -13,12 +13,13 @@ const handleLogin = (event) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
   
           if (data.Token && data.tutor_id) {
             localStorage.setItem("tea_token", data.Token);
             localStorage.setItem("user_id", data.tutor_id);
-            window.location.href = "home.html";
+            alert("Login successful!");
+            window.location.href = "teacher_profile.html";
           }
         });
     }
