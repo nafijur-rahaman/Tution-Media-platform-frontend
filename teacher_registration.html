@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+
+<body>
+  <header class="header">
+    <section class="flex">
+      <a href="home.html" class="logo">Online Tuition Media</a>
+
+      <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+    </section>
+  </header>
+
+  <div class="side-bar">
+    <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+    </nav>
+  </div>
+
+  <section class="form-container">
+    <div class="registration-type">
+      <a href="student_registration.html" class="btn btn-type">Student Registration</a>
+      <a href="teacher_registration.html" class="btn btn-type selected">Teacher Registration</a>
+    </div>
+
+    <!-- Teacher Registration Form -->
+    <form id="teacher-form" onsubmit="handleTeacherRegistration(event)" style="margin-bottom: 100px;">
+      <p id="error" style="color: red; font-size: 14px; margin-top: 5px;"></p>
+      <p id="success" style="color: green; font-size: 14px; margin-top: 5px;"></p>
+      <h3>Register as Teacher</h3>
+    
+      <p>Your Username <span>*</span></p>
+      <input type="text" id="username" placeholder="Enter your username" required maxlength="50" class="box" />
+    
+      <p>Your First Name <span>*</span></p>
+      <input type="text" id="fname" placeholder="Enter your firstname" required maxlength="50" class="box" />
+    
+      <p>Your Last Name <span>*</span></p>
+      <input type="text" id="lname" placeholder="Enter your lastname" required maxlength="50" class="box" />
+    
+      <p>Your Email <span>*</span></p>
+      <input type="email" id="email" placeholder="Enter your email" required maxlength="50" class="box" />
+    
+      <p>Your Password <span>*</span></p>
+      <input type="password" id="pass" placeholder="Enter your password" required maxlength="50" class="box" />
+    
+      <p>Confirm Password <span>*</span></p>
+      <input type="password" id="c_pass" placeholder="Confirm your password" required maxlength="50" class="box" />
+      
+      <p>Your Phone Number <span>*</span></p>
+      <input type="text" id="phone_number" placeholder="Enter your phone number" required maxlength="12" class="box" />
+    
+      <p>Your Location <span>*</span></p>
+      <input type="text" id="location" placeholder="Enter your location" required maxlength="100" class="box" />
+    
+      <p>Your Tuition District <span>*</span></p>
+      <input type="text" id="tuition_district" placeholder="Enter your tuition district" required maxlength="100" class="box" />
+    
+      <p>Minimum Salary</p>
+      <input type="text" id="minimum_salary" placeholder="Enter minimum salary" maxlength="10" class="box" />
+    
+      <p>Tutoring Experience <span>*</span></p>
+      <input type="text" id="tutoring_experience" placeholder="Enter tutoring experience" required maxlength="100" class="box" />
+    
+      <p>Extra Facilities</p>
+      <input type="text" id="extra_facilities" placeholder="Enter extra facilities (if any)" maxlength="255" class="box" />
+    
+      <p>Medium of Instruction <span>*</span></p>
+      <select id="medium_of_instruction" required class="box">
+        <option value="Bangla">Bangla</option>
+        <option value="English">English</option>
+        <option value="Both">Both</option>
+      </select>
+    
+      <p>Status <span>*</span></p>
+      <select id="status" required class="box">
+        <option value="Available">Available</option>
+        <option value="Not Available">Not Available</option>
+      </select>
+    
+      <p>Gender <span>*</span></p>
+      <select id="gender" required class="box">
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+      </select>
+    
+      <p>Profile Image <span>*</span></p>
+      <input type="file" id="image" required class="box" />
+    
+      <input type="submit" value="Register as teacher" class="btn" />
+    </form>
+    
+    
+  </section>
+
+  <footer class="footer">
+    &copy; Copyright @ 2022 by <span>Mr. Web Designer</span> | All rights reserved!
+  </footer>
+
+  <!-- Custom JavaScript file link -->
+  <script src="js/auth.js"></script>
+  <script src="js/tea_reg_log.js"></script>
+ 
+</body>
+
+</html>

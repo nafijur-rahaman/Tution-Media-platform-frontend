@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Password Change</title>
+
+   <!-- Font Awesome CDN link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- Custom CSS file links -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<header class="header">
+   <section class="flex">
+      <a href="home.html" class="logo">Educa.</a>
+
+      <form action="search.html" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="Search courses..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+   </section>
+</header>
+
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+   </nav>
+</div>
+
+<section class="form-container">
+   <form id="password-change-form">
+      <h3>Change Password</h3>
+      <div class="form-group">
+         <label for="current-password">Current Password</label>
+         <input type="password" id="current-password" name="current-password" required>
+      </div>
+      <div class="form-group">
+         <label for="new-password">New Password</label>
+         <input type="password" id="new-password" name="new-password" required>
+      </div>
+      <div class="form-group">
+         <label for="confirm-password">Confirm New Password</label>
+         <input type="password" id="confirm-password" name="confirm-password" required>
+      </div>
+      <button type="submit" class="btn-submit">Change Password</button>
+   </form>
+</section>
+
+<footer class="footer">
+   &copy; Copyright @ 2022 by <span>Mr. Web Designer</span> | All rights reserved!
+</footer>
+
+<!-- Custom JavaScript file link -->
+<script src="js/script.js"></script>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('password-change-form');
+
+      form.addEventListener('submit', function(event) {
+         event.preventDefault(); // Prevent default form submission
+
+         // Validate password fields
+         const currentPassword = document.getElementById('current-password').value;
+         const newPassword = document.getElementById('new-password').value;
+         const confirmPassword = document.getElementById('confirm-password').value;
+
+         if (currentPassword === '' || newPassword === '' || confirmPassword === '') {
+            alert('Please fill in all fields.');
+            return;
+         }
+
+         if (newPassword !== confirmPassword) {
+            alert('New password and confirm password must match.');
+            return;
+         }
+
+         // Prepare data for API request
+         const userId = localStorage.getItem('user_id');// Replace with actual user ID if dynamic
+         const url = `https://tution-media-platform.onrender.com/api/student/change-password/${userId}/`;
+         const data = {
+            current_password: currentPassword,
+            new_password: newPassword,
+            confirm_password: confirmPassword
+         };
+
+         // Get token from localStorage or wherever it's stored
+         const token = localStorage.getItem('token'); // Adjust this based on your token storage
+
+         // Make AJAX request using fetch with Authorization header
+         fetch(url, {
+            method: 'PUT',
+            headers: {
+               'Content-Type': 'application/json',
+               'Authorization': `Token ${token}` // Assuming you're using Token authentication
+               // Adjust as per your authentication method (Token, JWT, etc.)
+            },
+            body: JSON.stringify(data)
+         })
+         .then(response => {
+            if (!response.ok) {
+               throw new Error('Failed to change password');
+            }
+            return response.json();
+         })
+         .then(data => {
+            alert('Password changed successfully!');
+            // Optionally, redirect or perform any other action upon success
+         })
+         .catch(error => {
+            alert('Failed to change password. Please try again.');
+            console.error('Error:', error);
+         });
+      });
+   });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Tuition Details</title>
+
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- Tailwind CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/home.css">
+
+</head>
+<body class="bg-gray-100">
+
+   <header class="header">
+   
+      <section class="flex">
+   
+         <a href="home.html" class="logo">Online Tuition Media</a>
+   
+   
+         <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            
+            <div id="toggle-btn" class="fas fa-sun"></div>
+         </div>
+   
+   
+      </section>
+   
+   </header>   
+<div class="side-bar">
+   <div id="close-btn" class="text-xl text-gray-800 cursor-pointer">
+      <i class="fas fa-times"></i>
+   </div>
+   <nav class="navbar mt-4">
+      <a href="home.html" class="flex items-center gap-2 text-gray-800">
+         <i class="fas fa-home"></i>
+         <span>Home</span>
+      </a>
+      <a href="teachers.html" class="flex items-center gap-2 text-gray-800">
+         <i class="fas fa-chalkboard-user"></i>
+         <span>Teachers</span>
+      </a>
+      <a href="about.html" class="flex items-center gap-2 text-gray-800">
+         <i class="fas fa-question"></i>
+         <span>About</span>
+      </a>
+      <a href="contact.html" class="flex items-center gap-2 text-gray-800">
+         <i class="fas fa-headset"></i>
+         <span>Contact Us</span>
+      </a>
+   </nav>
+</div>
+
+
+<div id="apply-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+   <div class="modal-content">
+       <h2 style="font-size: 30px;" class="text-xl font-bold mb-4">Apply for Tuition</h2>
+       <form id="apply-form">
+           <input type="hidden" id="tutor-id" name="tutor_id">
+           <input type="hidden" id="tuition-id" name="tuition_id">
+           <div class="mb-4">
+               <label style="font-size: 20px;" for="message" class="block text-gray-700">Message:</label>
+               <textarea style="font-size: 20px;" placeholder="type here...." id="message" name="message" class="w-full p-2 border border-gray-300 rounded"></textarea>
+           </div>
+           <div class="flex justify-end">
+            <button type="button" id="close-modal" class="bg-gray-300 text-gray-700 px-6 py-3 rounded mr-2" style="font-size: 1.2rem;">Cancel</button>
+            <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded" style="font-size: 1.2rem;">Submit</button>
+        </div>
+       </form>
+   </div>
+</div>
+
+
+
+
+<section id="tuition-details" class="tuition-details max-w-6xl mx-auto px-8 py-6 mt-8 bg-white rounded-lg shadow-lg" style="margin-bottom: 100px;">
+   <h1 id="tuition-title" class="text-3xl font-bold text-gray-900 mb-4" style="font-size: 40px; margin-top: 20px;">Tuition Title</h1>
+   
+   <div class="mt-6">
+      <h2 id="subjects" class="text-xl font-semibold text-gray-800" style="font-size: 30px; margin-top: 30px;">Subjects</h2>
+      <h3 id="tuition-class" class="text-lg font-semibold text-gray-800 mt-2" style="font-size: 20px; margin-top: 30px;">Tuition Class</h3>
+   </div>
+   
+   <div class="mt-6">
+      <p id="availability" class="text-base text-gray-700" style="font-size: 20px; margin-top: 20px;">Availability:</p>
+      <p id="description" class="text-base text-gray-700 mt-2" style="font-size: 20px; margin-top: 20px; line-height: 2;">Description:</p>
+      <p id="medium" class="text-base text-gray-700 mt-2" style="font-size: 20px; margin-top: 20px;">Medium:</p>
+      <p id="student-gender" class="text-base text-gray-700 mt-2" style="font-size: 20px; margin-top: 20px;">Student Gender:</p>
+      <p id="preferred-tutor-gender" class="text-base text-gray-700 mt-2" style="font-size: 20px; margin-top: 20px;">Preferred Tutor Gender:</p>
+      <p id="tutoring-time" class="text-base text-gray-700 mt-2" style="font-size: 20px; margin-top: 20px;">Tutoring Time:</p>
+      <p id="salary" class="text-base text-gray-700 mt-2" style="font-size: 20px; margin-top: 20px;">Salary:</p>
+   </div>
+
+   <div class="mt-6">
+      <button style="font-size: 20px;" id="apply-button" class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">Apply</button>
+   </div>
+</section>
+
+
+
+ <! <!-- Review Form Section -->
+ <div id="review-form" class="mt-6">
+   <h2 class="text-xl font-semibold text-gray-800 mb-4">Submit a Review</h2>
+   <form id="submit-review-form">
+       <div class="mb-4">
+           <label for="rating" class="block text-gray-700">Rating:</label>
+           <select id="rating" name="rating" class="w-full p-2 border border-gray-300 rounded">
+               <option value="" disabled selected>Select rating...</option>
+               <option value="1">⭐</option>
+               <option value="2">⭐⭐</option>
+               <option value="3">⭐⭐⭐</option>
+               <option value="4">⭐⭐⭐⭐</option>
+               <option value="5">⭐⭐⭐⭐⭐</option>
+           </select>
+           <small class="text-gray-600">Select stars (⭐ to ⭐⭐⭐⭐⭐) for your review.</small>
+       </div>
+       <div class="mb-4">
+           <label for="comments" class="block text-gray-700">Comments:</label>
+           <textarea id="comments" name="comments" placeholder="Enter your comments..." class="w-full p-2 border border-gray-300 rounded"></textarea>
+       </div>
+       <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Submit Review</button>
+   </form>
+</div>
+
+
+
+
+
+<footer class="footer mt-8 bg-white text-center py-4">
+   &copy; 2022 by <span class="text-gray-700">Mr. Web Designer</span> | All rights reserved!
+</footer>
+
+<!-- Scripts -->
+<script src="js/auth.js"></script>
+<script src="js/tuitions_details.js"></script>
+
+
+</body>
+</html>
