@@ -62,68 +62,90 @@ document.addEventListener('DOMContentLoaded', getPostDetail);
 
 
 
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
         
-        const applyButton = document.getElementById('apply-button');
-        const applyModal = document.getElementById('apply-modal');
-        const closeModal = document.getElementById('close-modal');
-        const applyForm = document.getElementById('apply-form');
+    const applyButton = document.getElementById('apply-button');
+    const applyModal = document.getElementById('apply-modal');
+    const closeModal = document.getElementById('close-modal');
+    const applyForm = document.getElementById('apply-form');
 
+    const tutorId = localStorage.getItem('user_id');
+    const tuitionId = getQueryParams("id");
 
-        const tutorId = localStorage.getItem('user_id');
-        const tuitionId = getQueryParams("id");
-
-        
-     
-
-        applyButton.addEventListener('click', () => {
-            
-            document.getElementById('tutor-id').value = tutorId;
-            document.getElementById('tuition-id').value = tuitionId;
-            
-            console.log(tutorId)
-            console.log(tuitionId)
-           
-            applyModal.classList.remove('hidden');
-        });
-        
-        closeModal.addEventListener('click', () => {
-            applyModal.classList.add('hidden');
-        });
-        
-        applyForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(applyForm);
-            const data = {
-                tutor: formData.get('tutor_id'),
-                tuition: formData.get('tuition_id'),
-                status: 'applied',
-                message: formData.get('message')
-            };
-            
-            try {
-                const response = await fetch('https://tution-media-platform.onrender.com/api/application/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-                console.log(data)
-                if (response.ok) {
-                    alert('Application submitted successfully!');
-                    applyModal.classList.add('hidden');
-                } else {
-                    const errorData = await response.json();
-                    alert(`Failed to submit application: ${errorData.detail}`);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred while submitting the application.');
-            }
-        });
+    applyButton.addEventListener('click', () => {
+        document.getElementById('tutor-id').value = tutorId;
+        document.getElementById('tuition-id').value = tuitionId;
+        applyModal.classList.remove('hidden');
     });
+
+    closeModal.addEventListener('click', () => {
+        applyModal.classList.add('hidden');
+    });
+
+    applyForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(applyForm);
+        const data = {
+            tutor: formData.get('tutor_id'),
+            tuition: formData.get('tuition_id'),
+            status: 'applied',
+            message: formData.get('message')
+        };
+        
+        try {
+            const response = await fetch('https://tution-media-platform.onrender.com/api/application/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                localStorage.setItem('application_id', responseData.id); // Store the application ID
+                alert('Application submitted successfully!');
+                applyModal.classList.add('hidden');
+            } else {
+                const errorData = await response.json();
+                alert(`Failed to submit application: ${errorData.detail}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while submitting the application.');
+        }
+    });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  
+    const applicationId = localStorage.getItem('application_id');
+
+    if (applicationId) {
+        fetch(`https://tution-media-platform.onrender.com/api/application/${applicationId}/`)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return res.json();
+            })
+            .then(data => {
+                localStorage.setItem("status", data.status);
+                console.log(`Application status stored: ${data.status}`);
+            })
+            .catch(error => {
+                console.error('Error fetching application status:', error);
+            });
+    } else {
+        console.error('Application ID not found in localStorage.');
+    }
+});
+
+
+
 
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -132,20 +154,18 @@ document.addEventListener('DOMContentLoaded', getPostDetail);
         reviewForm.addEventListener('submit', function(event) {
             event.preventDefault();
     
-            // Check user status in localStorage
             const userStatus = localStorage.getItem('status');
            
-            // Check if user status allows commenting
             if (userStatus === 'applied') {
                 alert('You cannot comment until your application is accepted.');
                 return;
             } else if (userStatus === 'accepted') {
-                // Continue with form submission
+           
                 submitReview();
             } else {
                 console.log(userStatus)
                 alert('User status not recognized. Please log in again.');
-                // Handle other cases as needed (e.g., redirect to login page)
+       
             }
         });
     
@@ -177,7 +197,7 @@ document.addEventListener('DOMContentLoaded', getPostDetail);
             .then(data => {
                 console.log('Review submitted successfully:', data);
                 alert('Review submitted successfully!');
-                location.reload(); // Refresh the page or update UI as needed
+                location.reload(); 
             })
             .catch(error => {
                 console.error('Error:', error);

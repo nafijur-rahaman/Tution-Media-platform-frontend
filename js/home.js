@@ -60,28 +60,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     const loadReview = () => {
-        fetch("https://tution-media-platform.onrender.com/api/tution/reviews/")
+        fetch("http://127.0.0.1:8000/api/tution/reviews/")
           .then((res) => res.json())
           .then((data) => displayReview(data));
       };
       
       const displayReview = (reviews) => {
         reviews.forEach((review) => {
-            console.log(review)
-          const parent = document.getElementById("review-container");
-          const div = document.createElement("div");
-          div.classList.add("review-card");
-          div.innerHTML = `
-              
-                  <h4 style="font-size:20px; color:white">${review.reviewer_name}</h4>
-                  <p style="font-size:20px; color:white" style="font-size:20px">
-                   ${review.comments}
-                  </p>
-                  <h6  style="font-size:20px">${review.rating}</h6>
-              `;
-          parent.appendChild(div);
+            // console.log(review);
+            const parent = document.getElementById("review-container");
+            const div = document.createElement("div");
+            div.classList.add("review-card");
+    
+            // Generate stars based on rating
+            let stars = '';
+            for (let i = 0; i < review.rating; i++) {
+                stars += '⭐';
+            }
+    
+            div.innerHTML = `
+                <h4 style="font-size:20px; color:white">${review.reviewer_name}</h4>
+                <p style="font-size:20px; color:white">${review.comments}</p>
+                <h6 style="font-size:20px; color:white">${stars}</h6>
+            `;
+            
+            parent.appendChild(div);
         });
-      };
-      
+    };
+    
    
       loadReview();

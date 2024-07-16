@@ -38,11 +38,9 @@ const getTuitions = () => {
            allTutions.appendChild(div);
          });
        }
- 
-       // Initial render of all tuitions
+
        renderTuitions(tuitions);
  
-       // Event listener for class filter dropdown change
        classFilter.addEventListener('change', () => {
          const selectedClass = classFilter.value;
          const filteredTuitions = filterTuitions(tuitions, selectedClass);

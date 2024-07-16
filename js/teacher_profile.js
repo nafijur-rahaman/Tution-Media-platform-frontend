@@ -1,17 +1,17 @@
 
 const loadUserDetails = () => {
   const user_id = localStorage.getItem("user_id");
-  console.log(user_id);
+  // console.log(user_id);
   fetch(`https://tution-media-platform.onrender.com/api/tutor/list/${user_id}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
 
       const profileHtml = `
           <img src="${data.image}" class="image" alt="">
           <h3 class="name">${data.user.username}</h3>
           <p class="role">Teacher</p>
-          <a href="student_profile.html" class="btn">View Profile</a>
+          <a href="teacher_profile.html" class="btn">View Profile</a>
           <div class="flex-btn">
             <a onclick="TutorHandleLogout()" class="option-btn">Logout</a>
           </div>
@@ -21,7 +21,7 @@ const loadUserDetails = () => {
           <img src="${data.image}" class="image" alt="">
           <h3 class="name">${data.user.username}</h3>
           <p class="role">Teacher</p>
-          <a href="student_profile.html" class="btn">View Profile</a>
+          <a href="teacher_profile.html" class="btn">View Profile</a>
         `;
 
       document.getElementById("header-profile").innerHTML = profileHtml;
@@ -52,12 +52,12 @@ const loadUserDetails = () => {
 document.addEventListener("DOMContentLoaded", loadUserDetails);
 
 
-console.log("table")
+// console.log("table")
 
 
 document.addEventListener('DOMContentLoaded', () => {
   const tutorId = localStorage.getItem('user_id');
-  
+  console.log(tutorId)
   fetch(`https://tution-media-platform.onrender.com/api/application/?tutor_id=${tutorId}`)
       .then(res => {
           if (!res.ok) {
@@ -88,7 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 tdStatus.classList.add('px-4', 'py-2', 'border');
                 tdStatus.textContent = application.status;
   
-                localStorage.setItem("status", application.status);
+                // staus set korlam
+                // localStorage.setItem("status", application.status);
   
                 tr.appendChild(tdId);
                 tr.appendChild(tdTuition);
@@ -101,7 +102,5 @@ document.addEventListener('DOMContentLoaded', () => {
             
           });
       })
-      .catch(error => {
-          console.error('Error fetching data:', error);
-      });
+    
 });
