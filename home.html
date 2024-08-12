@@ -13,6 +13,9 @@
    rel="stylesheet"
    crossorigin="anonymous"
  />
+
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -21,7 +24,7 @@
    
       <section class="flex">
    
-         <a href="home.html" class="logo">Online Tuition Media</a>
+         <a style="text-decoration: none;" href="home.html" class="logo">Online Tuition Media</a>
          <div class="icons">
             <div id="menu-btn" class="fas fa-bars"></div>
             <div id="search-btn" class="fas fa-search"></div>
@@ -60,7 +63,7 @@
          <div class="max-w-md mb-8 md:mb-0">
             <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">Best Tutoring Media Platform in Bangladesh</h1>
             <p class="text-lg md:text-xl mb-8">Connect with the best tutors. Learn from the experts.</p>
-            <a href="update.html" id="findTutorBtn" class="inline-block px-8 py-4 bg-white text-blue-500 font-semibold rounded-lg shadow-lg hover:bg-blue-400 hover:text-white transition duration-300 transform hover:scale-105">Find A Tutor</a>
+            <a style="text-decoration: none;" href="update.html" id="findTutorBtn" class="inline-block px-8 py-4 bg-white text-blue-500 font-semibold rounded-lg shadow-lg hover:bg-blue-400 hover:text-white transition duration-300 transform hover:scale-105">Find A Tutor</a>
          </div>
          <div class="md:w-1/2">
             <img class="w-full rounded-lg shadow-lg" src="./images/BANNER-2.jpg" alt="Banner Image">
@@ -99,34 +102,31 @@
 
 
    <!-- review -->
-   <div  class="review-container p-5 mt-5 w-75 m-auto" style="margin-bottom: 200px;">
+    <section class="review-section" style="margin-bottom: 100px;">
+
+  
+   <div class="review-container p-5 mt-5 w-75 m-auto" style="margin-bottom: 200px;" >
       <div class="text-center mb-12">
-         <h1 style="font-size: 50px;" class="font-bold text-gray-800">Review From User</h1>
-        
+        <h1 style="font-size: 50px;" class="font-bold text-gray-800">Review From User</h1>
       </div>
-      <div class="reviews">
-        <div class="swiffy-slider slider-item-show2 slider-item-reveal slider-nav-outside slider-nav-round slider-nav-visible slider-indicators-outside slider-indicators-round slider-indicators-dark slider-nav-animation slider-nav-animation-fadein slider-item-first-visible">
-          <ul id="review-container" class="slider-container py-4">
-            <!-- Reviews will be dynamically added here -->
-          </ul>
-          <button type="button" class="slider-nav" aria-label="Go left"></button>
-          <button type="button" class="slider-nav slider-nav-next" aria-label="Go right"></button>
-          <div class="slider-indicators">
-            <button class="active" aria-label="Go to slide"></button>
-            <button aria-label="Go to slide"></button>
-            <button aria-label="Go to slide"></button>
-            <button aria-label="Go to slide"></button>
-            <button aria-label="Go to slide" class=""></button>
-          </div>
+      <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="review-container" class="carousel-inner">
+          <!-- Reviews will be dynamically added here -->
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
-    
+   
 
 
-
-
-
+   </section>
 
    
 
@@ -146,5 +146,7 @@
    defer
  ></script>
    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

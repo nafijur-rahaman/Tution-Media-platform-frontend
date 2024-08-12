@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
     
 
-            fetch('https://tution-media-platform.onrender.com/api/tution/reviews/', {
+            fetch('http://127.0.0.1:8000/api/tution/reviews/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
