@@ -49,40 +49,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     const loadReview = () => {
-        fetch("http://127.0.0.1:8000/api/tution/reviews/")
-          .then((res) => res.json())
-          .then((data) => displayReview(data));
-      };
-      
-      const displayReview = (reviews) => {
-        const parent = document.getElementById("review-container");
-      
-        reviews.forEach((review, index) => {
+      fetch("https://tution-media-platform.onrender.com/api/tution/reviews/")
+        .then((res) => res.json())
+        .then((data) => displayReview(data));
+  };
+  
+  const displayReview = (reviews) => {
+    
+
+      const parent = document.getElementById("review-container");
+  
+      reviews.forEach((review, index) => {
           const div = document.createElement("div");
           div.classList.add("carousel-item");
           if (index === 0) {
-            div.classList.add("active");  // Make the first item active
+              div.classList.add("active");  
           }
-      
-          // Generate stars based on rating
-          let stars = '';
-          for (let i = 0; i < review.rating; i++) {
-            stars += '⭐';
-          }
-      
+  
+
+  
+          // Review item HTML
           div.innerHTML = `
-            <div class="review-card text-center p-4">
-              <h4 style="font-size:20px; color:black">${review.reviewer_name}</h4>
-              <p style="font-size:20px; color:black">${review.comments}</p>
-              <h6 style="font-size:20px; color:black">${stars}</h6>
-            </div>
+              <div class="review-card text-center p-4">
+                  <h4 style="font-size:20px; color:black">${review.reviewer_name}</h4>
+                  <p style="font-size:20px; color:black">${review.comments}</p>
+                  <h6 style="font-size:20px; color:black">${review.rating}</h6>
+              </div>
           `;
-      
+  
+          // Append review item to carousel
           parent.appendChild(div);
-        });
-      };
+      });
+  };
+  
+  loadReview();
+  
       
-      loadReview();
+  
       
    
      
