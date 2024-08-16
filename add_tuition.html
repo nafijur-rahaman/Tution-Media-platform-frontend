@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>add tuition</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <section class="flex">
+        <a href="home.html" class="logo">Online Tuition Media</a>
+
+        <div class="icons">
+          <div id="menu-btn" class="fas fa-bars"></div>
+          <div id="search-btn" class="fas fa-search"></div>
+          <div id="toggle-btn" class="fas fa-sun"></div>
+        </div>
+      </section>
+    </header>
+
+    <div class="side-bar">
+      <nav class="navbar">
+        <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="about.html"
+          ><i class="fas fa-question"></i><span>About</span></a
+        >
+      </nav>
+    </div>
+
+    <section
+     style="margin-bottom: 100px;" class=" mx-auto max-w-5xl p-3 bg-gradient-to-r mt-10 from-blue-500 via-teal-500 to-green-500 shadow-xl rounded-lg mb-30">
+      
+     <form id="tuition-form" onsubmit="addTuition(event)" class="mt-5 space-y-8">
+      <h3 class="text-4xl font-bold text-white mb-8 text-center">Add New Tuition</h3>
+    
+      <div class="flex flex-col md:flex-row gap-40">
+        <!-- Part 1 -->
+        <div class="flex-[1.5] space-y-5">
+          <div>
+            <label for="title" class="block text-xl font-medium text-white">Tuition Title <span class="text-red-500">*</span></label>
+            <input type="text" id="title" name="title" placeholder="Enter the title of the tuition" value="Tuition for" required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+    
+          <div>
+            <label for="subjects" class="block text-xl font-medium text-white">Tuition Subjects <span class="text-red-500">*</span></label>
+            <select id="subjects" name="subjects" multiple required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="1">English</option>
+              <option value="2">General Math</option>
+              <option value="3">Bangla</option>
+              <option value="4">Religion</option>
+              <option value="5">Higher Math</option>
+              <option value="6">Biology</option>
+              <option value="7">Physics</option>
+              <option value="8">Chemistry</option>
+              <option value="9">All Subjects</option>
+              <option value="10">General Science</option>
+            </select>
+          </div>
+    
+          <div>
+            <label for="tuition_class" class="block text-xl font-medium text-white">Tuition Need for Class <span class="text-red-500">*</span></label>
+            <select id="tuition_class" name="tuition_class" required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="Class 1">Class 1</option>
+              <option value="Class 2">Class 2</option>
+              <option value="Class 3">Class 3</option>
+              <option value="Class 4">Class 4</option>
+              <option value="Class 5">Class 5</option>
+              <option value="Class 6">Class 6</option>
+              <option value="Class 7">Class 7</option>
+              <option value="Class 8">Class 8</option>
+              <option value="Class 9">Class 9</option>
+              <option value="Class 10">Class 10</option>
+              <option value="HSC 1">HSC-1st Year</option>
+              <option value="HSC 2">HSC-2nd Year</option>
+            </select>
+          </div>
+    
+          <div>
+            <label for="description" class="block text-xl font-medium text-white">Tuition Descriptions <span class="text-red-500">*</span></label>
+            <textarea id="description" name="description" placeholder="Enter description" required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+          </div>
+    
+          <div>
+            <label for="salary" class="block text-xl font-medium text-white">Salary <span class="text-red-500">*</span></label>
+            <input type="text" id="salary" name="salary" placeholder="Enter salary" required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+        </div>
+    
+        <!-- Part 2 -->
+        <div class="flex-[1] space-y-7">
+          <div>
+            <label for="location" class="block text-xl font-medium text-white">Locations <span class="text-red-500">*</span></label>
+            <input type="text" id="location" name="location" placeholder="Enter location" required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+    
+          <div>
+            <label for="medium" class="block text-xl font-medium text-white">Tuition Need for Which Medium? <span class="text-red-500">*</span></label>
+            <select id="medium" name="medium" required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="Bangla">Bangla</option>
+              <option value="English">English</option>
+            </select>
+          </div>
+    
+          <div>
+            <label for="student_gender" class="block text-xl font-medium text-white">Student Gender <span class="text-red-500">*</span></label>
+            <select id="student_gender" name="student_gender" required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+    
+          <div>
+            <label for="preferred_tutor_gender" class="block text-xl font-medium text-white">Tutor Gender <span class="text-red-500">*</span></label>
+            <select id="preferred_tutor_gender" name="preferred_tutor_gender" required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+    
+          <div>
+            <label for="tutoring_time" class="block text-xl font-medium text-white">Tuition Time <span class="text-red-500">*</span></label>
+            <select id="tutoring_time" name="tutoring_time" required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="Morning">Morning</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Evening">Evening</option>
+            </select>
+          </div>
+    
+          <div>
+            <label for="number_of_students" class="block text-xl font-medium text-white">How Many Students? <span class="text-red-500">*</span></label>
+            <input type="number" id="number_of_students" name="number_of_students" placeholder="Number of students" required class="w-full p-4 text-3xl border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+        </div>
+      </div>
+    
+      <div class="text-center mt-8">
+        <input type="submit" value="Submit" class="w-full bg-purple-600 text-white text-3xl font-bold py-4 rounded-lg cursor-pointer hover:bg-blue-700 transition-colors duration-300" />
+      </div>
+    </form>
+    
+    
+    
+    </section>
+
+    <footer class="footer">
+      &copy; Copyright @ 2022 by <span>Tuition Media Platform</span> | All
+      rights reserved!
+    </footer>
+
+    <!-- Custom JavaScript file link -->
+    <script src="js/auth.js"></script>
+    <script src="js/add_tuition.js"></script>
+  </body>
+</html>

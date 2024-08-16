@@ -9,7 +9,8 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/home.css" />]
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -33,75 +34,82 @@
     </nav>
   </div>
 
-  <section class="form-container">
+  <section class="mx-auto max-w-4xl mt-10 p-8 bg-gradient-to-r from-blue-500 to-purple-400 shadow-lg rounded-lg" >
  
 
     <!-- Teacher Registration Form -->
-    <form id="teacher-form" onsubmit="handleTeacherRegistration(event)" style="margin-bottom: 100px;">
-      <p id="error" style="color: red; font-size: 14px; margin-top: 5px;"></p>
-      <p id="success" style="color: green; font-size: 14px; margin-top: 5px;"></p>
-      <h3>Register as Teacher</h3>
+    <form id="teacher-form" onsubmit="handleTeacherRegistration(event)" class="mb-24">
+      <p id="error" class="text-red-500 text-2xl mt-1"></p>
+      <p id="success" class="text-green-500 text-sm mt-1"></p>
+      <h3 class="text-center text-white text-4xl font-bold mb-8">Register as Teacher</h3>
     
-      <p>Your Username <span>*</span></p>
-      <input type="text" id="username" placeholder="Enter your username" required maxlength="50" class="box" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="flex flex-col">
+          <p class="text-lg text-white">Your Username <span class="text-red-500">*</span></p>
+          <input type="text" id="username" placeholder="Enter your username" required maxlength="50" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Your First Name <span>*</span></p>
-      <input type="text" id="fname" placeholder="Enter your firstname" required maxlength="50" class="box" />
+          <p class="text-lg text-white mt-4">Your First Name <span class="text-red-500">*</span></p>
+          <input type="text" id="fname" placeholder="Enter your first name" required maxlength="50" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Your Last Name <span>*</span></p>
-      <input type="text" id="lname" placeholder="Enter your lastname" required maxlength="50" class="box" />
+          <p class="text-lg text-white mt-4">Your Last Name <span class="text-red-500">*</span></p>
+          <input type="text" id="lname" placeholder="Enter your last name" required maxlength="50" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Your Email <span>*</span></p>
-      <input type="email" id="email" placeholder="Enter your email" required maxlength="50" class="box" />
+          <p class="text-lg text-white mt-4">Your Email <span class="text-red-500">*</span></p>
+          <input type="email" id="email" placeholder="Enter your email" required maxlength="50" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Your Password <span>*</span></p>
-      <input type="password" id="pass" placeholder="Enter your password" required maxlength="50" class="box" />
+          <p class="text-lg text-white mt-4">Your Password <span class="text-red-500">*</span></p>
+          <input type="password" id="pass" placeholder="Enter your password" required maxlength="50" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Confirm Password <span>*</span></p>
-      <input type="password" id="c_pass" placeholder="Confirm your password" required maxlength="50" class="box" />
-      
-      <p>Your Phone Number <span>*</span></p>
-      <input type="text" id="phone_number" placeholder="Enter your phone number" required maxlength="12" class="box" />
+          <p class="text-lg text-white mt-4">Confirm Password <span class="text-red-500">*</span></p>
+          <input type="password" id="c_pass" placeholder="Confirm your password" required maxlength="50" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Your Location <span>*</span></p>
-      <input type="text" id="location" placeholder="Enter your location" required maxlength="100" class="box" />
+          <p class="text-lg text-white mt-4">Your Phone Number <span class="text-red-500">*</span></p>
+          <input type="text" id="phone_number" placeholder="Enter your phone number" required maxlength="12" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Your Tuition District <span>*</span></p>
-      <input type="text" id="tuition_district" placeholder="Enter your tuition district" required maxlength="100" class="box" />
+          <p class="text-lg text-white mt-4">Your Location <span class="text-red-500">*</span></p>
+          <input type="text" id="location" placeholder="Enter your location" required maxlength="100" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
+        </div>
     
-      <p>Minimum Salary</p>
-      <input type="text" id="minimum_salary" placeholder="Enter minimum salary" maxlength="10" class="box" />
+        <div class="flex flex-col">
+          <p class="text-lg text-white">Your Tuition District <span class="text-red-500">*</span></p>
+          <input type="text" id="tuition_district" placeholder="Enter your tuition district" required maxlength="100" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Tutoring Experience <span>*</span></p>
-      <input type="text" id="tutoring_experience" placeholder="Enter tutoring experience" required maxlength="100" class="box" />
+          <p class="text-lg text-white mt-4">Minimum Salary</p>
+          <input type="text" id="minimum_salary" placeholder="Enter minimum salary" maxlength="10" class="box text-2xl  mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Extra Facilities</p>
-      <input type="text" id="extra_facilities" placeholder="Enter extra facilities (if any)" maxlength="255" class="box" />
+          <p class="text-lg text-white mt-4">Tutoring Experience <span class="text-red-500">*</span></p>
+          <input type="text" id="tutoring_experience" placeholder="Enter tutoring experience" required maxlength="100" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Medium of Instruction <span>*</span></p>
-      <select id="medium_of_instruction" required class="box">
-        <option value="Bangla">Bangla</option>
-        <option value="English">English</option>
-        <option value="Both">Both</option>
-      </select>
+          <p class="text-lg text-white mt-4">Extra Facilities</p>
+          <input type="text" id="extra_facilities" placeholder="Enter extra facilities (if any)" maxlength="255" class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
     
-      <p>Status <span>*</span></p>
-      <select id="status" required class="box">
-        <option value="Available">Available</option>
-        <option value="Not Available">Not Available</option>
-      </select>
+          <p class="text-lg text-white mt-4">Medium of Instruction <span class="text-red-500">*</span></p>
+          <select id="medium_of_instruction" required class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md">
+            <option value="Bangla">Bangla</option>
+            <option value="English">English</option>
+            <option value="Both">Both</option>
+          </select>
     
-      <p>Gender <span>*</span></p>
-      <select id="gender" required class="box">
-        <option value="M">Male</option>
-        <option value="F">Female</option>
-      </select>
+          <p class="text-lg text-white mt-4">Status <span class="text-red-500">*</span></p>
+          <select id="status" required class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md">
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+          </select>
     
-      <p>Profile Image <span>*</span></p>
-      <input type="file" id="image" required class="box" />
+          <p class="text-lg text-white mt-4">Gender <span class="text-red-500">*</span></p>
+          <select id="gender" required class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
     
-      <input type="submit" value="Register as teacher" class="btn" />
+          <p class="text-lg text-white mt-4">Profile Image <span class="text-red-500">*</span></p>
+          <input type="file" id="image" required class="box text-2xl mt-1 p-3 border border-gray-300 rounded-md" />
+        </div>
+      </div>
+    
+      <input style="padding: 5px; width:200px; text-align:center; margin-left: 160px;" type="submit" value="Register" class="mt-8 font-bold bg-yellow-500 text-white text-3xl py-2 rounded-md cursor-pointer hover:bg-green-500 transition-all" />
     </form>
+    
     
     
   </section>

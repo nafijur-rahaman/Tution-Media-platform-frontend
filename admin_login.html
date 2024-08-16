@@ -4,7 +4,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Teacher login</title>
+   <title>Admin login</title>
 
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -48,22 +48,23 @@
    <nav class="navbar">
       <a href="home.html"><i class="fas fa-home"></i><span>home</span></a>
       <a href="about.html"><i class="fas fa-question"></i><span>about</span></a>
+      
   </nav>
 
 </div>
 
-<section style="padding-bottom: 100px;" class="form-container flex items-center justify-center  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-6">
+<section style="padding-bottom: 100px;" class="form-container  flex items-center justify-center  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-6">
 
-   <form class="mt-12">
+   <form class="mt-12" >
       <h3>login now</h3>
       <p>your username <span>*</span></p>
       <input type="text" id="username" placeholder="enter your username" required maxlength="50" class="box">
       <p>your password <span>*</span></p>
       <input type="password" id="password" placeholder="enter your password" required maxlength="20" class="box">
-      <input onclick="handleLogin(event)" type="submit" value="Login For Teacher" name="submit" class="btn">
+      <input onclick="handleLogin(event)" type="submit" value="Login For Admin" name="submit" class="btn">
 
       <div class="registration-type">
-         <a href="admin_login.html" class="btn btn-type">Login For Admin</a>
+         <a href="teacher_login.html" class="btn btn-type">Login For Teacher</a>
        </div>
    </form>
 
@@ -73,12 +74,14 @@
 </section>
 
 <footer class="footer">
-   &copy; Copyright @ 2022 by <span>Tuition Media Platform</span> | All rights reserved!
+
+   &copy; copyright @ 2022 by <span>mr. web designer</span> | all rights reserved!
+
 </footer>
 
 
 <script src="js/auth.js"></script>
-<script src="js/tea_login.js"></script>
+<script src="js/admin_login.js"></script>
 
    
 </body>

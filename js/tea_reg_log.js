@@ -39,24 +39,32 @@ const handleTeacherRegistration = (event) => {
     if (password === confirm_password) {
         document.getElementById("error").innerText = "";
         
-        // Password validation regex
         if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
-            console.log(info); 
             
-            fetch("https://tution-media-platform.onrender.com/api/tutor/register/", {
+            fetch("https://tuition-media-platform-backend.onrender.com/api/tutor/register/", {
                 method: "POST",
                 body: info,
             })
-            .then((res) => {
-                alert(
-                    "Registration Successfull. Please check email for confirmation email"
-                  );
-                  window.location.href = "login.html";
-            }) 
-            .then((data) => {
-                // console.log(data)
-                
+            .then(response => {
+                if (!response.ok) {
+                   
+                    return response.json().then(errData => { 
+                        throw new Error(JSON.stringify(errData)); 
+                    });
+                }
+                return response.json();
             })
+            .then(data => {
+                alert("Registration Successful. Please check your email for confirmation.");
+                window.location.href = "teacher_login.html";
+            })
+            .catch(error => {
+                
+                const errorMessage = JSON.parse(error.message);
+                alert(`Registration Failed: ${errorMessage.detail || "Please check your input and try again."}`);
+            });
+            
+
         
         } else {
             document.getElementById("error").innerText = "Password must contain at least 8 characters, at least one letter, one number, and one special character.";

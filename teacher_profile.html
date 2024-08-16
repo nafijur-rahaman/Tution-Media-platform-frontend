@@ -8,6 +8,8 @@
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
    <link
    href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"
    rel="stylesheet"
@@ -56,35 +58,44 @@
    </nav>
 </div>
 
-<section  class="teacher-profile">
-   <h1 class="heading">Profile Details</h1>
-   <div class="info">
-
+<section   class="teacher-profile">
+   <h1 style="text-align: center;" class="heading">Profile Details</h1>
   
-   <div class="user" id="profile-details" style="margin: auto;">
+   <div class="user max-w-5xl mx-auto p-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg shadow-lg text-center" id="profile-details">
+      <!-- Profile Details Content Here -->
    
    </div>
+   
+      
 </div>
 </section>
 
 <style>
    tr td{
-      font-size: 30px;
+      font-size: 20px;
    }
 </style>
+<section  >
+   <h1 style="text-align: center;" class="heading">Your Tuition list</h1>
+   <div class="info">
 
-<table id="tuition-list" class="table table-striped" style="margin-bottom:100px;">
-  <thead>
-    <tr>
-      <th style="font-size: 20px;">ID</th>
-      <th style="font-size: 20px;">Title</th>
-      <th style="font-size: 20px;">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-   
-  </tbody>
-</table>
+
+<!-- Table Container -->
+<div style="margin-bottom: 100px;" class="container mx-auto p-6 bg-gradient-to-r from-green-500  to-blue-500 rounded-lg shadow-lg">
+   <table id="tuition-list" class="min-w-full bg-white rounded-lg shadow-md">
+     <thead class="bg-gray-800 text-white">
+       <tr>
+         <th class="px-6 py-3 text-left text-2xl font-medium uppercase tracking-wider">ID</th>
+         <th class="px-6 py-3 text-left text-2xl font-medium uppercase tracking-wider">Title</th>
+         <th class="px-6 py-3 text-left text-2xl font-medium uppercase tracking-wider">Status</th>
+       </tr>
+     </thead>
+     <tbody class="bg-white divide-y divide-gray-200">
+       <!-- Rows will be dynamically inserted here -->
+     </tbody>
+   </table>
+ </div>
+ 
  
 
 <footer class="footer">

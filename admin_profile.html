@@ -4,18 +4,22 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Courses</title>
+   <title>Admin Profile</title>
 
-   <!-- Font Awesome CDN link -->
+   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="..."
+ />
+ <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+ 
 
-   <!-- Bootstrap CSS -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-   <!-- Custom CSS -->
+   <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
    <link rel="stylesheet" href="css/home.css">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
    <style>
  
 
@@ -106,40 +110,82 @@
          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
        }
 
+
+
+       .custom-button {
+         display: inline-block;
+         padding: 10px 20px;
+         font-size: 18px;
+         color: white;
+         background-color: #007bff;
+         border-radius: 5px;
+         text-align: center;
+         text-decoration: none;
+     }
+     
+     .custom-button:hover {
+         background-color: #0056b3; 
+     }
    </style>
 </head>
 <body>
 
 <header class="header">
-   <div class="container">
-      <div class="flex">
-         <a style="text-decoration: none;" href="home.html" class="logo">Online Tuition Media</a>
-         <div class="icons">
-            <div id="menu-btn" class="fas fa-bars"></div>
-            <div id="search-btn" class="fas fa-search"></div>
-            <div id="user-btn" class="fas fa-user"></div>
-            <div id="toggle-btn" class="fas fa-sun"></div>
-         </div>
+   <section class="flex">
+      <a style="text-decoration: none;" href="home.html" class="logo">Online Tuition Media</a>
+
+
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
       </div>
-   </div>
-</header>
+
+      <div class="profile" id="header-profile">
+        
+      </div>
+   </section>
+</header>   
 
 <div class="side-bar">
    <div id="close-btn">
       <i class="fas fa-times"></i>
    </div>
+
+   <div class="profile" id="sidebar-profile">
+     
+   </div>
+
    <nav class="navbar">
-      <a class="text-decoration-none" href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
-      <a class="text-decoration-none" href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+      <a class="text-decoration-none" href="home.html"><i class="fas fa-home"></i><span>home</span></a>
+      <a class="text-decoration-none" href="about.html"><i class="fas fa-question"></i><span>about</span></a>
       
    </nav>
 </div>
 
+<section class="teacher-profile text-center py-16 bg-gradient-to-r from-gray-800 to-gray-700 text-white">
+   <h1 class=" text-5xl text-white font-extrabold mb-10">Welcome to your workspace Admin</h1>
+</section>
+
+<div class="text-center mt-8">
+   <a class="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white text-5xl font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" href="add_tuition.html">
+       Add Tuition
+   </a>
+</div>
+
+
+
+ 
+<!-- tutions -->
+
+
 <div id="containers">
    <div class="row">
-       <div class="col-md-3 mb-3">
-           <select id="classFilter" class="block w-full p-3 text-base text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300 ease-in-out hover:bg-blue-50">
-               <option value="">All Classes</option>
+      <div class="col-md-3 mb-3">
+         <select id="classFilter">
+            <option value="">All Classes</option>
                <option value="Class 1">Class 1</option>
                <option value="Class 2">Class 2</option>
                <option value="Class 3">Class 3</option>
@@ -152,34 +198,36 @@
                <option value="Class 10">Class 10</option>
                <option value="HSC 1">HSC 1st Year</option>
                <option value="HSC 2">HSC 2nd Year</option>
-           </select>
-       </div>
+           
+         </select>
+      </div>
    </div>
 </div>
-
 
 
    <div class="row" id="all-tuitions" style="margin-bottom: 100px;">
-      <!-- Tuitions cards -->
+      <!-- Tuitions will be dynamically added here -->
    </div>
-
-     
-      
-    
-     
-  
 </div>
+
+
+
+
+
+
+
 
 <footer class="footer">
    &copy; Copyright @ 2022 by <span>Tuition Media Platform</span> | All rights reserved!
 </footer>
 
-<!-- Bootstrap JS bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Custom JS files -->
+
 <script src="js/script.js"></script>
-<script src="js/tutions.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"
+integrity="..."
+></script>
+<script src="js/admin_tuitions.js"></script>
 </body>
 </html>
