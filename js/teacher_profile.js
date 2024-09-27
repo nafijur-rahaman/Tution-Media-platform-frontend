@@ -1,106 +1,310 @@
+function showSuccessAlert(message, title = "Success") {
+  const alertBox = document.getElementById("success-alert");
+  const alertTitle = document.getElementById("success-alert-title");
+  const alertMessage = document.getElementById("success-alert-message");
 
+  alertTitle.innerText = title;
+  alertMessage.innerText = message;
+
+  alertBox.classList.remove("hidden");
+  alertBox.classList.add("flex");
+
+  setTimeout(() => {
+    alertBox.classList.add("hidden");
+  }, 5000);
+}
+
+function showFailureAlert(message, title = "Failure") {
+  const alertBox = document.getElementById("failure-alert");
+  const alertTitle = document.getElementById("failure-alert-title");
+  const alertMessage = document.getElementById("failure-alert-message");
+
+  alertTitle.innerText = title;
+  alertMessage.innerText = message;
+
+  alertBox.classList.remove("hidden");
+  alertBox.classList.add("flex");
+
+  setTimeout(() => {
+    alertBox.classList.add("hidden");
+  }, 5000);
+}
+
+document.getElementById("close-success-alert").addEventListener("click", () => {
+  document.getElementById("success-alert").classList.add("hidden");
+});
+
+document.getElementById("close-failure-alert").addEventListener("click", () => {
+  document.getElementById("failure-alert").classList.add("hidden");
+});
 const loadUserDetails = () => {
   const user_id = localStorage.getItem("user_id");
   // console.log(user_id);
-  fetch(`https://tuition-media-platform-backend.onrender.com/api/tutor/list/${user_id}`)
-    .then((res) => res.json())
+  fetch(`http://127.0.0.1:8000/api/tutor/list/${user_id}`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Campaign not found");
+      }
+      return res.json();
+    })
     .then((data) => {
-      // console.log(data);
+      console.log(data)
+     const profile_header=document.getElementById("profile-header");
+     profile_header.innerHTML=`
+         <img src="${data.image}" alt="Profile Picture" class="w-24 h-24 rounded-full">
+         <div class="ml-6">
+           <h1 class="text-3xl font-semibold text-gray-800">${data.first_name} ${data.last_name}  </h1>
+           <p class="text-gray-500">${data.designation}</p>
+           <p class="text-gray-500">${data.email}</p>
+         </div>
 
-      const profileHtml = `
-          <img style="margin-left: 85px;"  src="${data.image}" class="image" alt="">
-          <h3 class="name">${data.user.username}</h3>
-          <p class="role">Teacher</p>
-          <a href="teacher_profile.html" class="btn">View Profile</a>
-          <div class="flex-btn">
-            <a style="text-decoration:none;" onclick="TutorHandleLogout()" class="option-btn">Logout</a>
-          </div>
-        `;
+     
+                          `
+      const profile_details=document.getElementById("profile_details");
+      profile_details.innerHTML=`
+      
+      <div class="bg-gray-50 p-6 rounded-md">
+         <h2 class="text-xl font-semibold text-gray-800">Bio</h2>
+         <p class="text-gray-600 mt-4">
+           ${data.bio}
+         </p>
+       </div>
+       <div class="bg-gray-50 p-6 rounded-md">
+         <h2 class="text-xl font-semibold text-gray-800">General Information</h2>
+         <ul class="list-disc list-inside mt-4 text-gray-600">
+           <ol>Phone: ${data.phone_number}</ol>
+           <ol>Gender: ${data.gender}</ol>
+           <ol>Location: ${data.location}</ol>
+           <ol>Education: ${data.education}</ol>
+         </ul>
+       </div>
+    <div class="bg-gray-50 p-6 rounded-md">
+         <h2 class="text-xl font-semibold text-gray-800">Subjects</h2>
+         <ul class="list-disc list-inside mt-4 text-gray-600">
+            ${data.subjects}
+         </ul>
+      </div>
+`
 
-      const sidebarProfileHtml = `
-          <img style="margin-left: 85px;" src="${data.image}" class="image" alt="">
-          <h3 class="name">${data.user.username}</h3>
-          <p class="role">Teacher</p>
-          <a href="teacher_profile.html" class="btn">View Profile</a>
-        `;
 
-      document.getElementById("header-profile").innerHTML = profileHtml;
-      document.getElementById("sidebar-profile").innerHTML = sidebarProfileHtml;
-const parent = document.getElementById("profile-details");
-parent.innerHTML = `
-<div class="flex flex-col items-center">
-    <img class="w-48 h-48 object-cover rounded-full mx-auto mb-4 shadow-md" src="${data.image}" alt="Profile Image">
-    <h1 class="text-4xl font-bold text-white mb-2">Name: ${data.user.first_name} ${data.user.last_name}</h1>
-    <h2 class="text-3xl text-white mb-3">Username: ${data.user.username}</h2>
-    <h3 class="text-3xl text-white mb-3">Email: ${data.user.email}</h3>
-    <h3 class="text-3xl text-white mb-3">Phone: ${data.phone_number}</h3>
-    <h3 class="text-3xl text-white mb-3">Status: ${data.status}</h3>
-    <h3 class="text-3xl text-white mb-3">Experience: ${data.tutoring_experience} Years</h3>
-    <h3 class="text-3xl text-white mb-3">Medium Of Instruction: ${data.medium_of_instruction}</h3>
-    <h3 class="text-3xl text-white mb-3">Salary: ${data.minimum_salary}</h3>
-    <h3 class="text-3xl text-white mb-4">Location: ${data.location}</h3>
-    <div class="flex justify-center space-x-4">
-        <a style="text-decoration:none" class="bg-yellow-500 text-white text-3xl px-4 py-2 rounded-lg shadow-md hover:bg-indigo-600 transition-colors duration-300" href="update_pass.html">Change Password</a>
-        <a style="text-decoration:none" class="bg-green-500 text-white text-3xl px-4 py-2 rounded-lg shadow-md hover:bg-blue-500 transition-colors duration-300" href="update.html">Update Profile</a>
-    </div>
-    </div>
-`;
 
     })
     .catch((error) => {
-      console.error("Error fetching user details:", error);
+      showFailureAlert("Error fetching user details");
     });
 };
 
 document.addEventListener("DOMContentLoaded", loadUserDetails);
 
-
 // console.log("table")
 
+document.addEventListener("DOMContentLoaded", () => {
+  const tutorId = localStorage.getItem("user_id");
 
-document.addEventListener('DOMContentLoaded', () => {
-  const tutorId = localStorage.getItem('user_id');
-  // console.log(tutorId)
-  fetch(`https://tuition-media-platform-backend.onrender.com/api/application/?tutor=${tutorId}`)
-      .then(res => {
-          if (!res.ok) {
+  fetch(`http://127.0.0.1:8000/api/application/?tutor=${tutorId}`)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data)
+      const tuitionList = document.getElementById("tuition-details").querySelector('tbody');
+      tuitionList.innerHTML = ''; 
+
+      data.forEach((application) => {
+        console.log(data)
+        if (application.status === "accepted") {
+          const tuition = application.tuition; 
+          const newRow = `
+            <tr>
+              <td class="py-2">${application.tuition_title}</td>
+              <td class="py-2">${application.fee} BDT</td>
+              <td class="py-2">${application.status}</td>
+            </tr>
+          `;
+
+          tuitionList.innerHTML += newRow; // Append the new row to the table body
+        }
+      });
+
+      if (tuitionList.innerHTML === '') {
+        tuitionList.innerHTML = `
+          <tr>
+            <td colspan="3" class="py-2 text-center">No accepted tuitions available.</td>
+          </tr>
+        `;
+      }
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
+    });
+});
+
+
+
+
+
+function openEditProfileModal() {
+  const tutorId=window.localStorage.getItem('user_id');
+  fetch(`http://127.0.0.1:8000/api/tutor/list/${tutorId}/`)
+      .then(response => {
+          if (!response.ok) {
               throw new Error('Network response was not ok');
           }
-          return res.json();
+          return response.json();
       })
-      .then(data => {
-          const tuitionList = document.getElementById('tuition-list');
-          data.forEach(application => {
-            console.log(application.tuition.data)
-            if(application.status=="accepted"){
+      .then(tutorData => {
+        console.log(tutorData)
+          document.getElementById('first_name').value = tutorData.first_name;
+          document.getElementById('last_name').value = tutorData.last_name;
+          document.getElementById('email').value = tutorData.email;
+          document.getElementById('phone_number').value = tutorData.phone_number;
+          document.getElementById('gender').value = tutorData.gender;
+          document.getElementById('designation').value = tutorData.designation;
+          document.getElementById('location').value = tutorData.location;
+          document.getElementById('salary').value = tutorData.salary;
+          document.getElementById('tutoring_experience').value = tutorData.tutoring_experience;
+          document.getElementById('bio').value = tutorData.bio;
+          document.getElementById('medium_of_instruction').value = tutorData.medium_of_instruction;
+          document.getElementById('subjects').value = tutorData.subjects;
 
-              const tr = document.createElement('tr');
-              tr.classList.add('hover:bg-gray-100');
-              const tdId = document.createElement('td');
 
-              
-              tdId.classList.add('px-4', 'py-2', 'border', 'text-2xl', 'text-gray-900');
-              tdId.textContent = application.id;
-  
-              const tdTuition = document.createElement('td');
-              tdTuition.classList.add('px-4', 'py-2', 'border', 'text-2xl', 'text-gray-900');
-              tdTuition.textContent = application.tuition_title;
-  
-              const tdStatus = document.createElement('td');
-              tdStatus.classList.add('px-4', 'py-2', 'border', 'text-2xl', 'text-gray-900');
-              tdStatus.textContent = application.status;
-                // staus set korlam
-                // localStorage.setItem("status", application.status);
-  
-                tr.appendChild(tdId);
-                tr.appendChild(tdTuition);
-                tr.appendChild(tdStatus);
-  
-                tuitionList.appendChild(tr);
-            }
-            
-            
-          });
+          document.getElementById('editProfileModal').classList.remove('hidden');
       })
-    
+      .catch(error => {
+          console.error('Error fetching tutor data:', error);
+      });
+}
+
+document.getElementById('closeModalBtn').addEventListener('click', function() {
+  document.getElementById('editProfileModal').classList.add('hidden');
 });
+
+function updateProfile(event) {
+  event.preventDefault();
+
+  const tutorId = window.localStorage.getItem("user_id"); 
+  const updatedData = {
+      first_name: document.getElementById('first_name').value,
+      last_name: document.getElementById('last_name').value,
+      email: document.getElementById('email').value,
+      phone_number: document.getElementById('phone_number').value,
+      gender: document.getElementById('gender').value,
+      designation: document.getElementById('designation').value,
+      location: document.getElementById('location').value,
+      salary: document.getElementById('salary').value,
+      tutoring_experience: document.getElementById('tutoring_experience').value,
+      bio: document.getElementById('bio').value,
+      medium_of_instruction: document.getElementById('medium_of_instruction').value,
+      subjects: document.getElementById('subjects').value,
+  };
+
+  fetch(`http://127.0.0.1:8000/api/tutor/list/${tutorId}/`, {
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedData),
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Failed to update profile');
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log('Profile updated successfully:', data);
+      document.getElementById('editProfileModal').classList.add('hidden');
+  })
+  .catch(error => {
+      console.error('Error updating profile:', error);
+  });
+}
+
+document.getElementById('editProfileForm').addEventListener('submit', updateProfile);
+
+
+openEditProfileModal()
+
+
+
+
+document.getElementById('changePasswordForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  const oldPassword = document.getElementById('currentPassword').value
+  const newPassword = document.getElementById('newPassword').value;
+  const newPasswordConfirm = document.getElementById('confirmPassword').value;
+  const token=localStorage.getItem("teacher_token")
+
+  if(newPassword===newPasswordConfirm){
+
+      if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(newPassword)){
+        
+          fetch("http://127.0.0.1:8000/api/tutor/change-password/",{
+              method: 'PUT',
+              headers: {
+             'Content-Type': 'application/json',
+             'Authorization': `Token ${token}`  
+                                          },
+              body: JSON.stringify({
+                  old_password: oldPassword,
+                  new_password: newPassword,
+                  new_password_confirm: newPasswordConfirm
+              })
+
+          })
+          .then(res=>{
+              
+              if (!res.ok) {
+              
+                  return res.json().then(errorData => {
+                     
+                      let errorMessage = 'Unknown error';
+                      if (errorData.old_password && Array.isArray(errorData.old_password)) {
+                          errorMessage = errorData.old_password.join(' '); 
+                      }
+                      
+                      showFailureAlert(`Password change failed: ${errorMessage}`);
+                  });
+
+
+              }else{
+               showSuccessAlert("Password change successfully");
+                  setTimeout(() => {
+                     window.location.reload();
+                  }, 3000);
+              }
+              
+          })
+
+
+
+
+
+      }else{
+          showFailureAlert("Password must contain at least 8 characters, at least one letter, one number, and one special character.")
+      }
+
+ 
+
+
+
+
+  }else{
+      showFailureAlert("password doesn't match");
+  }
+
+});
+
+document.getElementById('closeChangePasswordModalBtn').addEventListener('click', function() {
+  document.getElementById('changePasswordModal').style.display = 'none';
+});
+
+
+
+
+
+

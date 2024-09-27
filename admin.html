@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Workspace</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" type="image/x-icon" href="/images/graduation-hat.png">
+    <style>
+        /* Custom styles for modal overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 600px;
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <nav class="w-64 bg-white shadow-lg h-full flex-none">
+            <div class="p-6">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2 transition duration-300 ease-in-out hover:text-blue-500 hover:border-blue-700">
+                    Admin Panel
+                </h2>
+                <ul class="space-y-2">
+                    <li><a href="./admin.html" class="block py-2 px-4 text-xl font-bold text-gray-700 hover:bg-gray-200 rounded">Dashboard</a></li>
+                    <li><a style="cursor:pointer;" onclick="openChangePasswordModal()" class="block py-2 px-4 text-gray-700 text-xl font-bold hover:bg-gray-200 rounded">Change Password</a></li>
+                    <li><a style="cursor:pointer;" onclick="adminLogout()" class="block py-2 px-4 text-gray-700 text-xl font-bold hover:bg-gray-200 rounded">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+<!-- Change Password Modal -->
+<div id="changePasswordModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+        <h3 class="text-xl font-bold mb-4">Change Password</h3>
+        <label for="currentPassword" class="block mb-2">Current Password</label>
+        <input type="password" id="currentPassword" class="border border-gray-300 rounded w-full mb-4 p-2" placeholder="Enter current password">
+        
+        <label for="newPassword" class="block mb-2">New Password</label>
+        <input type="password" id="newPassword" class="border border-gray-300 rounded w-full mb-4 p-2" placeholder="Enter new password">
+        
+        <label for="confirmNewPassword" class="block mb-2">Confirm New Password</label>
+        <input type="password" id="confirmNewPassword" class="border border-gray-300 rounded w-full mb-4 p-2" placeholder="Confirm new password">
+        
+        <div class="flex justify-end">
+            <button onclick="changePassword()" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Submit</button>
+            <button onclick="closeChangePasswordModal()" class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 ml-2">Cancel</button>
+        </div>
+    </div>
+</div>
+        <!-- Main content -->
+        <main class="flex-1 p-6 overflow-y-auto">
+<!-- Dashboard Section -->
+<div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+    <h1 class="text-3xl font-semibold mb-4">Dashboard</h1>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-6">
+        <div class="bg-blue-100 p-4 rounded-lg shadow">
+            <h3 class="text-xl font-medium">Total Students</h3>
+            <p id="total-students" class="text-2xl font-bold">0</p>
+        </div>
+        <div class="bg-green-100 p-4 rounded-lg shadow">
+            <h3 class="text-xl font-medium">Total Tuitions</h3>
+            <p id="total-tuitions" class="text-2xl font-bold">0</p>
+        </div>
+        <div class="bg-yellow-100 p-4 rounded-lg shadow">
+            <h3 class="text-xl font-medium">Active Tutors</h3>
+            <p id="active-tutors" class="text-2xl font-bold">0</p>
+        </div>
+        <div class="bg-red-100 p-4 rounded-lg shadow">
+            <h3 class="text-xl font-medium">Pending Applications</h3>
+            <p id="pending-applications" class="text-2xl font-bold">0</p>
+        </div>
+    </div>
+</div>
+
+
+                <!-- Accept Tutor Applications Section -->
+<div id="applications" class="bg-white shadow-lg rounded-lg p-6 mb-6">
+    <h3 class="text-3xl font-semibold mb-4">Tutor Applications</h3>
+    <table class="min-w-full bg-white">
+        <thead>
+            <tr class="w-full bg-gray-200 border-b border-gray-300">
+                <th class="py-2 px-4 text-left">Name</th>
+                <th class="py-2 px-4 text-left">Email</th>
+                <th class="py-2 px-4 text-left">Status</th>
+                <th class="py-2 px-4 text-left">Action</th>
+            </tr>
+        </thead>
+        <tbody id="applications-body">
+            <!-- Dynamic rows will be injected here -->
+        </tbody>
+    </table>
+</div>
+
+
+                
+                <!-- Tuition Management Section -->
+                <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
+                    <h3 class="text-3xl font-semibold mb-4">Manage Tuitions</h3>
+                    <div class="container mx-auto p-6">
+                        <button onclick="openAddTuitionModal()" class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700">Add Tuition</button>
+                    </div>
+                    <div class="max-h-60 overflow-y-auto">
+                        <table class="min-w-full bg-white">
+                            <thead>
+                                <tr class="w-full bg-gray-200 border-b border-gray-300">
+                                    <th class="py-2 px-4 text-left">Tuition Title</th>
+                                    <th class="py-2 px-4 text-left">Location</th>
+                                    <th class="py-2 px-4 text-left">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tuition-list">
+                                <!-- Dynamic rows will be inserted here -->
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </main>
+    </div>
+
+   <!-- Add Tuition Modal -->
+<div id="addTuitionModal" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-black bg-opacity-50">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-lg max-h-screen p-6 overflow-y-auto">
+        <h2 class="text-lg font-semibold mb-4">Add Tuition Information</h2>
+
+        <form onsubmit="event.preventDefault(); addTuition();">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_title">Title</label>
+                <input type="text" id="add_title" name="title" value="Tuition For" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="Title of the tuition" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_description">Description</label>
+                <textarea id="add_description" name="description" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="Detailed description of the tuition" required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_subjects">Subjects</label>
+                <select id="add_subjects" name="subjects" multiple class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="5">English</option>
+                    <option value="3">General Math</option>
+                    <option value="4">Bangla</option>
+                    <option value="6">Religion</option>
+                    <option value="10">Higher Math</option>
+                    <option value="9">Biology</option>
+                    <option value="7">Physics</option>
+                    <option value="8">Chemistry</option>
+                    <option value="11">All Subjects</option>
+                    <option value="2">General Science</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_salary">Salary</label>
+                <input type="number" id="add_salary" name="salary" step="0.01" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="Salary offered per month" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_location">Location</label>
+                <input type="text" id="add_location" name="location" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="Location" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_number_of_students">Number of Students</label>
+                <input type="number" id="add_number_of_students" name="number_of_students" value="1" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_tuition_class">Tuition Class</label>
+                <select id="add_tuition_class" name="tuition_class" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select Class</option>
+                    <option value="Class 1">Class 1</option>
+                    <option value="Class 2">Class 2</option>
+                    <option value="Class 3">Class 3</option>
+                    <option value="Class 4">Class 4</option>
+                    <option value="Class 5">Class 5</option>
+                    <option value="Class 6">Class 6</option>
+                    <option value="Class 7">Class 7</option>
+                    <option value="Class 8">Class 8</option>
+                    <option value="Class 9">Class 9</option>
+                    <option value="Class 10">Class 10</option>
+                    <option value="HSC 1">HSC 1st Year</option>
+                    <option value="HSC 2">HSC 2nd Year</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_availability">Availability</label>
+                <select id="add_availability" name="availability" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select Availability</option>
+                    <option value="Morning">Morning</option>
+                    <option value="Evening">Evening</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_medium">Medium of Instruction</label>
+                <select id="add_medium" name="medium" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select Medium</option>
+                    <option value="Bangla">Bangla Medium</option>
+                    <option value="English">English Version</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_student_gender">Student Gender</label>
+                <select id="add_student_gender" name="student_gender" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_preferred_tutor_gender">Preferred Tutor Gender</label>
+                <select id="add_preferred_tutor_gender" name="preferred_tutor_gender" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_tutoring_time">Tutoring Time</label>
+                <select id="add_tutoring_time" name="tutoring_time" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="">Select Time</option>
+                    <option value="Morning">Morning</option>
+                    <option value="Evening">Evening</option>
+                    <option value="Afternoon">Afternoon</option>
+                </select>
+            </div>
+
+            <div class="flex justify-between gap-5">
+                <button type="button" class="bg-gray-400 text-white py-2 px-4 rounded-lg hover:bg-gray-500" onclick="closeAddTuitionModal()">Cancel</button>
+                <button type="submit" class="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Add Tuition</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+   
+<!-- Edit Tuition Modal -->
+<div id="modal" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-black bg-opacity-50">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-lg max-h-screen p-6 overflow-y-auto">
+        <h2 class="text-lg font-semibold mb-4">Edit Tuition Information</h2>
+
+        <input type="hidden" id="tuitionId" value=""> <!-- Hidden input to store tuition ID -->
+
+        <form onsubmit="event.preventDefault(); saveChanges();">
+            <!-- Form fields with unique IDs -->
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="title">Title</label>
+                <input type="text" id="title" name="title" value="Tuition For" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="Title of the tuition">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="description">Description</label>
+                <textarea id="description" name="description" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="Detailed description of the tuition"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="salary">Salary</label>
+                <input type="number" id="salary" name="salary" step="0.01" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="Salary offered per month">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="location">Location</label>
+                <input type="text" id="location" name="location" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="Location">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="number_of_students">Number of Students</label>
+                <input type="number" id="number_of_students" name="number_of_students" value="1" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="tuition_class">Tuition Class</label>
+                <select id="tuition_class" name="tuition_class" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                    <option value="Class 1">Class 1</option>
+                    <option value="Class 2">Class 2</option>
+                    <option value="Class 3">Class 3</option>
+                    <option value="Class 4">Class 4</option>
+                    <option value="Class 5">Class 5</option>
+                    <option value="Class 6">Class 6</option>
+                    <option value="Class 7">Class 7</option>
+                    <option value="Class 8">Class 8</option>
+                    <option value="Class 9">Class 9</option>
+                    <option value="Class 10">Class 10</option>
+                    <option value="HSC 1">HSC 1st Year</option>
+                    <option value="HSC 2">HSC 2nd Year</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="subjects">Subjects</label>
+                <select id="subjects" required name="subjects" multiple class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                    <option value="5">English</option>
+                    <option value="3">General Math</option>
+                    <option value="4">Bangla</option>
+                    <option value="6">Religion</option>
+                    <option value="10">Higher Math</option>
+                    <option value="9">Biology</option>
+                    <option value="7">Physics</option>
+                    <option value="8">Chemistry</option>
+                    <option value="11">All Subjects</option>
+                    <option value="2">General Science</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="availability">Availability</label>
+                <select id="availability" name="availability" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                    <option value="Morning">Morning</option>
+                    <option value="Evening">Evening</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="medium">Medium of Instruction</label>
+                <select id="medium" name="medium" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                    <option value="Bangla">Bangla Medium</option>
+                    <option value="English">English Version</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="student_gender">Student Gender</label>
+                <select id="student_gender" name="student_gender" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="preferred_tutor_gender">Preferred Tutor Gender</label>
+                <select id="preferred_tutor_gender" name="preferred_tutor_gender" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="tutoring_time">Tutoring Time</label>
+                <select id="tutoring_time" name="tutoring_time" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                    <option value="Morning">Morning</option>
+                    <option value="Evening">Evening</option>
+                    <option value="Afternoon">Afternoon</option>
+                </select>
+            </div>
+
+            <div class="flex justify-between gap-5">
+                <button type="button" class="bg-gray-400 text-white py-2 px-4 rounded-lg hover:bg-gray-500" id="closeModal">Cancel</button>
+                <button type="submit" class="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Success Alert Box -->
+<div id="success-alert" class="fixed top-5 right-5 max-w-xs bg-green-100 text-green-800 p-4 rounded-lg shadow-md border border-green-200 hidden">
+    <div class="flex items-center">
+        <div class="flex-1">
+            <h3 id="success-alert-title" class="text-lg font-semibold mb-2">Success</h3>
+            <p id="success-alert-message" class="text-sm">This is a success message.</p>
+        </div>
+        <button id="close-success-alert" class="ml-4 text-green-600 hover:text-green-900 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+  </div>
+  
+  <!-- Failure Alert Box -->
+  <div id="failure-alert" class="fixed top-5 right-5 max-w-xs bg-red-100 text-red-800 p-4 rounded-lg shadow-md border border-red-200 hidden">
+    <div class="flex items-center">
+        <div class="flex-1">
+            <h3 id="failure-alert-title" class="text-lg font-semibold mb-2">Failure</h3>
+            <p id="failure-alert-message" class="text-sm">This is a failure message.</p>
+        </div>
+        <button id="close-failure-alert" class="ml-4 text-red-600 hover:text-red-900 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+  </div>
+  
+  
+
+<script src="./js/admin.js"></script>
+<script src="./js/logout.js"></script>
+</body>
+</html>

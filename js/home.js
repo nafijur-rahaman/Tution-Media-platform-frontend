@@ -1,83 +1,185 @@
-// banner.js
 
-document.addEventListener('DOMContentLoaded', function() {
-    const findTutorBtn = document.getElementById('findTutorBtn');
-
-    function togglePulseAnimation() {
-        findTutorBtn.classList.toggle('animate-pulse');
-    }
-
-  
-    togglePulseAnimation();
-
-    const pulseInterval = 1500; 
-    setInterval(togglePulseAnimation, pulseInterval);
-});
 
 
 // conditional navbar
-    const navElement = document.getElementById("navbar-element");
-    const token = localStorage.getItem("tea_token");
-    const token2 = localStorage.getItem("token");
+    const navElement = document.getElementById("navbar");
+    const token = localStorage.getItem("teacher_token");
+    const token2 = localStorage.getItem("student_token");
+
 
     if(token){
 
         navElement.innerHTML += `
        
-        <a style="text-decoration: none;" href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
-        <a style="text-decoration: none;" href="tuitions.html"><i class="fas fa-school"></i><span>Tuitions</span></a>
-        <a style="text-decoration: none;" href="teacher_profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
-        <a style="text-decoration: none;" onclick="TutorHandleLogout()"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
-        
-        <a style="text-decoration: none;" href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+           <div class="container mx-auto flex justify-between items-center">
+             <a href="./home.html" class="text-4xl font-extrabold text-white hover:text-gray-300 transition duration-300 flex items-center space-x-2">
+    <span class="bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text">
+        Tuition
+    </span>
+    <span class="text-gray-200">Media</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white hover:text-gray-300 transition duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+    </svg>
+</a>
+        <div class="md:hidden">
+            <!-- Hamburger Icon -->
+            <button id="menu-btn" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+  
+        <ul class=" md:flex space-x-6">
+           <ul class="hidden md:flex space-x-6">
+            <li><a href="./home.html" class="hover:text-blue-400 text-xl font-bold">Home</a></li>
+            <li><a href="./tuitions.html" class="hover:text-blue-400 text-xl font-bold">Tuitions</a></li>
+            <li><a href="./teachers.html" class="hover:text-blue-400 text-xl font-bold">Teachers</a></li>
+            <li><a href="./about.html" class="hover:text-blue-400 text-xl font-bold">About</a></li>
+            <li><a href="./contact.html" class="hover:text-blue-400 text-xl font-bold">Contact</a></li>
+        </ul>
+        </ul>
+        <div class="hidden md:flex items-center space-x-4">
+    
+            <a href="teacher_profile.html" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition">Profile</a>
+            <a onclick="TutorHandleLogout()" style="cursor:pointer;" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition">Logout</a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu-->
+    <div id="mobile-menu" class="md:hidden hidden">
+        <ul class="flex flex-col space-y-4 p-4 bg-gray-700">
+         <li><a href="./home.html" class="hover:text-blue-400">Home</a></li>
+            <li><a href="./tuitions.html" class="hover:text-blue-400">Tuitions</a></li>
+            <li><a href="./teachers.html" class="hover:text-blue-400">Teachers</a></li>
+            <li><a href="./about.html" class="hover:text-blue-400">About</a></li>
+           <a href="teacher_profile.html" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition">Profile</a>
+            <a onclick="TutorHandleLogout()" style="cursor:pointer;" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition">Logout</a>
+        </ul>
+    </div>
        
                `;
 
-            //    <a style="text-decoration: none;" ><i ></i><span>Logout</span></a>
+            
     }
     else if(token2){
 
         navElement.innerHTML += `
        
-        <a style="text-decoration: none;" href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
-        <a style="text-decoration: none;" onclick="adminLogout()"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
-        <a style="text-decoration: none;" href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+     <div class="container mx-auto flex justify-between items-center">
+            <a href="./home.html" class="text-4xl font-extrabold text-white hover:text-gray-300 transition duration-300 flex items-center space-x-2">
+    <span class="bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text">
+        Tuition
+    </span>
+    <span class="text-gray-200">Media</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white hover:text-gray-300 transition duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+    </svg>
+</a>
+        <div class="md:hidden">
+            <!-- Hamburger Icon -->
+            <button id="menu-btn" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <ul class="hidden md:flex space-x-6">
+           <ul class="hidden md:flex space-x-6">
+            <li><a href="./home.html" class="hover:text-blue-400 text-xl font-bold">Home</a></li>
+            <li><a href="./tuitions.html" class="hover:text-blue-400 text-xl font-bold">Tuitions</a></li>
+            <li><a href="./teachers.html" class="hover:text-blue-400 text-xl font-bold">Teachers</a></li>
+            <li><a href="./about.html" class="hover:text-blue-400 text-xl font-bold">About</a></li>
+            <li><a href="./contact.html" class="hover:text-blue-400 text-xl font-bold">Contact</a></li>
+        </ul>
+        </ul>
+        <div class="hidden md:flex items-center space-x-4">
+     
+            <a href="student_profile.html" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition">Profile</a>
+            <a onclick="StudentHandleLogout()" style="cursor:pointer;" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition">Logout</a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden">
+        <ul class="flex flex-col space-y-4 p-4 bg-gray-700">
+         <li><a href="./home.html" class="hover:text-blue-400">Home</a></li>
+            <li><a href="./tuitions.html" class="hover:text-blue-400">Tuitions</a></li>
+            <li><a href="./teachers.html" class="hover:text-blue-400">Teacher</a></li>
+            <li><a href="./about.html" class="hover:text-blue-400">About</a></li>
+            <li><a href="./contact.html" class="hover:text-blue-400">Contact</a></li>
+           <a href="student_profile.html" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition">Profile</a>
+            <a onclick="StudentHandleLogout()" style="cursor:pointer;" class="bg-red-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-red-700 transition">Logout</a>
+        </ul>
+    </div>
        
                `;
 
         
     }
-    
     else {
       navElement.innerHTML += `
-         <a style="text-decoration: none;" href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
-         <a style="text-decoration: none;" href="teacher_registration.html"><i class="fas fa-user-plus"></i><span>Register</span></a>
-         <a style="text-decoration: none;" href="teacher_login.html"><i class="fas fa-sign-in-alt"></i><span>Login</span></a>
-         <a style="text-decoration: none;" href="update.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
-         <a style="text-decoration: none;" href="about.html"><i class="fas fa-question"></i><span>About</span></a>
-         <a style="text-decoration: none;" href="update.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
-                `;
+
+
+      
+           <div class="container mx-auto flex justify-between items-center">
+        <a href="./home.html" class="text-4xl font-extrabold text-white hover:text-gray-300 transition duration-300 flex items-center space-x-2">
+    <span class="bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text">
+        Tuition
+    </span>
+    <span class="text-gray-200">Media</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white hover:text-gray-300 transition duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+    </svg>
+</a>
+
+        <div class="md:hidden">
+            <!-- Hamburger Icon -->
+            <button id="menu-btn" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="hidden md:flex space-x-6">
+                   <li><a href="./home.html" class="hover:text-blue-400 text-xl font-bold">Home</a></li>
+            <li><a href="./tuitions.html" class="hover:text-blue-400 text-xl font-bold">Tuitions</a></li>
+            <li><a href="./teachers.html" class="hover:text-blue-400 text-xl font-bold">Teachers</a></li>
+            <li><a href="./about.html" class="hover:text-blue-400 text-xl font-bold">About</a></li>
+            <li><a href="./contact.html" class="hover:text-blue-400 text-xl font-bold">Contact</a></li>
+        </ul>
+        <div class="hidden md:flex space-x-4">
+            <a href="register.html" class="bg-blue-600 text-white text-xl font-bold py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition">Register</a>
+            <a href="login.html" class="bg-gray-600 text-white text-xl font-bold py-2 px-4 rounded-lg font-semibold hover:bg-gray-700 transition">Login</a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden">
+        <ul class="flex flex-col space-y-4 p-4 bg-gray-700">
+            <li><a href="./home.html" class="hover:text-blue-400">Home</a></li>
+            <li><a href="./tuitions.html" class="hover:text-blue-400">Tuitions</a></li>
+            <li><a href="./teachers.html" class="hover:text-blue-400">Teachers</a></li>
+            <li><a href="./about.html" class="hover:text-blue-400">About</a></li>
+            <li><a href="./contact.html.html" class="hover:text-blue-400">Contact</a></li>
+
+            <li><a href="register.html" class="bg-blue-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-700 transition">Register</a></li>
+            <li><a href="./login.html" class="bg-gray-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-gray-700 transition">Login</a></li>
+        </ul>
+    </div>
+        
+        
+        `;
     }
   
-// conditional action
-    const actionElement = document.getElementById("action");
 
-    if(token || token2){
 
-        actionElement.innerHTML += `
-       <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Find Your Perfect Tutor?</h2>
-            <p class="text-3xl mb-8">Join thousands of students who have found their ideal tutor. Sign up now and start learning!</p>
-           
-        
-       
-               `;
-    }else{
-        actionElement.innerHTML += `
-     <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Find Your Perfect Tutor?</h2>
-            <p class="text-3xl mb-8">Join thousands of students who have found their ideal tutor. Sign up now and start learning!</p>
-            <a href="teacher_registration.html" style="text-decoration: none;" class="inline-block px-8 py-4 bg-white text-blue-500 text-2xl font-semibold rounded-lg shadow-lg hover:bg-blue-400 hover:text-white transition duration-300 transform hover:scale-105">Sign Up Now</a>
-            
-         
-        
-                `;
-    }
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+

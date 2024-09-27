@@ -1,251 +1,195 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const studentToken = localStorage.getItem('student_token');
+    const applyButtonContainer = document.getElementById('applyButton');
+
+    if (studentToken) {
+        applyButtonContainer.style.display = 'none';
+    }
+});
+
+
+function showSuccessAlert(message, title = "Success") {
+    const alertBox = document.getElementById("success-alert");
+    const alertTitle = document.getElementById("success-alert-title");
+    const alertMessage = document.getElementById("success-alert-message");
+
+    alertTitle.innerText = title;
+    alertMessage.innerText = message;
+
+    alertBox.classList.remove("hidden");
+    alertBox.classList.add("flex");
+
+    setTimeout(() => {
+        alertBox.classList.add("hidden");
+    }, 5000);
+}
+
+function showFailureAlert(message, title = "Failure") {
+    const alertBox = document.getElementById("failure-alert");
+    const alertTitle = document.getElementById("failure-alert-title");
+    const alertMessage = document.getElementById("failure-alert-message");
+
+    alertTitle.innerText = title;
+    alertMessage.innerText = message;
+
+    alertBox.classList.remove("hidden");
+    alertBox.classList.add("flex");
+
+    setTimeout(() => {
+        alertBox.classList.add("hidden");
+    }, 5000);
+}
+
+document.getElementById("close-success-alert").addEventListener("click", () => {
+    document.getElementById("success-alert").classList.add("hidden");
+});
+
+document.getElementById("close-failure-alert").addEventListener("click", () => {
+    document.getElementById("failure-alert").classList.add("hidden");
+});
 
 const getQueryParams = (param) => {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 };
 
-
 const getPostDetail = () => {
     const tuitionId = getQueryParams("id");
 
-    fetch(`https://tuition-media-platform-backend.onrender.com/api/tution/list/${tuitionId}/`)
-        .then((res) => res.json())
+    fetch(`http://127.0.0.1:8000/api/tuition/list/${tuitionId}/`)
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error("Campaign not found");
+            }
+            return res.json();
+        })
         .then((data) => {
-            // console.log(data);
+            console.log(data)
+            const tuition = document.getElementById("tuition-details");
+            tuition.innerHTML = `
+             <div class="border-b pb-4 mb-6">
+            <h2 class="text-3xl font-bold text-gray-800">Tuition Details</h2>
+            <p class="text-sm text-gray-500">Posted on: ${data.created}</p>
+            </div>
 
 
-            document.getElementById('tuition-title').textContent = `Tuition For ${data.title}`;
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-700">
+        <div>
+        <h3 class="text-xl font-semibold mb-2">General Information</h3>
+        <p class="mb-2"><strong>Subject:</strong> <span class="text-blue-600"> ${data.subject_name} </span></p>
+        <p class="mb-2"><strong>Grade Level:</strong> <span class="text-blue-600">${data.tuition_class} </span></p>
+        <p class="mb-2"><strong>Location:</strong> <span class="text-blue-600"> ${data.location} </span></p>
+        </div>
+        <div>
+        <h3 class="text-xl font-semibold mb-2">Timing & Payment</h3>
+        <p class="mb-2"><strong>Time:</strong> <span class="text-blue-600">${data.tutoring_time} </span></p>
+        <p class="mb-2"><strong>Days:</strong> <span class="text-blue-600"> ${data.days_name} </span></p>
+        <p class="mb-2"><strong>Payment:</strong> <span class="text-blue-600">${data.salary}BDT /month</span></p>
+        </div>
+        </div
 
 
-            const subjectsElement = document.getElementById('subjects');
-            if (Array.isArray(data.subjects) && data.subjects.length > 0) {
-                const subjectNames = data.subjects.map(subjectId => {
 
-                    switch (subjectId) {
-                        case 1:
-                            return 'English';
-                        case 2:
-                            return 'General Math';
-                        case 3:
-                            return 'Bangla';
-                        case 4:
-                            return 'Religion';
-                        case 5:
-                            return 'Higher Math';
-                        case 6:
-                            return 'Biology';
-                        case 7:
-                            return 'Physics';
-                        case 8:
-                            return 'Chemistry';
-                        case 9:
-                            return 'All Subjects';
-                        case 10:
-                            return 'General Science';
-                        default:
-                            return 'Unknown Subject';
-                    }
-
-                });
-                const subjectsString = subjectNames.join(', ');
-                subjectsElement.textContent = `Subjects: ${subjectsString}`;
-            } else {
-                subjectsElement.textContent = `Subjects: N/A`;
-            }
-            let gender="Male";
-            if(data.preferred_tutor_gender &&data.student_gender ==='F'){
-                gender="Female";
-            }
-            document.getElementById('tuition-class').textContent = `Tuition Class: ${data.tuition_class}`;
-            document.getElementById('availability').textContent = `Availability: ${data.availability}`;
-            document.getElementById('description').textContent = `Description: ${data.description}`;
-            document.getElementById('medium').textContent = `Medium: ${data.medium}`;
-            document.getElementById('student-gender').textContent = `Student Gender: ${gender}`;
-            console.log(data.preferred_tutor_gender)
-            document.getElementById('preferred-tutor-gender').textContent = `Preferred Tutor Gender: ${gender}`;
-            document.getElementById('tutoring-time').textContent = `Tutoring Time: ${data.tutoring_time}`;
-            document.getElementById('salary').textContent = `Salary: ${data.salary} BDT`;
+        <div class="mt-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Requirements</h3>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+        <li> ${data.requirement}  </li>
+        <li>Proficiency in explaining complex concepts in a simple manner.</li>
+        <li>Availability for all mentioned time slots and days.</li>
+        </ul>
+        </div>
+            
+            `;
         })
         .catch((error) => {
-            console.error('Error fetching tuition details:', error);
+            showFailureAlert("Error fetching tuition details");
         });
 };
 
 
-document.addEventListener('DOMContentLoaded', getPostDetail);
 
-
-
-
-
-// modal for application
-
+document.addEventListener("DOMContentLoaded", getPostDetail);
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    const applyButton = document.getElementById('apply-button');
-    const applyModal = document.getElementById('apply-modal');
-    const closeModal = document.getElementById('close-modal');
-    const applyForm = document.getElementById('apply-form');
-    const tuitionDetails = document.getElementById('tuition-details');
-
-    const tutorId = localStorage.getItem('user_id');
-    const tuitionId = getQueryParams("id");
+    const applyButton = document.getElementById('applyButton');
+    const applyModal = document.getElementById('applyModal');
+    const closeModal = document.getElementById('closeModal');
+    const applyForm = document.getElementById('applyForm');
+    const tuition_id = getQueryParams("id");
+    const user_id = window.localStorage.getItem("user_id");
 
     applyButton.addEventListener('click', () => {
-        document.getElementById('tutor-id').value = tutorId;
-        document.getElementById('tuition-id').value = tuitionId;
-        tuitionDetails.classList.add('hidden');  
-        applyModal.classList.remove('hidden');  
+        if (!user_id) {
+            showFailureAlert('You must be logged in to apply for tuition.');
+            return;
+        }
+
+        // Check application status
+        fetch(`http://127.0.0.1:8000/api/application/?tutor_id=${user_id}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to check application status.');
+                }
+                return response.json();
+            })
+            .then(applications => {
+              
+
+                const hasApplied = applications.some(application => 
+                    application.tuition === parseInt(tuition_id) && application.status === 'applied'
+                );
+
+                if (hasApplied) {
+                    showFailureAlert('You have already applied for this tuition.');
+                } else {
+                    applyModal.classList.remove('hidden');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showFailureAlert('An error occurred while checking your application status. Please try again.');
+            });
     });
 
     closeModal.addEventListener('click', () => {
-        applyModal.classList.add('hidden');  
-        tuitionDetails.classList.remove('hidden');  
+        applyModal.classList.add('hidden');
     });
 
-    applyForm.addEventListener('submit', async (e) => {
+    applyForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        const message = document.getElementById('message').value;
 
-        const formData = new FormData(applyForm);
         const data = {
-            tutor: formData.get('tutor_id'),
-            tuition: formData.get('tuition_id'),
+            tutor: user_id,
+            tuition: tuition_id,
             status: 'applied',
-            message: formData.get('message')
+            message: message
         };
 
-        try {
-            const response = await fetch('https://tuition-media-platform-backend.onrender.com/api/application/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-
-            if (response.ok) {
-                const responseData = await response.json();
-                alert('Application submitted successfully!');
-                applyModal.classList.add('hidden');
-                tuitionDetails.classList.remove('hidden');  
-            } else {
-                const errorData = await response.json();
-                alert(`Failed to submit application: ${errorData.detail}`);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred while submitting the application.');
-        }
-    });
-});
-
-
-
-
-//add reviews
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    const form = document.getElementById('submit-review-form');
-    const tuitionId = getQueryParams("id");
-    const tutorId = localStorage.getItem('user_id');
-    
-
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-
-        const ratingSymbol = document.getElementById('rating').value;
-        const comments = document.getElementById('comments').value;
-        const reviewData = {
-            rating: ratingSymbol,
-            comments: comments,
-            reviewer: tutorId,
-            tuition: tuitionId
-        };
-
-        
-        fetch(`https://tuition-media-platform-backend.onrender.com/api/application/?tuition=${tuitionId}&tutor=${tutorId}`)
-        .then(res => res.json())
-        .then(data => {
-            // Check if the status is accepted
-            if (data.length > 0 && data[0].status === 'accepted') {
-                // If accepted, allow submitting the review
-                return fetch('https://tuition-media-platform-backend.onrender.com/api/tution/reviews/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(reviewData)
-                });
-            } else {
-                // If not accepted, alert the user
-                alert("You cannot submit a review as the application status is not accepted.");
-                form.reset();
-                throw new Error("Application not accepted");
-            }
+        fetch('http://127.0.0.1:8000/api/application/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
-        .then(response => response.json())
-        .then(data => {
-            alert("Review submitted successfully!");
-            form.reset();
-            location.reload()
-            
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to submit application.');
+            }
+            return response.json();
+        })
+        .then(result => {
+            showSuccessAlert('Application submitted successfully!');
+            applyModal.classList.add('hidden');
+            applyForm.reset();
         })
         .catch(error => {
             console.error('Error:', error);
+            showFailureAlert('An error occurred while submitting your application. Please try again.');
         });
-            
     });
 });
-
-
-// get reviews
-
-const loadReview = () => {
-    const tuitionId = getQueryParams("id");
-
-    fetch(`https://tuition-media-platform-backend.onrender.com/api/tution/reviews/?tuition=${tuitionId}`)
-        .then((res) => res.json())
-        .then((data) => displayReview(data));
-};
-
-const displayReview = (reviews) => {
-
-
-    const parent = document.getElementById("review-container");
-
-    reviews.forEach((review, index) => {
-        const div = document.createElement("div");
-        div.classList.add("carousel-item");
-        if (index === 0) {
-            div.classList.add("active");
-        }
-
-
-
-        // Review item HTML
-        div.innerHTML = `
-           
-
-
-            <div class="p-4 bg-white rounded-lg shadow-md text-center max-w-md mx-auto">
-            <p class="text-4xl text-gray-500 mb-4">${review.rating}</</p>
-             <p class="text-3xl text-gray-700 mb-2">${review.comments}</p>
-             <p class="text-2xl font-semibold text-gray-900">${review.reviewer_name}</p>
-           </div>
-            `;
-
-        // Append review item to carousel
-        parent.appendChild(div);
-    });
-};
-
-loadReview();
-
-
-
 
 

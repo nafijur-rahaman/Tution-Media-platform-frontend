@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuition Media -student profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/images/fav.png">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navigation Bar -->
+
+<nav id="navbar" class="bg-gray-800 text-white py-4 shadow-md">
+
+</nav>
+
+
+<main>
+
+    <div class="container mx-auto py-12">
+        <h1 class="text-4xl font-extrabold text-center mb-12 text-gray-900">Meet Our Teachers</h1>
+        
+        <!-- Filter Section -->
+        <div class="mb-12 flex flex-col md:flex-row gap-6 justify-center">
+            <!-- subject Filter -->
+            <input type="text" id="subject-filter" onkeyup="filterTeachers()" placeholder="Search by subject..." class="w-full md:w-1/3 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+
+            
+            <!-- Ratings Filter -->
+            <select id="rating-filter" onchange="filterTeachers()" class="w-full md:w-1/3 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                <option value="">Filter by rating</option>
+                <option value="1">★</option>
+                <option value="2">★★</option>
+                <option value="3">★★★</option>
+                <option value="4">★★★★</option>
+                <option value="5">★★★★★</option>
+            </select>
+        </div>
+
+        <!-- Teachers Grid -->
+        <div id="teacher-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+        </div>
+    </div>
+</main>
+
+
+
+
+
+
+<!-- Success Alert Box -->
+<div id="success-alert" class="fixed top-5 right-5 max-w-xs bg-green-100 text-green-800 p-4 rounded-lg shadow-md border border-green-200 hidden">
+    <div class="flex items-center">
+        <div class="flex-1">
+            <h3 id="success-alert-title" class="text-lg font-semibold mb-2">Success</h3>
+            <p id="success-alert-message" class="text-sm">This is a success message.</p>
+        </div>
+        <button id="close-success-alert" class="ml-4 text-green-600 hover:text-green-900 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+  </div>
+  
+  <!-- Failure Alert Box -->
+  <div id="failure-alert" class="fixed top-5 right-5 max-w-xs bg-red-100 text-red-800 p-4 rounded-lg shadow-md border border-red-200 hidden">
+    <div class="flex items-center">
+        <div class="flex-1">
+            <h3 id="failure-alert-title" class="text-lg font-semibold mb-2">Failure</h3>
+            <p id="failure-alert-message" class="text-sm">This is a failure message.</p>
+        </div>
+        <button id="close-failure-alert" class="ml-4 text-red-600 hover:text-red-900 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+  </div>
+  
+  
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white py-8 mt-20">
+        <div class="container mx-auto text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-blue-400">Privacy Policy</a>
+                <a href="#" class="hover:text-blue-400">Terms of Service</a>
+                <a href="#" class="hover:text-blue-400">FAQs</a>
+            </div>
+            <p>&copy; 2024 TuitionMedia. All rights reserved.</p>
+            <div class="mt-4">
+                <a href="mailto:info@tuitionmedia.com" class="hover:underline">info@tuitionmedia.com</a>
+            </div>
+        </div>
+    </footer>
+  
+    <script src="./js/home.js"></script>
+    <script src="./js/teachers.js"></script>
+  </body>
+  </html>

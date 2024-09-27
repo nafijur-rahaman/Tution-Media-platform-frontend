@@ -1,61 +1,113 @@
-const getTuitions = () => {
-  fetch("https://tuition-media-platform-backend.onrender.com/api/tution/list/")
-    .then((res) => res.json())
-    .then((tuitions) => {
-      const allTutions = document.getElementById("all-tuitions");
-      const classFilter = document.getElementById("classFilter");
+function showSuccessAlert(message, title = "Success") {
+    const alertBox = document.getElementById("success-alert");
+    const alertTitle = document.getElementById("success-alert-title");
+    const alertMessage = document.getElementById("success-alert-message");
+  
+    alertTitle.innerText = title;
+    alertMessage.innerText = message;
+  
+    alertBox.classList.remove("hidden");
+    alertBox.classList.add("flex");
+  
+    setTimeout(() => {
+      alertBox.classList.add("hidden");
+    }, 5000);
+  }
+  
+  function showFailureAlert(message, title = "Failure") {
+    const alertBox = document.getElementById("failure-alert");
+    const alertTitle = document.getElementById("failure-alert-title");
+    const alertMessage = document.getElementById("failure-alert-message");
+  
+    alertTitle.innerText = title;
+    alertMessage.innerText = message;
+  
+    alertBox.classList.remove("hidden");
+    alertBox.classList.add("flex");
+  
+    setTimeout(() => {
+      alertBox.classList.add("hidden");
+    }, 5000);
+  }
+  
+  document.getElementById("close-success-alert").addEventListener("click", () => {
+    document.getElementById("success-alert").classList.add("hidden");
+  });
+  
+  document.getElementById("close-failure-alert").addEventListener("click", () => {
+    document.getElementById("failure-alert").classList.add("hidden");
+  });
 
-      function filterTuitions(tuitions, filter) {
-        return tuitions.filter((tuition) => {
-          if (!filter) return true; 
-          return tuition.tuition_class === filter;
-        });
-      }
-
-      function renderTuitions(filteredTuitions) {
-        allTutions.innerHTML = '';
-
-        filteredTuitions.forEach((tuition) => {
-          const div = document.createElement("div");
-          div.classList.add("col-md-4", "mb-6");
-
-          div.innerHTML = `
-                        <div class="bg-gradient-to-r from-stone-500 to-stone-700 shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-blue-400 hover:bg-gradient-to-r from-blue-500 to-purple-700 h-full border border-transparent relative">
-              <div class="p-6 flex flex-col justify-between h-full">
-                <div>
-                  <h3 class="text-4xl font-semibold mb-4 text-white hover:scale-99">${tuition.title}</h3>
-                  <p class="text-2xl text-white mb-2">Medium: ${tuition.medium}</p>
-                  <p class="text-2xl text-white mb-2">Class: ${tuition.tuition_class}</p>
-                  <p class="text-2xl text-white mb-2">Salary: ${tuition.salary} BDT</p>
-                  <p class="text-2xl text-white mb-4">
-                    Description: ${tuition.description.split(' ').slice(0, 10).join(' ')}
-                    ${tuition.description.split(' ').length > 10 ? '...' : ''}
-                  </p>
-                </div>
-                 <div class="flex justify-center mt-auto">
-                                    <a href="./tuition_detail.html?id=${tuition.id}" class="inline-block bg-blue-500 text-white text-2xl px-4 py-2 rounded-lg shadow-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300 ease-in-out">Details</a>
-                                </div>
-                <div class="absolute top-0 right-0 p-4 text-white text-3xl opacity-75 transition-opacity duration-300 ease-in-out hover:opacity-100">
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
-            </div>
-          `;
-          allTutions.appendChild(div);
-        });
-      }
-
-      renderTuitions(tuitions);
-
-      classFilter.addEventListener('change', () => {
-        const selectedClass = classFilter.value;
-        const filteredTuitions = filterTuitions(tuitions, selectedClass);
-        renderTuitions(filteredTuitions);
-      });
-    })
-    .catch((error) => {
-      console.error('Error fetching tuitions:', error);
-    });
+const updatePriceLabel = (value) => {
+    document.getElementById('priceValue').innerText = `$${value}`;
 };
 
-getTuitions();
+const getTuitions = () => {
+    fetch("http://127.0.0.1:8000/api/tuition/list/")
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Tuitions not found");
+            }
+            return res.json();
+        })
+        .then((tuitions) => {
+            const parent = document.getElementById("tuitions-container");
+            parent.innerHTML = "";
+
+            const categoryFilter = document.getElementById("categoryFilter");
+            const classFilter = document.getElementById("classFilter");
+            const locationFilter = document.getElementById("locationFilter");
+            const priceRange = document.getElementById("priceRange");
+            const languageFilter = document.getElementById("languageFilter");
+
+            const filterTuitions = () => {
+                const filteredTuitions = tuitions.filter(tuition => {
+                    const matchesCategory = categoryFilter.value === "" || tuition.subject_name === categoryFilter.value;
+                    const matchesClass = classFilter.value === "" || tuition.tuition_class === classFilter.value;
+                    const matchesLocation = locationFilter.value === "" || tuition.location.toLowerCase().includes(locationFilter.value.toLowerCase());
+                    const matchesPrice = parseInt(tuition.salary) <= parseInt(priceRange.value);
+                    const matchesLanguage = languageFilter.value === "" || tuition.medium === languageFilter.value;
+                    return matchesCategory && matchesClass && matchesLocation && matchesPrice && matchesLanguage;
+                });
+
+                displayTuitions(filteredTuitions);
+            };
+
+            const displayTuitions = (filteredTuitions) => {
+                parent.innerHTML = "";
+                filteredTuitions.forEach((tuition, index) => {
+                    const child = document.createElement('div');
+                    child.classList.add('bg-white', 'shadow-lg', 'rounded-lg', 'overflow-hidden', 'transition-transform', 'transform', 'hover:scale-105', 'hover:shadow-xl');
+                    child.innerHTML = `
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-3">${tuition.title}</h3>
+                            <p class="text-gray-700 mb-5">${tuition.description.slice(0, 50)}...</p>
+                            <div class="space-y-2">
+                                <p class="text-gray-700"><span class="font-semibold">Class:</span> ${tuition.tuition_class}</p>
+                                <p class="text-gray-700"><span class="font-semibold">Location:</span> ${tuition.location}</p>
+                                <p class="text-gray-700"><span class="font-semibold">Subject:</span> ${tuition.subject_name}</p>
+                                <p class="text-gray-700"><span class="font-semibold">Salary:</span> ${tuition.salary} BDT / month</p>
+                            </div>
+                            <a href="tuitions_details.html?id=${tuition.id}" class="block mt-4 text-blue-600 font-medium hover:underline">View Details</a>
+                        </div>
+                    `;
+                    parent.appendChild(child);
+                });
+            };
+
+            categoryFilter.addEventListener("change", filterTuitions);
+            classFilter.addEventListener("change", filterTuitions);
+            locationFilter.addEventListener("input", filterTuitions);
+            priceRange.addEventListener("input", filterTuitions);
+            languageFilter.addEventListener("change", filterTuitions);
+
+            displayTuitions(tuitions);
+        })
+        .catch(error => {
+            showFailureAlert(error);
+        });
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+    getTuitions();
+});

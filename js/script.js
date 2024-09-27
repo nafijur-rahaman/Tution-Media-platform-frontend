@@ -1,63 +1,101 @@
-let toggleBtn = document.getElementById('toggle-btn');
-let body = document.body;
-let darkMode = localStorage.getItem('dark-mode');
-
-const enableDarkMode = () =>{
-   toggleBtn.classList.replace('fa-sun', 'fa-moon');
-   body.classList.add('dark');
-   localStorage.setItem('dark-mode', 'enabled');
-}
-
-const disableDarkMode = () =>{
-   toggleBtn.classList.replace('fa-moon', 'fa-sun');
-   body.classList.remove('dark');
-   localStorage.setItem('dark-mode', 'disabled');
-}
-
-if(darkMode === 'enabled'){
-   enableDarkMode();
-}
-
-toggleBtn.onclick = (e) =>{
-   darkMode = localStorage.getItem('dark-mode');
-   if(darkMode === 'disabled'){
-      enableDarkMode();
-   }else{
-      disableDarkMode();
-   }
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
 
 
-let profile = document.querySelector('.header .flex .profile');
-document.querySelector('#user-btn').onclick = () =>{
-   profile.classList.toggle('active');
-   search.classList.remove('active');
+const button = document.getElementById('getStartedBtn');
+
+let isBlinking = false;
+
+function startBlinking() {
+    isBlinking = true;
+    button.style.backgroundColor = '#98fb98'; 
+    setInterval(() => {
+        button.style.backgroundColor = button.style.backgroundColor === 'rgb(245, 245, 245)' ? '#98fb98' : '#f5f5f5'; 
+    }, 1000); 
 }
 
-let search = document.querySelector('.header .flex .search-form');
-
-document.querySelector('#search-btn').onclick = () =>{
-   search.classList.toggle('active');
-   profile.classList.remove('active');
+function stopBlinking() {
+    isBlinking = false;
+    button.style.backgroundColor = '#98fb98'; 
 }
 
-let sideBar = document.querySelector('.side-bar');
+button.addEventListener('mouseover', stopBlinking);
+button.addEventListener('mouseout', () => {
+    if (!isBlinking) {
+        startBlinking();
+    }
+});
 
-document.querySelector('#menu-btn').onclick = () =>{
-   sideBar.classList.toggle('active');
-   body.classList.toggle('active');
-}
+startBlinking();
 
-document.querySelector('#close-btn').onclick = () =>{
-   sideBar.classList.remove('active');
-   body.classList.remove('active');
-}
+document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
 
-window.onscroll = () =>{
+    const name = document.getElementById('name').value;
+    const review = document.getElementById('review').value;
+
+    fetch('http://127.0.0.1:8000/api/tuition/reviews/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name, review: review }),
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Review submitted successfully!');
+            // Clear the form
+            document.getElementById('name').value = '';
+            document.getElementById('review').value = '';
+        } else {
+            alert('Failed to submit review. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting your review.');
+    });
+});
 
 
-   if(window.innerWidth < 1200){
-      sideBar.classList.remove('active');
-      body.classList.remove('active');
-   }
-}
+
+
+    
+
+
+    const reviewsContainer = document.getElementById('reviewsContainer');
+
+
+    async function fetchReviews() {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/tuition/reviews/');
+            const reviews = await response.json();
+
+        
+            reviews.forEach(review => {
+                const reviewDiv = document.createElement('div');
+                reviewDiv.className = 'review';
+                reviewDiv.innerHTML = `<h3 class="font-bold">${review.name}</h3><p>"${review.review}"</p>`;
+                reviewsContainer.appendChild(reviewDiv);
+            });
+        } catch (error) {
+            console.error('Error fetching reviews:', error);
+        }
+    }
+
+
+    let scrollAmount = 0;
+    function scrollReviews() {
+        scrollAmount += 1;
+        if (scrollAmount >= reviewsContainer.scrollWidth) {
+            scrollAmount = 0;
+        }
+        reviewsContainer.scrollLeft = scrollAmount;
+    }
+
+    fetchReviews();
+    setInterval(scrollReviews, 20);

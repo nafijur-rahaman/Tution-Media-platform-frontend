@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuition Media -tuition details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/images/fav.png">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Navigation Bar -->
+
+<nav id="navbar" class="bg-gray-800 text-white py-4 shadow-md">
+
+</nav>
+
+
+
+<div class="max-w-5xl mx-auto p-8 bg-white rounded-lg shadow-lg mt-12">
+  <div id="tuition-details" >
+
+ 
+
+  </div>
+
+
+  <!-- Apply Button -->
+  <div class="text-right mt-8">
+      <button id="applyButton" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:from-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-in-out">
+          Apply for this Tuition
+      </button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="applyModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-8">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-4">Apply for Tuition</h3>
+
+      <form id="applyForm" class="space-y-6">
+          <!-- Message Field -->
+          <div>
+              <label for="message" class="block text-sm font-medium text-gray-600">Message to Admin</label>
+              <textarea id="message" name="message" rows="4" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write your message..."></textarea>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex justify-end">
+              <button type="button" id="closeModal" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-400 mr-2">
+                  Cancel
+              </button>
+              <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                  Send Application
+              </button>
+          </div>
+      </form>
+  </div>
+</div>
+
+
+
+
+
+<!-- Success Alert Box -->
+<div id="success-alert" class="fixed top-5 right-5 max-w-xs bg-green-100 text-green-800 p-4 rounded-lg shadow-md border border-green-200 hidden">
+  <div class="flex items-center">
+      <div class="flex-1">
+          <h3 id="success-alert-title" class="text-lg font-semibold mb-2">Success</h3>
+          <p id="success-alert-message" class="text-sm">This is a success message.</p>
+      </div>
+      <button id="close-success-alert" class="ml-4 text-green-600 hover:text-green-900 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+      </button>
+  </div>
+</div>
+
+<!-- Failure Alert Box -->
+<div id="failure-alert" class="fixed top-5 right-5 max-w-xs bg-red-100 text-red-800 p-4 rounded-lg shadow-md border border-red-200 hidden">
+  <div class="flex items-center">
+      <div class="flex-1">
+          <h3 id="failure-alert-title" class="text-lg font-semibold mb-2">Failure</h3>
+          <p id="failure-alert-message" class="text-sm">This is a failure message.</p>
+      </div>
+      <button id="close-failure-alert" class="ml-4 text-red-600 hover:text-red-900 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+      </button>
+  </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-20">
+      <div class="container mx-auto text-center">
+          <div class="flex justify-center space-x-6 mb-4">
+              <a href="#" class="hover:text-blue-400">Privacy Policy</a>
+              <a href="#" class="hover:text-blue-400">Terms of Service</a>
+              <a href="#" class="hover:text-blue-400">FAQs</a>
+          </div>
+          <p>&copy; 2024 TuitionMedia. All rights reserved.</p>
+          <div class="mt-4">
+              <a href="mailto:info@tuitionmedia.com" class="hover:underline">info@tuitionmedia.com</a>
+          </div>
+      </div>
+  </footer>
+
+  <script src="./js/home.js"></script>
+  <script src="./js/tuitions_details.js"></script>
+  <script src="./js/logout.js"></script>
+</body>
+</html>

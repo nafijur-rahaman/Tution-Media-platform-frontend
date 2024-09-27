@@ -1,75 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Online Tuition Media</title>
-
-   <!-- Font Awesome CDN link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
-   <!-- Custom CSS file link  -->
-   <link rel="stylesheet" href="css/style.css">
-   <link rel="stylesheet" href="css/home.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/images/fav.png">
+    <link rel="stylesheet" href="./css/style.css">
 
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800">
 
-<header class="header">
-   
-   <section class="flex">
+    <!-- Navigation Bar -->
 
-      <a href="home.html" class="logo">Online Tuition Media</a>
+<nav id="navbar" class="bg-gray-800 text-white py-4 shadow-md">
 
-      <div class="icons">
-         <div id="menu-btn" class="fas fa-bars"></div>
-         <div id="search-btn" class="fas fa-search"></div>
-         <div id="user-btn" class="fas fa-user"></div>
-         <div id="toggle-btn" class="fas fa-sun"></div>
-      </div>
+</nav>
 
-   </section>
+<section class="py-12">
+    <div class="container mx-auto px-6 md:px-12 lg:px-20">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800">About Us</h2>
+            <p class="text-gray-600 mt-4">Discover our mission, vision, and values as we strive to transform the educational landscape for students and tutors.</p>
+        </div>
 
-</header>
 
-<div class="side-bar">
 
-   <div id="close-btn">
-      <i class="fas fa-times"></i>
-   </div>
 
-   <nav class="navbar">
-      <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
-      <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
-   </nav>
+<main class="container mx-auto my-10 p-8 bg-white shadow-lg rounded-lg">
+    <section class="mb-8">
+        <h2 class="text-3xl font-semibold mb-4 text-gray-800">Our Mission</h2>
+        <p class="text-gray-700 mb-6 leading-relaxed">
+            At Tuition Media Platform, our mission is to provide high-quality educational resources and a dynamic learning environment that empowers students and tutors alike. We aim to bridge the gap between learners and educators by creating a platform that facilitates seamless interactions and personalized learning experiences.
+        </p>
+    </section>
 
-</div>
+    <section class="mb-8">
+        <h2 class="text-3xl font-semibold mb-4 text-gray-800">Who We Are</h2>
+        <p class="text-gray-700 mb-6 leading-relaxed">
+            We are a passionate team of educators, tech enthusiasts, and innovators dedicated to transforming the educational landscape. Our diverse backgrounds and experiences drive us to create an inclusive platform that caters to the unique needs of every student and tutor.
+        </p>
+    </section>
 
-<section class="about">
+    <section class="mb-8">
+        <h2 class="text-3xl font-semibold mb-4 text-gray-800">What We Offer</h2>
+        <ul class="list-disc list-inside text-gray-700 mb-6 pl-5">
+            <li class="mb-2">Personalized tutoring sessions</li>
+            <li class="mb-2">A vast library of educational resources</li>
+            <li class="mb-2">Interactive learning tools and features</li>
+            <li class="mb-2">Professional development opportunities for tutors</li>
+            <li>A supportive community for both students and tutors</li>
+        </ul>
+    </section>
 
-   <div class="row">
+    <section class="mb-8">
+        <h2 class="text-3xl font-semibold mb-4 text-gray-800">Meet Our Team</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gray-200 p-4 rounded-lg shadow-md text-center transition-transform transform hover:scale-105">
+                <img src="./images/nafi1.jpg" alt="Team Member 1" class="w-full object-cover rounded-t-lg mb-2" style="height: auto; max-height: 300px;">
+                <h3 class="font-semibold text-lg mt-2">Tanjid Ahmed Nafis</h3>
+                <p class="text-gray-600">Co-founder & CEO</p>
+            </div>
+            <div class="bg-gray-200 p-4 rounded-lg shadow-md text-center transition-transform transform hover:scale-105">
+                <img src="./images/nafi2.jpg" alt="Team Member 1" class="w-full object-cover rounded-t-lg mb-2" style="height: auto; max-height: 300px;">
+                <h3 class="font-semibold text-lg mt-2">Tanjid Ahmed Nafis</h3>
+                <p class="text-gray-600">Lead Educator</p>
+            </div>
+            <div class="bg-gray-200 p-4 rounded-lg shadow-md text-center transition-transform transform hover:scale-105">
+                <img src="./images/sajib3.jpg" alt="Team Member 1" class="w-full object-cover rounded-t-lg mb-2" style="height: auto; max-height: 300px;">
+                <h3 class="font-semibold text-lg mt-2">Alhanullah Sajib</h3>
+                <p class="text-gray-600">Technical Director</p>
+            </div>
+        </div>
+    </section>
 
-      <div class="image">
-         <img src="images/about-img.svg" alt="About Us">
-      </div>
-
-      <div class="content">
-         <h3>Why Choose Us?</h3>
-         <p>Discover a wide range of tuitions tailored to your needs. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, iusto?</p>
-         <a href="tuitions.html" class="inline-btn">Explore Tuitions</a>
-      </div>
-
-   </div>
-
+    <section>
+        <h2 class="text-3xl font-semibold mb-4 text-gray-800">Join Us</h2>
+        <p class="text-gray-700 mb-6 leading-relaxed">
+            Whether you are a student seeking guidance or a tutor looking to share your knowledge, Tuition Media Platform is here for you. Join us in our mission to create a brighter future through education.
+        </p>
+        <a href="./register.html" class="inline-block px-8 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-500 transition duration-300 shadow-lg">
+            Get Started
+        </a>
+    </section>
+</main>
 </section>
 
-<footer class="footer">
-    &copy; Copyright @ 2022 by <span>Tuition Media Platform</span> | All rights reserved!
- </footer>
 
-<!-- Custom JavaScript file link  -->
-<script src="js/script.js"></script>
 
+
+
+
+
+
+<!-- Success Alert Box -->
+<div id="success-alert" class="fixed top-5 right-5 max-w-xs bg-green-100 text-green-800 p-4 rounded-lg shadow-md border border-green-200 hidden">
+  <div class="flex items-center">
+      <div class="flex-1">
+          <h3 id="success-alert-title" class="text-lg font-semibold mb-2">Success</h3>
+          <p id="success-alert-message" class="text-sm">This is a success message.</p>
+      </div>
+      <button id="close-success-alert" class="ml-4 text-green-600 hover:text-green-900 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+      </button>
+  </div>
+</div>
+
+<!-- Failure Alert Box -->
+<div id="failure-alert" class="fixed top-5 right-5 max-w-xs bg-red-100 text-red-800 p-4 rounded-lg shadow-md border border-red-200 hidden">
+  <div class="flex items-center">
+      <div class="flex-1">
+          <h3 id="failure-alert-title" class="text-lg font-semibold mb-2">Failure</h3>
+          <p id="failure-alert-message" class="text-sm">This is a failure message.</p>
+      </div>
+      <button id="close-failure-alert" class="ml-4 text-red-600 hover:text-red-900 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+      </button>
+  </div>
+</div>
+
+
+   <!-- Footer -->
+   <footer class="bg-gray-800 text-white py-8 mt-20">
+    <div class="container mx-auto text-center">
+        <div class="flex justify-center space-x-6 mb-4">
+            <a href="#" class="hover:text-blue-400">Privacy Policy</a>
+            <a href="#" class="hover:text-blue-400">Terms of Service</a>
+            <a href="#" class="hover:text-blue-400">FAQs</a>
+        </div>
+        <p>&copy; 2024 TuitionMedia. All rights reserved.</p>
+        <div class="mt-4">
+            <a href="mailto:info@tuitionmedia.com" class="hover:underline">info@tuitionmedia.com</a>
+        </div>
+    </div>
+</footer>
+<script src="./js/logout.js"></script>
+<script src="./js/home.js"></script>
 </body>
 </html>
