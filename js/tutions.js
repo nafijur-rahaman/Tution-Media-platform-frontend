@@ -43,7 +43,7 @@ const updatePriceLabel = (value) => {
 };
 
 const getTuitions = () => {
-    fetch("http://127.0.0.1:8000/api/tuition/list/")
+    fetch("https://tution-media-platform-backend.onrender.com/api/tuition/list/")
         .then(res => {
             if (!res.ok) {
                 throw new Error("Tuitions not found");

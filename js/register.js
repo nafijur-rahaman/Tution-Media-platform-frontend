@@ -93,7 +93,7 @@ form.addEventListener("submit", async (event) => {
 
     const formData = new FormData(form);
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/tutor/register/', {
+        const response = await fetch('https://tution-media-platform-backend.onrender.com/api/tutor/register/', {
             method: 'POST',
             body: formData,
         });
@@ -158,7 +158,7 @@ StudentForm.addEventListener("submit", async (event) => {
 
     const formData = new FormData(StudentForm);
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/student/register/', {
+        const response = await fetch('https://tution-media-platform-backend.onrender.com/api/student/register/', {
             method: 'POST',
             body: formData,
         });

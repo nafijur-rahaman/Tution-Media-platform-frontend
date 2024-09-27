@@ -56,7 +56,7 @@ const getQueryParams = (param) => {
 const getPostDetail = () => {
     const tuitionId = getQueryParams("id");
 
-    fetch(`http://127.0.0.1:8000/api/tuition/list/${tuitionId}/`)
+    fetch(`https://tution-media-platform-backend.onrender.com/api/tuition/list/${tuitionId}/`)
         .then((res) => {
             if (!res.ok) {
                 throw new Error("Campaign not found");
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Check application status
-        fetch(`http://127.0.0.1:8000/api/application/?tutor_id=${user_id}`)
+        fetch(`https://tution-media-platform-backend.onrender.com/api/application/?tutor_id=${user_id}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to check application status.');
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             message: message
         };
 
-        fetch('http://127.0.0.1:8000/api/application/', {
+        fetch('https://tution-media-platform-backend.onrender.com/api/application/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -55,7 +55,7 @@ const TutorHandleLogout = () => {
         return;
     }
 
-    fetch("http://127.0.0.1:8000/api/tutor/logout/", {
+    fetch("https://tution-media-platform-backend.onrender.com/api/tutor/logout/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -86,7 +86,7 @@ const StudentHandleLogout = () => {
         return;
     }
 
-    fetch("http://127.0.0.1:8000/api/tutor/logout/", {
+    fetch("https://tution-media-platform-backend.onrender.com/api/tutor/logout/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -119,7 +119,7 @@ const adminLogout = () => {
         return;
     }
 
-    fetch("http://127.0.0.1:8000/api/admin_panel/logout/", {
+    fetch("https://tution-media-platform-backend.onrender.com/api/admin_panel/logout/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

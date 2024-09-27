@@ -40,7 +40,7 @@ document.getElementById("close-failure-alert").addEventListener("click", () => {
 const loadUserDetails = () => {
   const user_id = localStorage.getItem("user_id");
   // console.log(user_id);
-  fetch(`http://127.0.0.1:8000/api/tutor/list/${user_id}`)
+  fetch(`https://tution-media-platform-backend.onrender.com/api/tutor/list/${user_id}`)
     .then((res) => {
       if (!res.ok) {
         throw new Error("Campaign not found");
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", loadUserDetails);
 document.addEventListener("DOMContentLoaded", () => {
   const tutorId = localStorage.getItem("user_id");
 
-  fetch(`http://127.0.0.1:8000/api/application/?tutor=${tutorId}`)
+  fetch(`https://tution-media-platform-backend.onrender.com/api/application/?tutor=${tutorId}`)
     .then((res) => {
       if (!res.ok) {
         throw new Error("Network response was not ok");
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function openEditProfileModal() {
   const tutorId=window.localStorage.getItem('user_id');
-  fetch(`http://127.0.0.1:8000/api/tutor/list/${tutorId}/`)
+  fetch(`https://tution-media-platform-backend.onrender.com/api/tutor/list/${tutorId}/`)
       .then(response => {
           if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -201,7 +201,7 @@ function updateProfile(event) {
       subjects: document.getElementById('subjects').value,
   };
 
-  fetch(`http://127.0.0.1:8000/api/tutor/list/${tutorId}/`, {
+  fetch(`https://tution-media-platform-backend.onrender.com/api/tutor/list/${tutorId}/`, {
       method: 'PUT',
       headers: {
           'Content-Type': 'application/json',
@@ -243,7 +243,7 @@ document.getElementById('changePasswordForm').addEventListener('submit', functio
 
       if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(newPassword)){
         
-          fetch("http://127.0.0.1:8000/api/tutor/change-password/",{
+          fetch("https://tution-media-platform-backend.onrender.com/api/tutor/change-password/",{
               method: 'PUT',
               headers: {
              'Content-Type': 'application/json',

@@ -47,7 +47,7 @@ const getQueryParams = (param) => {
 const getTutorDetails = () => {
     const tutor_id = getQueryParams("id");
     // console.log(tutor_id);
-    fetch(`http://127.0.0.1:8000/api/tutor/list/${tutor_id}/`)
+    fetch(`https://tution-media-platform-backend.onrender.com/api/tutor/list/${tutor_id}/`)
         .then(res => res.json())
         .then(data => {
                 console.log(data)
@@ -127,7 +127,7 @@ function submitReview(event) {
         tutor: tutor,
     };
 
-    fetch('http://127.0.0.1:8000/api/tutor/tutor_reviews/', {
+    fetch('https://tution-media-platform-backend.onrender.com/api/tutor/tutor_reviews/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -154,7 +154,7 @@ function submitReview(event) {
 
 function fetchReviews() {
     const user_id=window.localStorage.getItem("user_id")
-    fetch(`http://127.0.0.1:8000/api/tutor/tutor_reviews/?${user_id}`, {
+    fetch(`https://tution-media-platform-backend.onrender.com/api/tutor/tutor_reviews/?${user_id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

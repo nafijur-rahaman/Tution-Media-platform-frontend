@@ -40,7 +40,7 @@ function showSuccessAlert(message, title = "Success") {
 
 
   const loadTuition = () => {
-    fetch('http://127.0.0.1:8000/api/tuition/list/')
+    fetch('https://tution-media-platform-backend.onrender.com/api/tuition/list/')
         .then((res) => {
             if (!res.ok) {
                 throw new Error('Tuition not found');
@@ -87,7 +87,7 @@ function openEditModal(tuitionId) {
    
     document.getElementById('modal').classList.remove('hidden');
 
-    fetch(`http://127.0.0.1:8000/api/tuition/list/${tuitionId}/`)
+    fetch(`https://tution-media-platform-backend.onrender.com/api/tuition/list/${tuitionId}/`)
         .then(response => response.json())
         .then(data => {
             document.getElementById("title").value = data.title;
@@ -147,7 +147,7 @@ function saveChanges() {
     };
 
  
-    fetch(`http://127.0.0.1:8000/api/tuition/list/${tuitionId}/`, {
+    fetch(`https://tution-media-platform-backend.onrender.com/api/tuition/list/${tuitionId}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -190,7 +190,7 @@ function deleteTuition(tuitionId) {
  
     if (confirm("Are you sure you want to delete this tuition?")) {
   
-        fetch(`http://127.0.0.1:8000/api/tuition/list/${tuitionId}/`, {
+        fetch(`https://tution-media-platform-backend.onrender.com/api/tuition/list/${tuitionId}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -260,7 +260,7 @@ function addTuition() {
     };
 
  
-    fetch('http://127.0.0.1:8000/api/tuition/list/', {
+    fetch('https://tution-media-platform-backend.onrender.com/api/tuition/list/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -284,7 +284,7 @@ function addTuition() {
 
 
 function fetchTutorApplications() {
-    fetch('http://127.0.0.1:8000/api/application/')
+    fetch('https://tution-media-platform-backend.onrender.com/api/application/')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -323,7 +323,7 @@ function acceptApplication(id, tutor, tuition, status) {
         showFailureAlert('This application has already been accepted.');
         return;
     }
-    fetch(`http://127.0.0.1:8000/api/application/${id}/`, {
+    fetch(`https://tution-media-platform-backend.onrender.com/api/application/${id}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -346,7 +346,7 @@ function acceptApplication(id, tutor, tuition, status) {
 }
 
 function rejectApplication(id) {
-    fetch(`http://127.0.0.1:8000/api/application/${id}/`, {
+    fetch(`https://tution-media-platform-backend.onrender.com/api/application/${id}/`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', fetchTutorApplications);
 
 
 function fetchDashboardStatistics() {
-    fetch('http://127.0.0.1:8000/api/student/list/')
+    fetch('https://tution-media-platform-backend.onrender.com/api/student/list/')
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -377,7 +377,7 @@ function fetchDashboardStatistics() {
         })
         .catch(error =>showFailureAlert('Error fetching total students:', error));
 
-    fetch('http://127.0.0.1:8000/api/tuition/list/')
+    fetch('https://tution-media-platform-backend.onrender.com/api/tuition/list/')
         .then(response => response.json())
         .then(data => {
             const totalTuitions = data.length;
@@ -385,7 +385,7 @@ function fetchDashboardStatistics() {
         })
         .catch(error =>showFailureAlert('Error fetching total tuitions:', error));
 
-    fetch('http://127.0.0.1:8000/api/tutor/list/')
+    fetch('https://tution-media-platform-backend.onrender.com/api/tutor/list/')
         .then(response => response.json())
         .then(data => {
             const activeTutors = data.length
@@ -393,7 +393,7 @@ function fetchDashboardStatistics() {
         })
         .catch(error =>showFailureAlert('Error fetching active tutors:', error));
 
-    fetch('http://127.0.0.1:8000/api/application/')
+    fetch('https://tution-media-platform-backend.onrender.com/api/application/')
         .then(response => response.json())
         .then(data => {
             const pendingApplications = data.filter(application => application.status === 'applied').length;
@@ -425,7 +425,7 @@ function changePassword() {
 
     const user_id = localStorage.getItem("user_id");
     const token=localStorage.getItem("admin_token");
-    fetch(`http://127.0.0.1:8000/api/student/change-password/`, {
+    fetch(`https://tution-media-platform-backend.onrender.com/api/student/change-password/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

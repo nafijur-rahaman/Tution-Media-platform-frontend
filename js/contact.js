@@ -14,7 +14,7 @@
             message: message
         };
 
-        fetch('http://127.0.0.1:8000/api/contact/list/', { 
+        fetch('https://tution-media-platform-backend.onrender.com/api/contact/list/', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
