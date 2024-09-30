@@ -14,7 +14,7 @@
             message: message
         };
 
-        fetch('https://tution-media-platform-backend.onrender.com/api/contact/list/', { 
+        fetch('https://tution-media-platform-backend.vercel.app/api/contact/list/', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

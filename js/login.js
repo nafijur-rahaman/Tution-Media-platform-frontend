@@ -59,7 +59,7 @@ const handleTeacherLogin = (event) => {
     const password = getValue("password");
 
     if (username && password) {
-        fetch("https://tution-media-platform-backend.onrender.com/api/tutor/login/", {
+        fetch("https://tution-media-platform-backend.vercel.app/api/tutor/login/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),
@@ -94,7 +94,7 @@ const handleStudentLogin = (event) => {
     const password = getValue("password");
 
     if (username && password) {
-        fetch("https://tution-media-platform-backend.onrender.com/api/student/login/", {
+        fetch("https://tution-media-platform-backend.vercel.app/api/student/login/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),
@@ -129,7 +129,7 @@ const handleAdminLogin = (event) => {
     const password = getValue("password");
     
     if (username && password) {
-        fetch("https://tution-media-platform-backend.onrender.com/api/admin_panel/login/", {
+        fetch("https://tution-media-platform-backend.vercel.app/api/admin_panel/login/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),

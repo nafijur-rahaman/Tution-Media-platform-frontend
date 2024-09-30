@@ -10,7 +10,7 @@ document.getElementById('changePasswordForm').addEventListener('submit', async f
    // console.log(newPassword)
    // console.log(newPasswordConfirm)
    try {
-       const response = await fetch('https://tution-media-platform-backend.onrender.com/api/tutor/change-password/', {
+       const response = await fetch('https://tution-media-platform-backend.vercel.app/api/tutor/change-password/', {
            method: 'PUT',
            headers: {
                'Content-Type': 'application/json',

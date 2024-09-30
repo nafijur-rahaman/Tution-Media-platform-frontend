@@ -38,7 +38,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
     const name = document.getElementById('name').value;
     const review = document.getElementById('review').value;
 
-    fetch('https://tution-media-platform-backend.onrender.com/api/tuition/reviews/', {
+    fetch('https://tution-media-platform-backend.vercel.app/api/tuition/reviews/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
 
     async function fetchReviews() {
         try {
-            const response = await fetch('https://tution-media-platform-backend.onrender.com/api/tuition/reviews/');
+            const response = await fetch('https://tution-media-platform-backend.vercel.app/api/tuition/reviews/');
             const reviews = await response.json();
 
         

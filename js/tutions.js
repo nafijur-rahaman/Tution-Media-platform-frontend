@@ -43,7 +43,7 @@ const updatePriceLabel = (value) => {
 };
 
 const getTuitions = () => {
-    fetch("https://tution-media-platform-backend.onrender.com/api/tuition/list/")
+    fetch("https://tution-media-platform-backend.vercel.app/api/tuition/list/")
         .then(res => {
             if (!res.ok) {
                 throw new Error("Tuitions not found");

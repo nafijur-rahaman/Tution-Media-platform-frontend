@@ -40,7 +40,7 @@ document.getElementById("close-failure-alert").addEventListener("click", () => {
 
 const loadUserDetails = () => {
     const user_id = localStorage.getItem("user_id");
-    fetch(`https://tution-media-platform-backend.onrender.com/api/student/list/${user_id}`)
+    fetch(`https://tution-media-platform-backend.vercel.app/api/student/list/${user_id}`)
         .then((res) => {
             if (!res.ok) {
                 throw new Error("Campaign not found");
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", loadUserDetails);
 
 const loadTuition = () => {
     const student_id = window.localStorage.getItem("user_id");
-    fetch(`https://tution-media-platform-backend.onrender.com/api/tuition/list/?author=${student_id}`)
+    fetch(`https://tution-media-platform-backend.vercel.app/api/tuition/list/?author=${student_id}`)
         .then((res) => {
             if (!res.ok) {
                 throw new Error("Campaign not found");
@@ -113,7 +113,7 @@ function openEditModal(tuitionId) {
     document.getElementById('tuitionId').value = tuitionId;
     document.getElementById('modal').classList.remove('hidden');
 
-    fetch(`https://tution-media-platform-backend.onrender.com/api/tuition/list/${tuitionId}/`)
+    fetch(`https://tution-media-platform-backend.vercel.app/api/tuition/list/${tuitionId}/`)
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -166,7 +166,7 @@ function saveChanges() {
         location: document.getElementById("location").value,
     };
 console.log(updatedData)
-    fetch(`https://tution-media-platform-backend.onrender.com/api/tuition/list/${tuitionId}/`, {
+    fetch(`https://tution-media-platform-backend.vercel.app/api/tuition/list/${tuitionId}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -196,7 +196,7 @@ function mapGender(genderValue) {
 
 function deleteTuition(tuitionId) {
     if (confirm("Are you sure you want to delete this tuition?")) {
-        fetch(`https://tution-media-platform-backend.onrender.com/api/tuition/list/${tuitionId}/`, {
+        fetch(`https://tution-media-platform-backend.vercel.app/api/tuition/list/${tuitionId}/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -256,7 +256,7 @@ function addTuition() {
         author,
     };
 
-    fetch('https://tution-media-platform-backend.onrender.com/api/tuition/list/', {
+    fetch('https://tution-media-platform-backend.vercel.app/api/tuition/list/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -297,7 +297,7 @@ function changePassword() {
 
     const user_id = localStorage.getItem("user_id");
     const token=localStorage.getItem("student_token");
-    fetch(`https://tution-media-platform-backend.onrender.com/api/student/change-password/`, {
+    fetch(`https://tution-media-platform-backend.vercel.app/api/student/change-password/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

@@ -39,7 +39,7 @@ function showSuccessAlert(message, title = "Success") {
   });
   
   document.addEventListener('DOMContentLoaded', function () {
-    fetch('https://tution-media-platform-backend.onrender.com/api/tutor/list/')
+    fetch('https://tution-media-platform-backend.vercel.app/api/tutor/list/')
     .then(res => {
         if (!res.ok) {
             throw new Error("Tutors not found");
@@ -59,7 +59,7 @@ function displayTeachers(teachers) {
     container.innerHTML = ''; 
 
     teachers.forEach(teacher => {
-        fetch(`https://tution-media-platform-backend.onrender.com/api/tutor/tutor_reviews/?tutor=${teacher.id}`)
+        fetch(`https://tution-media-platform-backend.vercel.app/api/tutor/tutor_reviews/?tutor=${teacher.id}`)
         .then(res => {
             if (!res.ok) {
                 throw new Error("Reviews not found");
