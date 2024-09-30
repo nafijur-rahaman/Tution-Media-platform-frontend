@@ -71,7 +71,7 @@ function displayTeachers(teachers) {
             const teacherCard = `
                 <div class="teacher-card bg-white shadow-lg rounded-lg overflow-hidden transform transition hover:-translate-y-2 hover:shadow-xl w-80 mx-auto">
                     <div class="flex justify-center">
-                        <img src="${teacher.image}" alt="Teacher Image" class="w-32 h-32 object-cover rounded-full transition duration-300 ease-in-out transform hover:scale-105 border-4 border-blue-300">
+                        <img src="https://res.cloudinary.com/dwsp8rft8/${teacher.image}" alt="Teacher Image" class="w-32 h-32 object-cover rounded-full transition duration-300 ease-in-out transform hover:scale-105 border-4 border-blue-300">
                     </div>
                     <div class="p-6 bg-gray-50">
                         <h2 class="text-2xl text-center font-semibold text-gray-900 mb-2 hover:text-blue-600 transition duration-200">${teacher.first_name} ${teacher.last_name}</h2>
