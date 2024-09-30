@@ -147,7 +147,7 @@ const handleAdminLogin = (event) => {
                 }, 3000);
             } else {
                 showFailureAlert("Login failed! Please check your username and password.");
-                console.log("Token not available");
+                // console.log("Token not available");
             }
         })
         .catch((error) => {

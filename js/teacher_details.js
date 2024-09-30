@@ -50,7 +50,7 @@ const getTutorDetails = () => {
     fetch(`https://tution-media-platform-backend.vercel.app/api/tutor/list/${tutor_id}/`)
         .then(res => res.json())
         .then(data => {
-                console.log(data)
+                // console.log(data)
             const div = document.getElementById('tutor_details')
             div.innerHTML = `
 

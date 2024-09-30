@@ -48,7 +48,7 @@ function showSuccessAlert(message, title = "Success") {
             return res.json();
         })
         .then((data) => {
-            console.log(data)
+            // console.log(data)
             const tuitionList = document.querySelector('#tuition-list'); // Make sure this ID matches your table's tbody ID
             tuitionList.innerHTML = ''; // Clear existing rows
             
@@ -371,7 +371,7 @@ function fetchDashboardStatistics() {
     fetch('https://tution-media-platform-backend.vercel.app/api/student/list/')
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             const totalStudents = data.length;
             document.getElementById('total-students').textContent = totalStudents;
         })

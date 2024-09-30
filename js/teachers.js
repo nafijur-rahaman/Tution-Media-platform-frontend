@@ -54,7 +54,7 @@ function showSuccessAlert(message, title = "Success") {
 });
 
 function displayTeachers(teachers) {
-    console.log(teachers)
+    // console.log(teachers)
     const container = document.getElementById('teacher-container');
     container.innerHTML = ''; 
 

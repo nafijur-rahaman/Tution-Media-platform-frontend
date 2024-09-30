@@ -48,10 +48,10 @@ const loadUserDetails = () => {
       return res.json();
     })
     .then((data) => {
-      console.log(data)
+      // console.log(data)
      const profile_header=document.getElementById("profile-header");
      profile_header.innerHTML=`
-         <img src="${data.image}" alt="Profile Picture" class="w-24 h-24 rounded-full">
+         <img src="https://res.cloudinary.com/dwsp8rft8/${data.image}" alt="Profile Picture" class="w-24 h-24 rounded-full">
          <div class="ml-6">
            <h1 class="text-3xl font-semibold text-gray-800">${data.first_name} ${data.last_name}  </h1>
            <p class="text-gray-500">${data.designation}</p>
@@ -109,12 +109,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return res.json();
     })
     .then((data) => {
-      console.log(data)
+      // console.log(data)
       const tuitionList = document.getElementById("tuition-details").querySelector('tbody');
       tuitionList.innerHTML = ''; 
 
       data.forEach((application) => {
-        console.log(data)
+        // console.log(data)
         if (application.status === "accepted") {
           const tuition = application.tuition; 
           const newRow = `
@@ -156,7 +156,7 @@ function openEditProfileModal() {
           return response.json();
       })
       .then(tutorData => {
-        console.log(tutorData)
+        // console.log(tutorData)
           document.getElementById('first_name').value = tutorData.first_name;
           document.getElementById('last_name').value = tutorData.last_name;
           document.getElementById('email').value = tutorData.email;
@@ -215,11 +215,13 @@ function updateProfile(event) {
       return response.json();
   })
   .then(data => {
-      console.log('Profile updated successfully:', data);
+      // console.log('Profile updated successfully:', data);
+      showSuccessAlert("Profile updated successfully");
       document.getElementById('editProfileModal').classList.add('hidden');
   })
   .catch(error => {
-      console.error('Error updating profile:', error);
+      // console.error('Error updating profile:', error);
+      showFailureAlert("Error updating profile");
   });
 }
 

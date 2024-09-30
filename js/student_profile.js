@@ -50,7 +50,7 @@ const loadUserDetails = () => {
         .then((data) => {
             const profile_header = document.getElementById("student_details");
             profile_header.innerHTML = `
-              <img src="${data.image}" alt="Profile Picture" class="w-32 h-32 rounded-full mr-6">
+              <img src="https://res.cloudinary.com/dwsp8rft8/${data.image}" alt="Profile Picture" class="w-32 h-32 rounded-full mr-6">
             <div>
                 <h2 class="text-3xl font-bold mb-2"> ${data.user.first_name} ${data.user.last_name} </h2>
                 <p class="text-gray-600 mb-4">Student</p>
@@ -116,7 +116,7 @@ function openEditModal(tuitionId) {
     fetch(`https://tution-media-platform-backend.vercel.app/api/tuition/list/${tuitionId}/`)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             document.getElementById("title").value = data.title;
             document.getElementById("description").value = data.description;
             document.getElementById("salary").value = data.salary;
@@ -165,7 +165,7 @@ function saveChanges() {
         salary: document.getElementById("salary").value,
         location: document.getElementById("location").value,
     };
-console.log(updatedData)
+// console.log(updatedData)
     fetch(`https://tution-media-platform-backend.vercel.app/api/tuition/list/${tuitionId}/`, {
         method: 'PUT',
         headers: {
