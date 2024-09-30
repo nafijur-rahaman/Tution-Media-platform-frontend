@@ -1,3 +1,43 @@
+function showSuccessAlert(message, title = "Success") {
+    const alertBox = document.getElementById("success-alert");
+    const alertTitle = document.getElementById("success-alert-title");
+    const alertMessage = document.getElementById("success-alert-message");
+  
+    alertTitle.innerText = title;
+    alertMessage.innerText = message;
+  
+    alertBox.classList.remove("hidden");
+    alertBox.classList.add("flex");
+  
+    setTimeout(() => {
+      alertBox.classList.add("hidden");
+    }, 5000);
+  }
+  
+  function showFailureAlert(message, title = "Failure") {
+    const alertBox = document.getElementById("failure-alert");
+    const alertTitle = document.getElementById("failure-alert-title");
+    const alertMessage = document.getElementById("failure-alert-message");
+  
+    alertTitle.innerText = title;
+    alertMessage.innerText = message;
+  
+    alertBox.classList.remove("hidden");
+    alertBox.classList.add("flex");
+  
+    setTimeout(() => {
+      alertBox.classList.add("hidden");
+    }, 5000);
+  }
+  
+  document.getElementById("close-success-alert").addEventListener("click", () => {
+    document.getElementById("success-alert").classList.add("hidden");
+  });
+  
+  document.getElementById("close-failure-alert").addEventListener("click", () => {
+    document.getElementById("failure-alert").classList.add("hidden");
+  });
+
 function scrollToTop() {
     window.scrollTo({
         top: 0,
@@ -47,17 +87,19 @@ document.querySelector('form').addEventListener('submit', function(event) {
     })
     .then(response => {
         if (response.ok) {
-            alert('Review submitted successfully!');
+            showSuccessAlert('Review submitted successfully!');
             // Clear the form
             document.getElementById('name').value = '';
             document.getElementById('review').value = '';
+             fetchReviews() 
+
         } else {
             alert('Failed to submit review. Please try again.');
         }
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred while submitting your review.');
+        showFailureAlert("An error occurred while submitting your review.")
+       
     });
 });
 

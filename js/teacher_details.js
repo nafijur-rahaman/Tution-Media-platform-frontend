@@ -140,6 +140,7 @@ function submitReview(event) {
         if (data.id) {
             showSuccessAlert('Review submitted successfully!');
             document.getElementById('reviewForm').reset();
+            fetchReviews()
         } else {
             showFailureAlert('Failed to submit review. Please try again.');
         }

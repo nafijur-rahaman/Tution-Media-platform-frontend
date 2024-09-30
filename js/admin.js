@@ -338,6 +338,7 @@ function acceptApplication(id, tutor, tuition, status) {
         if (!response.ok) {
             throw new Error('Failed to accept application');
         }
+        showSuccessAlert("Application accepted successfully");
         fetchTutorApplications();
     })
     .catch(error => {
@@ -357,6 +358,7 @@ function rejectApplication(id) {
             throw new Error('Failed to reject application');
         }
         fetchTutorApplications();
+        showSuccessAlert("application rejected successfully")
     })
     .catch(error => {
        showFailureAlert('Error rejecting application:', error);
