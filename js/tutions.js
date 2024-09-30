@@ -62,11 +62,19 @@ const getTuitions = () => {
 
             const filterTuitions = () => {
                 const filteredTuitions = tuitions.filter(tuition => {
-                    const matchesCategory = categoryFilter.value === "" || tuition.subject_name === categoryFilter.value;
+                    const matchesCategory = categoryFilter.value === "" || 
+                        tuition.subject_name.includes(categoryFilter.value);
                     const matchesClass = classFilter.value === "" || tuition.tuition_class === classFilter.value;
                     const matchesLocation = locationFilter.value === "" || tuition.location.toLowerCase().includes(locationFilter.value.toLowerCase());
                     const matchesPrice = parseInt(tuition.salary) <= parseInt(priceRange.value);
                     const matchesLanguage = languageFilter.value === "" || tuition.medium === languageFilter.value;
+
+                    // console.log("Checking Tuition:", tuition);
+                    // console.log("Matches Category:", matchesCategory);
+                    // console.log("Matches Class:", matchesClass);
+                    // console.log("Matches Location:", matchesLocation);
+                    // console.log("Matches Price:", matchesPrice);
+                    // console.log("Matches Language:", matchesLanguage);
                     return matchesCategory && matchesClass && matchesLocation && matchesPrice && matchesLanguage;
                 });
 

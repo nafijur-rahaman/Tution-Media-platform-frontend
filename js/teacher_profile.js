@@ -218,6 +218,9 @@ function updateProfile(event) {
       // console.log('Profile updated successfully:', data);
       showSuccessAlert("Profile updated successfully");
       document.getElementById('editProfileModal').classList.add('hidden');
+      setTimeout(() => {
+        window.location.reload();
+    }, 2000);
   })
   .catch(error => {
       // console.error('Error updating profile:', error);
