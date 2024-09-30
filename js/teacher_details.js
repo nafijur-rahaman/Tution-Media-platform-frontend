@@ -55,7 +55,7 @@ const getTutorDetails = () => {
             div.innerHTML = `
 
       <div class="flex items-center p-6 border-b">
-        <img src="${data.image}" alt="Teacher Image" class="w-24 h-24 rounded-full mr-6">
+        <img src="https://res.cloudinary.com/dwsp8rft8/${data.image}" alt="Teacher Image" class="w-24 h-24 rounded-full mr-6">
         <div>
             <h1 class="text-2xl font-semibold">${data.first_name}${data.last_name} </h1>
             <p class="text-gray-600">Subject: ${data.subject_name}</p>
