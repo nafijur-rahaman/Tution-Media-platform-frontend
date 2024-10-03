@@ -104,8 +104,9 @@
             </div>
         </div>
     </section>
+    
     <div class="flex justify-center items-center" >
-        <div class="scrolling-reviews w-full max-w-screen-lg p-4" id="reviewsContainer">
+        <div class="scrolling-reviews w-full max-w-screen-lg p-4" >
             <!-- Reviews will be dynamically inserted here -->
         </div>
     </div>
@@ -138,6 +139,28 @@
 </section>
 
 
+
+<!-- review -->
+<section class="bg-gray-100 py-16">
+    <div id="reviewsContainer" class="container mx-auto">
+        <!-- Section Title -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800 animate-fade-in-up">What Users Are Saying</h2>
+            <p class="text-xl text-gray-600 mt-4 animate-fade-in-up">Real feedback from our students and parents.</p>
+        </div>
+
+        <!-- Scrollable Review Container -->
+        <div class="overflow-x-auto py-4">
+            <!-- Review Cards Wrapper -->
+            <div class="inline-flex space-x-8" id="reviewsList">
+                <!-- Review Cards will be populated here dynamically -->
+            </div>
+        </div>
+    </div>
+</section>
+  
+  
+  
 
     <button onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-500 transition duration-300">
         <i class="fas fa-arrow-up"></i>

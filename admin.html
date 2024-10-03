@@ -139,7 +139,7 @@
         </main>
     </div>
 
-   <!-- Add Tuition Modal -->
+<!-- Add Tuition Modal -->
 <div id="addTuitionModal" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-black bg-opacity-50">
     <div class="bg-white rounded-lg shadow-lg w-full max-w-lg max-h-screen p-6 overflow-y-auto">
         <h2 class="text-lg font-semibold mb-4">Add Tuition Information</h2>
@@ -158,7 +158,6 @@
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700" for="add_subjects">Subjects</label>
                 <select id="add_subjects" name="subjects" multiple class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
-                    <option value="10">All Subjects</option>
                     <option value="3">English</option>
                     <option value="1">General Math</option>
                     <option value="2">Bangla</option>
@@ -167,6 +166,7 @@
                     <option value="8">Biology</option>
                     <option value="6">Physics</option>
                     <option value="7">Chemistry</option>
+                    <option value="10">All Subjects</option>
                     <option value="4">General Science</option>
                 </select>
             </div>
@@ -179,6 +179,10 @@
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700" for="add_location">Location</label>
                 <input type="text" id="add_location" name="location" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="Location" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="add_requirements">Requirement</label>
+                <input type="text" id="add_requirement" name="requirement" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="requirement" required>
             </div>
 
             <div class="mb-4">
@@ -293,6 +297,10 @@
                 <label class="block text-sm font-medium text-gray-700" for="location">Location</label>
                 <input type="text" id="location" name="location" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="Location">
             </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700" for="requirements">Requirement</label>
+                <input type="text" id="requirement" name="requirement" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="requirement">
+            </div>
 
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700" for="number_of_students">Number of Students</label>
@@ -319,7 +327,7 @@
 
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700" for="subjects">Subjects</label>
-                <select id="subjects" required name="subjects" multiple class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+                <select id="subjects" name="subjects" required multiple class="mt-1 block w-full border border-gray-300 rounded-md p-2">
                     <option value="10">All Subjects</option>
                     <option value="3">English</option>
                     <option value="1">General Math</option>
@@ -348,6 +356,7 @@
                     <option value="English">English Version</option>
                 </select>
             </div>
+      
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700" for="student_gender">Student Gender</label>
                 <select id="student_gender" name="student_gender" class="mt-1 block w-full border border-gray-300 rounded-md p-2">

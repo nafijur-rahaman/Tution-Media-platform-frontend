@@ -59,9 +59,7 @@ body{
     animation: pulse 2s infinite;
 }
 
-.rotate {
-    animation: rotate 20s linear infinite;
-}
+
 
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }

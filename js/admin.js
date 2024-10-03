@@ -94,6 +94,7 @@ function openEditModal(tuitionId) {
             document.getElementById("description").value = data.description;
             document.getElementById("salary").value = data.salary;
             document.getElementById("location").value = data.location;
+            document.getElementById("requirement").value=data.requirement;
             document.getElementById("number_of_students").value = data.number_of_students;
             
          
@@ -143,6 +144,7 @@ function saveChanges() {
         number_of_students: document.getElementById("number_of_students").value,
         salary: document.getElementById("salary").value,
         location: document.getElementById("location").value,
+        requirement:document.getElementById("requirement").value,
   
     };
 
@@ -229,12 +231,10 @@ function addTuition() {
     const description = document.getElementById('add_description').value;
     const salary = document.getElementById('add_salary').value;
     const location = document.getElementById('add_location').value;
+    const requirement = document.getElementById('add_requirement').value;
     const numberOfStudents = document.getElementById('add_number_of_students').value;
     const tuitionClass = document.getElementById('add_tuition_class').value;
-    
-  
     const subjects = Array.from(document.getElementById('add_subjects').selectedOptions).map(option => option.value);
-    
     const availability = document.getElementById('add_availability').value;
     const medium = document.getElementById('add_medium').value;
     const studentGender = document.getElementById('add_student_gender').value;
@@ -248,6 +248,7 @@ function addTuition() {
         description,
         salary,
         location,
+        requirement,
         number_of_students: numberOfStudents,
         tuition_class: tuitionClass,
         subjects,

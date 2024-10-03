@@ -109,35 +109,25 @@ document.querySelector('form').addEventListener('submit', function(event) {
     
 
 
-    const reviewsContainer = document.getElementById('reviewsContainer');
+function fetchReviews() {
+    fetch('https://tution-media-platform-backend.vercel.app/api/tuition/reviews/')
+        .then(response => response.json())
+        .then(reviews => {
+            const reviewsList = document.getElementById('reviewsList');
 
-
-    async function fetchReviews() {
-        try {
-            const response = await fetch('https://tution-media-platform-backend.vercel.app/api/tuition/reviews/');
-            const reviews = await response.json();
-
-        
             reviews.forEach(review => {
                 const reviewDiv = document.createElement('div');
-                reviewDiv.className = 'review';
-                reviewDiv.innerHTML = `<h3 class="font-bold">${review.name}</h3><p>"${review.review}"</p>`;
-                reviewsContainer.appendChild(reviewDiv);
+                reviewDiv.className = 'bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 animate-fade-in w-80 flex-shrink-0';
+                reviewDiv.innerHTML = `
+                    <h3 class="text-xl font-semibold">${review.name}</h3>                   
+                    <p class="text-gray-700">"${review.review}"</p>
+                `;
+                reviewsList.appendChild(reviewDiv);
             });
-        } catch (error) {
+        })
+        .catch(error => {
             console.error('Error fetching reviews:', error);
-        }
-    }
+        });
+}
 
-
-    let scrollAmount = 0;
-    function scrollReviews() {
-        scrollAmount += 1;
-        if (scrollAmount >= reviewsContainer.scrollWidth) {
-            scrollAmount = 0;
-        }
-        reviewsContainer.scrollLeft = scrollAmount;
-    }
-
-    fetchReviews();
-    setInterval(scrollReviews, 20);
+fetchReviews();

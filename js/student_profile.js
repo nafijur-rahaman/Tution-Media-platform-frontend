@@ -121,6 +121,7 @@ function openEditModal(tuitionId) {
             document.getElementById("description").value = data.description;
             document.getElementById("salary").value = data.salary;
             document.getElementById("location").value = data.location;
+            document.getElementById("requirement").value=data.requirement
             document.getElementById("number_of_students").value = data.number_of_students;
 
             function selectOptionByValue(selectId, value) {
@@ -164,6 +165,7 @@ function saveChanges() {
         number_of_students: document.getElementById("number_of_students").value,
         salary: document.getElementById("salary").value,
         location: document.getElementById("location").value,
+        requirement:document.getElementById("requirement").value,
     };
 // console.log(updatedData)
     fetch(`https://tution-media-platform-backend.vercel.app/api/tuition/list/${tuitionId}/`, {
