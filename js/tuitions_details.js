@@ -83,7 +83,6 @@ const getPostDetail = () => {
         <div>
         <h3 class="text-xl font-semibold mb-2">Timing & Payment</h3>
         <p class="mb-2"><strong>Time:</strong> <span class="text-blue-600">${data.tutoring_time} </span></p>
-        <p class="mb-2"><strong>Days:</strong> <span class="text-blue-600"> ${data.days_name} </span></p>
         <p class="mb-2"><strong>Payment:</strong> <span class="text-blue-600">${data.salary}BDT /month</span></p>
         </div>
         </div

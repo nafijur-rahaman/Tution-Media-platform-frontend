@@ -230,6 +230,7 @@ function addTuition() {
     const description = document.getElementById('add_description').value;
     const salary = document.getElementById('add_salary').value;
     const location = document.getElementById('add_location').value;
+    const requirement = document.getElementById('add_requirement').value;
     const numberOfStudents = document.getElementById('add_number_of_students').value;
     const tuitionClass = document.getElementById('add_tuition_class').value;
     const subjects = Array.from(document.getElementById('add_subjects').selectedOptions).map(option => option.value);
@@ -245,6 +246,7 @@ function addTuition() {
         description,
         salary,
         location,
+        requirement,
         number_of_students: numberOfStudents,
         tuition_class: tuitionClass,
         subjects,
