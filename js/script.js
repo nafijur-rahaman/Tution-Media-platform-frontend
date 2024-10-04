@@ -45,33 +45,6 @@ function scrollToTop() {
     });
 }
 
-
-const button = document.getElementById('getStartedBtn');
-
-let isBlinking = false;
-
-function startBlinking() {
-    isBlinking = true;
-    button.style.backgroundColor = '#98fb98'; 
-    setInterval(() => {
-        button.style.backgroundColor = button.style.backgroundColor === 'rgb(245, 245, 245)' ? '#98fb98' : '#f5f5f5'; 
-    }, 1000); 
-}
-
-function stopBlinking() {
-    isBlinking = false;
-    button.style.backgroundColor = '#98fb98'; 
-}
-
-button.addEventListener('mouseover', stopBlinking);
-button.addEventListener('mouseout', () => {
-    if (!isBlinking) {
-        startBlinking();
-    }
-});
-
-startBlinking();
-
 document.querySelector('form').addEventListener('submit', function(event) {
     event.preventDefault(); 
 
@@ -131,3 +104,55 @@ function fetchReviews() {
 }
 
 fetchReviews();
+
+
+const faqButtons = document.querySelectorAll('#faq button');
+faqButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const isVisible = content.classList.toggle('hidden');
+        button.querySelector('svg').style.transform = isVisible ? 'rotate(0deg)' : 'rotate(180deg)';
+    });
+});
+
+
+function animateCount(id, start, end, duration) {
+    let current = start;
+    const increment = end > start ? 1 : -1;
+    const stepTime = Math.abs(Math.floor(duration / (end - start)));
+
+    const timer = setInterval(() => {
+        current += increment;
+        document.getElementById(id).innerText = current;
+
+        if (current === end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+function fetchCounts() {
+    fetch('https://tution-media-platform-backend.vercel.app/api/tuition/list/')
+        .then(response => response.json())
+        .then(tuitionData => {
+            const totalTuition = tuitionData.length;
+
+            fetch('https://tution-media-platform-backend.vercel.app/api/tutor/list/')
+                .then(response => response.json())
+                .then(tutorData => {
+                    const totalTutors = tutorData.length;
+
+                    fetch('https://tution-media-platform-backend.vercel.app/api/student/list/')
+                        .then(response => response.json())
+                        .then(studentData => {
+                            const totalStudents = studentData.length;
+
+                            animateCount('total-tutors', 0, totalTutors, 2000);
+                            animateCount('total-students', 0, totalStudents, 2000);
+                            animateCount('total-posts', 0, totalTuition, 2000);
+                        });
+                });
+        });
+}
+
+document.addEventListener("DOMContentLoaded", fetchCounts);

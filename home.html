@@ -8,7 +8,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/images/fav.png">
     <link rel="stylesheet" href="./css/style.css">
-
+<style>
+    .hero {
+        background-image: url('./images/3784896.jpg'); /* Add your image URL */
+        background-size: cover;
+        background-position: center;
+    }
+</style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
@@ -19,26 +25,15 @@
 </nav>
 
 
-  <!-- Section with Get Started Button -->
-<section class="relative bg-cover bg-center text-white py-48 fade-in-up" style="background-image: url('./images/3784896.jpg'); background-size: cover; background-position: top center;">
-    <div class="absolute inset-0 bg-black opacity-50"></div>
-    <div class="container relative mx-auto px-6 text-center">
-        <h1 class="text-5xl font-bold mb-4">Unlock Your Learning Potential</h1>
-        <p class="mb-8 text-xl max-w-3xl mx-auto">Connect with professional tutors across various subjects and excel in your academic journey. Let's make learning exciting and effective together.</p>
-        <a href="#" id="getStartedBtn" class="bg-gray-200 text-blue-600 px-8 py-3 rounded-full font-semibold shadow-lg transition duration-300">Get Started</a>
+  <!-- Hero Section -->
+  <header class="hero h-screen flex items-center justify-center">
+    <div class="text-center bg-blue-700 bg-opacity-70 p-10 rounded-lg">
+        <h1 class="text-5xl font-bold mb-4 animate__animated animate__fadeIn text-white">Welcome to Tuition Media</h1>
+        <p class="text-xl mb-8 animate__animated animate__fadeIn text-white">Find the best tutors for your learning needs</p>
+        <a href="./teachers.html" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded animate__animated animate__fadeIn">Explore Tutors</a>
     </div>
-</section>
+</header>
 
-
-
-<!-- CSS for the Button -->
-<style>
-    /* Optional styles for the button */
-    #getStartedBtn {
-        color: #000; /* Text color */
-        transition: background-color 0.3s ease;
-    }
-</style>
 
 
     
@@ -73,67 +68,124 @@
         </div>
     </section>
 
-  
-
-    <!-- Services Section -->
-    <section class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-12 fade-in-up">Our Exclusive Services</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="p-8 bg-white shadow-md rounded-lg hover:bg-blue-50 transition duration-300 fade-in-up">
-                    <div class="text-blue-600 text-5xl mb-6 bounce">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">Online Classes</h3>
-                    <p class="text-gray-600">Attend live online classes with your tutor from the comfort of your home, with interactive lessons and real-time feedback.</p>
+    <section id="dashboard" class="py-20">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-10">Dashboard Overview</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Total Tutors</h3>
+                    <p id="total-tutors" class="text-4xl font-bold text-blue-600">0</p>
                 </div>
-                <div class="p-8 bg-white shadow-md rounded-lg hover:bg-blue-50 transition duration-300 fade-in-up">
-                    <div class="text-purple-600 text-5xl mb-6 rotate">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">Personalized Learning</h3>
-                    <p class="text-gray-600">Get personalized learning plans tailored to your individual needs and learning style, ensuring maximum progress.</p>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Total Students</h3>
+                    <p id="total-students" class="text-4xl font-bold text-blue-600">0</p>
                 </div>
-                <div class="p-8 bg-white shadow-md rounded-lg hover:bg-blue-50 transition duration-300 fade-in-up">
-                    <div class="text-pink-600 text-5xl mb-6 pulse">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4">24/7 Support</h3>
-                    <p class="text-gray-600">Our support team is available around the clock to assist you with any issues or questions you may have.</p>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">Total Tuition Posts</h3>
+                    <p id="total-posts" class="text-4xl font-bold text-blue-600">0</p>
                 </div>
             </div>
         </div>
     </section>
+
     
-    <div class="flex justify-center items-center" >
-        <div class="scrolling-reviews w-full max-w-screen-lg p-4" >
-            <!-- Reviews will be dynamically inserted here -->
+
+
+    
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-6">
+        <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-10 text-blue-500">Frequently Asked Questions</h2>
+        <div class="max-w-4xl mx-auto text-left">
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <button class="w-full text-left text-lg font-medium text-gray-700 focus:outline-none flex justify-between items-center">
+                        <span>What is the Tuition Media Platform?</span>
+                        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-2 text-gray-600 hidden">
+                        <p>Tuition Media Platform is an online service that connects students with tutors, providing both home and online tutoring options.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <button class="w-full text-left text-lg font-medium text-gray-700 focus:outline-none flex justify-between items-center">
+                        <span>How do I find a tutor?</span>
+                        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-2 text-gray-600 hidden">
+                        <p>You can browse our list of tutors on the platform, filter by subjects, experience, and read reviews from other students.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <button class="w-full text-left text-lg font-medium text-gray-700 focus:outline-none flex justify-between items-center">
+                        <span>What subjects are offered?</span>
+                        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-2 text-gray-600 hidden">
+                        <p>We offer a variety of subjects including Math, Science, English, and more. Please check the tutor profiles for specific subjects.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <button class="w-full text-left text-lg font-medium text-gray-700 focus:outline-none flex justify-between items-center">
+                        <span>How do I post for tuition?</span>
+                        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-2 text-gray-600 hidden">
+                        <p>First create a account on our platform then you can add tuition easily.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <button class="w-full text-left text-lg font-medium text-gray-700 focus:outline-none flex justify-between items-center">
+                        <span>What are the payment methods?</span>
+                        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="mt-2 text-gray-600 hidden">
+                        <p>We accept various payment methods including Nagad,
+                            bkash,rocket and handcash for your convenience.</p>
+                        </div>
+                </div>
+            </div>
         </div>
     </div>
-   
-
-
+</section>
 
 
 <section class="py-20 bg-gray-100">
     <div class="container mx-auto px-6 text-center">
-        <section>
-            <div class="container mx-auto px-6 md:px-12 lg:px-20">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-gray-800">Leave a review</h2>
-                    <p class="text-gray-600 mt-4">Leave your valuable feedback</p>
-                </div>
-                </section>
-        <form class="max-w-sm mx-auto bg-white p-6 rounded-lg shadow-md">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800">Leave a Review</h2>
+            <p class="text-gray-600 mt-4">Your valuable feedback helps us improve!</p>
+        </div>
+        <form class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg border border-gray-200">
             <div class="mb-4">
-                <label for="name" class="block text-xl font-semibold mb-1">Your Name</label>
-                <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded" placeholder="Enter your name" required>
+                <label for="name" class="block text-lg font-semibold mb-1">Your Name</label>
+                <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" placeholder="Enter your name" required>
             </div>
             <div class="mb-4">
-                <label for="review" class="block text-xl font-semibold mb-1">Your Review</label>
-                <textarea id="review" class="w-full p-3 border border-gray-300 rounded" rows="4" placeholder="Write your review..." required></textarea>
+                <label for="review" class="block text-lg font-semibold mb-1">Your Review</label>
+                <textarea id="review" class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200" rows="4" placeholder="Write your review..." required></textarea>
             </div>
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Submit</button>
+            <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition duration-300 transform hover:scale-105">Submit</button>
         </form>
     </div>
 </section>
@@ -158,9 +210,7 @@
         </div>
     </div>
 </section>
-  
-  
-  
+
 
     <button onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-500 transition duration-300">
         <i class="fas fa-arrow-up"></i>
