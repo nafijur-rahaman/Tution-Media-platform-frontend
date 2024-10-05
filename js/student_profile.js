@@ -95,6 +95,7 @@ const loadTuition = () => {
                     <h4 class="text-xl font-bold mb-2">${tuition.title}</h4>
                     <p class="text-gray-700 mb-2">Description: ${tuition.description.slice(0, 20)}....</p>
                     <p class="text-gray-700 mb-2">Fee: ${tuition.salary} BDT</p>
+                    <p class="text-gray-700 mb-2">Location: ${tuition.location} BDT</p>
                     <div class="flex space-x-2">
                         <button onclick="openEditModal(${tuition.id})" class="text-blue-600 hover:underline">Edit</button>
                         <button onclick="deleteTuition(${tuition.id})" class="text-red-600 hover:underline">Delete</button>

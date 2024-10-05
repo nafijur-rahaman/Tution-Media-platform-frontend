@@ -69,12 +69,6 @@ const getTuitions = () => {
                     const matchesPrice = parseInt(tuition.salary) <= parseInt(priceRange.value);
                     const matchesLanguage = languageFilter.value === "" || tuition.medium === languageFilter.value;
 
-                    // console.log("Checking Tuition:", tuition);
-                    // console.log("Matches Category:", matchesCategory);
-                    // console.log("Matches Class:", matchesClass);
-                    // console.log("Matches Location:", matchesLocation);
-                    // console.log("Matches Price:", matchesPrice);
-                    // console.log("Matches Language:", matchesLanguage);
                     return matchesCategory && matchesClass && matchesLocation && matchesPrice && matchesLanguage;
                 });
 
@@ -83,9 +77,15 @@ const getTuitions = () => {
 
             const displayTuitions = (filteredTuitions) => {
                 parent.innerHTML = "";
-                filteredTuitions.forEach((tuition, index) => {
+
+                if (filteredTuitions.length === 0) {
+                    parent.innerHTML = `<p class="text-center text-gray-700">No tuition found</p>`;
+                    return;
+                }
+
+                filteredTuitions.forEach((tuition) => {
                     const child = document.createElement('div');
-                    child.classList.add('bg-white', 'shadow-lg', 'rounded-lg', 'overflow-hidden', 'transition-transform', 'transform', 'hover:scale-105', 'hover:shadow-xl');
+                    child.classList.add('bg-white', 'shadow-lg', 'rounded-lg', 'overflow-hidden', 'transition-shadow', 'hover:shadow-2xl', 'duration-300');
                     child.innerHTML = `
                         <div class="p-6">
                             <h3 class="text-2xl font-semibold text-gray-900 mb-3">${tuition.title}</h3>

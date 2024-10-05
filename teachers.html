@@ -20,18 +20,19 @@
 
 
 <main class="pb-32">
-
     <div class="container mx-auto py-12">
         <h1 class="text-4xl font-extrabold text-center mb-12 text-gray-900">Meet Our Teachers</h1>
-        
+
         <!-- Filter Section -->
         <div class="mb-12 flex flex-col md:flex-row gap-6 justify-center">
-            <!-- subject Filter -->
-            <input type="text" id="subject-filter" onkeyup="filterTeachers()" placeholder="Search by subject..." class="w-full md:w-1/3 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+            <!-- Subject Filter -->
+            <input type="text" id="subject-filter" onkeyup="filterTeachers()" 
+                placeholder="Search by subject..." 
+                class="w-full md:w-1/3 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
 
-            
             <!-- Ratings Filter -->
-            <select id="rating-filter" onchange="filterTeachers()" class="w-full md:w-1/3 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+            <select id="rating-filter" onchange="filterTeachers()" 
+                class="w-full md:w-1/3 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
                 <option value="">Filter by rating</option>
                 <option value="1">★</option>
                 <option value="2">★★</option>
@@ -42,12 +43,20 @@
         </div>
 
         <!-- Teachers Grid -->
-        <div id="teacher-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
+        <div id="teacher-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+            <!-- Example Teacher Card -->
+            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col">
+                <h2 class="text-lg font-bold mb-2">Teacher Name</h2>
+                <p class="text-gray-600 mb-4">Subject: Math</p>
+                <div class="flex items-center mb-2">
+                    <span class="text-yellow-500">★★★★★</span>
+                </div>
+                <button class="mt-auto bg-blue-500 text-white rounded-lg py-2 hover:bg-blue-600 transition">View Profile</button>
+            </div>
+            <!-- Add more teacher cards as needed -->
         </div>
     </div>
 </main>
-
 
 
 
@@ -85,7 +94,7 @@
   
   
       <!-- Footer -->
-      <footer class="bg-gray-800 text-white py-4 shadow-md fixed bottom-0 w-full">
+      <footer style="margin-top: 60px;" class="bg-gray-800 text-white py-4 shadow-md  w-full">
         <div class="container mx-auto text-center">
             <div class="flex justify-center space-x-6 mb-4">
                 <a href="#" class="hover:text-blue-400">Privacy Policy</a>

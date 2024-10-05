@@ -101,6 +101,7 @@ form.addEventListener("submit", async (event) => {
         if (response.ok) {
             const data = await response.json();
             showSuccessAlert(data.message || "Registration successful!");
+            window.location.href = "login.html";
         } else {
             const errorData = await response.json();
             for (const [key, value] of Object.entries(errorData)) {
@@ -166,6 +167,9 @@ StudentForm.addEventListener("submit", async (event) => {
         if (response.ok) {
             const data = await response.json();
             showSuccessAlert(data.message || "Registration successful!");
+           
+                window.location.href = "login.html";
+  
         } else {
             const errorData = await response.json();
             for (const [key, value] of Object.entries(errorData)) {

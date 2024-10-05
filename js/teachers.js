@@ -69,25 +69,25 @@ function displayTeachers(teachers) {
         .then(reviews => {
             const averageRating = calculateAverageRating(reviews);
             const teacherCard = `
-                <div class="teacher-card bg-white shadow-lg rounded-lg overflow-hidden transform transition hover:-translate-y-2 hover:shadow-xl w-80 mx-auto">
-                    <div class="flex justify-center">
-                        <img src="https://res.cloudinary.com/dwsp8rft8/${teacher.image}" alt="Teacher Image" class="w-32 h-32 object-cover rounded-full transition duration-300 ease-in-out transform hover:scale-105 border-4 border-blue-300">
-                    </div>
-                    <div class="p-6 bg-gray-50">
-                        <h2 class="text-2xl text-center font-semibold text-gray-900 mb-2 hover:text-blue-600 transition duration-200">${teacher.first_name} ${teacher.last_name}</h2>
-                        <p class="text-gray-700 text-xl subject mb-4"><span class="font-bold">Subject:</span> ${teacher.subjects}</p>
-                        <p class="text-gray-700 text-xl mb-4"><span class="font-bold">Experience:</span> ${teacher.tutoring_experience} years</p>
-                        <p class="text-gray-700 text-xl mb-4"><span class="font-bold">Location:</span> ${teacher.location}</p>
-                        <p class="text-yellow-500 text-xl rating mb-4" data-rating="${averageRating}">
-                            ${'★'.repeat(averageRating)}${'☆'.repeat(5 - averageRating)}
-                            <span class="text-sm text-gray-500">(${averageRating} / 5)</span>
-                        </p>
-                        <a href="./teacher_details.html?id=${teacher.id}" class="bg-blue-500 text-xl font-semibold text-white py-2 px-4 rounded-lg shadow hover:bg-blue-600 transition duration-300 ease-in-out inline-block text-center w-full">
-    View Details
-</a>
+<div class="teacher-card bg-white shadow-lg rounded-lg overflow-hidden transform transition hover:-translate-y-2 hover:shadow-xl w-80 mx-auto">
+    <div style="padding: 8px;" class="flex justify-center">
+        <img src="https://res.cloudinary.com/dwsp8rft8/${teacher.image}" alt="Teacher Image" class="w-32 h-32 object-cover rounded-full transition duration-300 ease-in-out transform hover:scale-105 border-4 border-blue-300">
+    </div>
+    <div class="p-4 bg-gray-50"> <!-- Reduced padding -->
+        <h2 class="text-2xl text-center font-semibold text-gray-900 mb-1 hover:text-blue-600 transition duration-200">${teacher.first_name} ${teacher.last_name}</h2> <!-- Reduced margin -->
+        <p class="text-gray-700 text-xl subject mb-2"><span class="font-bold">Subject:</span> ${teacher.subjects}</p> <!-- Reduced margin -->
+        <p class="text-gray-700 text-xl mb-2"><span class="font-bold">Experience:</span> ${teacher.tutoring_experience} years</p> <!-- Reduced margin -->
+        <p class="text-gray-700 text-xl mb-2"><span class="font-bold">Location:</span> ${teacher.location}</p> <!-- Reduced margin -->
+        <p class="text-yellow-500 text-xl rating mb-2" data-rating="${averageRating}"> <!-- Reduced margin -->
+            ${'★'.repeat(averageRating)}${'☆'.repeat(5 - averageRating)}
+            <span class="text-sm text-gray-500">(${averageRating} / 5)</span>
+        </p>
+        <a href="./teacher_details.html?id=${teacher.id}" class="bg-blue-500 text-xl font-semibold text-white py-2 px-2 rounded-lg shadow hover:bg-blue-600 transition duration-300 ease-in-out inline-block text-center w-full"> <!-- Reduced padding -->
+            View Details
+        </a>
+    </div>
+</div>
 
-                    </div>
-                </div>
             `;
             container.innerHTML += teacherCard;
         })
