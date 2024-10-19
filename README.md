@@ -39,8 +39,8 @@ Open the project in your editor (e.g., Visual Studio Code).
 Now you can see the project use live server.
 ```
 ---
-
-## Authentication
+## API Endpoints
+### Authentication
 
 - **Student Login**  
   `POST` `https://tution-media-platform-backend.vercel.app/api/student/login/`
@@ -59,7 +59,7 @@ Now you can see the project use live server.
 
 ---
 
-## Student Endpoints
+### Student Endpoints
 
 - **Get Profile**  
   `GET` `https://tution-media-platform-backend.vercel.app/api/student/list/user_id`
@@ -91,7 +91,7 @@ Now you can see the project use live server.
 
 ---
 
-## Tuition API Endpoints
+### Tuition API Endpoints
 
 - **Create Tuition Post**  
   `POST` `https://tution-media-platform-backend.vercel.app/api/tuition/list/`  
@@ -111,7 +111,7 @@ Now you can see the project use live server.
 
 ---
 
-## Notes
+### Notes
 
 - Replace `user_id` and `tuitionId` in the URLs with the actual user or tuition post ID as required.
 - Ensure you handle authentication tokens properly in your requests.
