@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
 function showSuccessAlert(message, title = "Success") {
     const alertBox = document.getElementById("success-alert");
     const alertTitle = document.getElementById("success-alert-title");
@@ -65,40 +64,128 @@ const getPostDetail = () => {
         })
         .then((data) => {
             console.log(data)
-            const tuition = document.getElementById("tuition-details");
-            tuition.innerHTML = `
-             <div class="border-b pb-4 mb-6">
-            <h2 class="text-3xl font-bold text-gray-800">Tuition Details</h2>
-            <p class="text-sm text-gray-500">Posted on: ${data.created}</p>
-            </div>
+            const heading = document.getElementById("tuition_heading");
+            heading.innerHTML = `
 
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-700">
-        <div>
-        <h3 class="text-xl font-semibold mb-2">General Information</h3>
-        <p class="mb-2"><strong>Subject:</strong> <span class="text-blue-600"> ${data.subject_name} </span></p>
-        <p class="mb-2"><strong>Grade Level:</strong> <span class="text-blue-600">${data.tuition_class} </span></p>
-        <p class="mb-2"><strong>Location:</strong> <span class="text-blue-600"> ${data.location} </span></p>
-        </div>
-        <div>
-        <h3 class="text-xl font-semibold mb-2">Timing & Payment</h3>
-        <p class="mb-2"><strong>Time:</strong> <span class="text-blue-600">${data.tutoring_time} </span></p>
-        <p class="mb-2"><strong>Payment:</strong> <span class="text-blue-600">${data.salary}BDT /month</span></p>
-        </div>
-        </div
-
-
-
-        <div class="mt-6">
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Requirements</h3>
-        <ul class="list-disc list-inside space-y-2 text-gray-700">
-        <li> ${data.requirement}  </li>
-        <li>Proficiency in explaining complex concepts in a simple manner.</li>
-        <li>Availability for all mentioned time slots and days.</li>
-        </ul>
-        </div>
-            
+                        <div class="course_title">${data.title}</div>
+                          <div class="course_info d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+  
+                              <!-- Course Info Item -->
+                              <div class="course_info_item">
+                                  <div class="course_info_title">Student:</div>
+                                  <div class="course_info_text"><a href="#"> ${data.author_name}  </a></div>
+                              </div>
+  
+                              <!-- Course Info Item -->
+                              <div class="course_info_item">
+                                  <div class="course_info_title">Posted On:</div>
+                                      <div class="course_info_text"><p>${data.created}</p></div>
+                              </div>
+  
+                              <!-- Course Info Item -->
+                              <div class="course_info_item">
+                                  <div class="course_info_title">Subject:</div>
+                                  <div class="course_info_text"><a href="#">${data.subject_name}  </a></div>
+                              </div>
+  
+                          </div>
             `;
+
+            const des = document.getElementById("tuition_des");
+            des.innerHTML=`
+                    <div class="tab_panel active">
+                                      <div class="tab_panel_title">${data.title}</div>
+                                      <div class="tab_panel_content">
+                                          <div class="tab_panel_text">
+                                          ${data.description}
+                                              </p>
+                                          </div>
+                                          <div class="tab_panel_section">
+                                              <div class="tab_panel_subtitle">Requirements</div>
+                                              <ul class="tab_panel_bullets">
+                                                  <li>${data.requirement}</li>
+                                             
+                                              </ul>
+                                          </div>
+  
+                                      </div>
+                                  </div>
+            
+            
+            `
+            const info = document.getElementById("tuition_info");
+            info.innerHTML=`
+<div class="tab_panel tab_panel_2 p-4  text-white rounded">
+    <div class="tab_panel_content">
+        <h5 class="tab_panel_title mb-3">${data.title}</h5>
+        <div class="tab_panel_text">
+            <p>
+                <strong>Subject:</strong> ${data.subject_name}
+                <br>
+                <strong>Grade Level:</strong> ${data.tuition_class}
+                <br>
+                <strong>Location:</strong> ${data.location}
+            </p>
+        </div>
+    </div>
+</div>
+
+            
+            `
+            const other = document.getElementById("other");
+            other.innerHTML=`
+                <div class="tab_panel tab_panel_3 p-4 text-white rounded">
+                                      <h5 class="tab_panel_title mb-3">Tuitions Timing</h5>
+                                      <div class="tab_panel_content">
+                                          <p>
+                                              <strong>Time:</strong> ${data.tutoring_time}
+                                          </p>
+                                                  <h5 class="tab_panel_title mb-3">Tuitions Payment</h5>
+                                          <p>
+                                              <strong>Payment:</strong> ${data.salary} BDT / month
+                                          </p>
+                                      </div>
+                                  </div>
+            
+            `
+            const detail = document.getElementById("tuition_detail");
+            detail.innerHTML=`
+             <div class="sidebar_feature">
+                                  <div class="course_price">${data.salary} BDT</div>
+  
+                                  <!-- Features -->
+                                  <div class="feature_list">
+  
+                             
+                                      <!-- Feature -->
+                                      <div class="feature d-flex flex-row align-items-center justify-content-start">
+                                          <div class="feature_title"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Class:</span></div>
+                                          <div class="feature_text ml-auto">${data.tuition_class}</div>
+                                      </div>
+                                      <div class="feature d-flex flex-row align-items-center justify-content-start">
+                                          <div class="feature_title"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Time:</span></div>
+                                          <div class="feature_text ml-auto">${data.tutoring_time}</div>
+                                      </div>
+  
+                                      <!-- Feature -->
+                                      <div class="feature d-flex flex-row align-items-center justify-content-start">
+                                          <div class="feature_title"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>Subjects:</span></div>
+                                          <div class="feature_text ml-auto">${data.subject_name}</div>
+                                      </div>
+  
+                                      <!-- Feature -->
+                                      <div class="feature d-flex flex-row align-items-center justify-content-start">
+                                          <div class="feature_title"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Locations:</span></div>
+                                          <div class="feature_text ml-auto">${data.location}</div>
+                                      </div>
+  
+  
+  
+                                  </div>
+                              </div>
+            `
+
+
         })
         .catch((error) => {
             showFailureAlert("Error fetching tuition details");
@@ -107,7 +194,45 @@ const getPostDetail = () => {
 
 
 
+
+
+
+
 document.addEventListener("DOMContentLoaded", getPostDetail);
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const apiUrl = "https://tution-media-platform-backend.vercel.app/api/tuition/list";
+
+    
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const latestTuitionsContainer = document.getElementById("latest-tuitions");
+            latestTuitionsContainer.innerHTML = ''; 
+
+       
+            const latestTuitions = data.slice(0, 3);
+
+        
+            latestTuitions.forEach(tuition => {
+                const tuitionDiv = document.createElement('div');
+                tuitionDiv.className = 'latest d-flex flex-row align-items-start justify-content-start';
+
+                tuitionDiv.innerHTML = `
+                    <div class="latest_content">
+                        <div class="latest_title"><a href="tuitions_details.html?id=${tuition.id}">${tuition.title}</a></div>
+                        <div class="latest_price">${tuition.salary} BDT</div>
+                    </div>
+                `;
+
+                latestTuitionsContainer.appendChild(tuitionDiv);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

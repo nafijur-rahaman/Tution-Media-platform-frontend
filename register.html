@@ -1,23 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuition Media -register</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="/images/fav.png">
-    <link rel="stylesheet" href="./css/style.css">
+<title>About</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Unicat project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/index.css">
+<link rel="stylesheet" type="text/css" href="styles/about.css">
+<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body>
 
-    <!-- Navigation Bar -->
+  
+      <!-- Header -->
 
-<nav id="navbar" class="bg-gray-800 text-white py-4 shadow-md">
+      <header class="header">
+        <!-- Top Bar -->
+        <div class="top_bar">
+          <div class="top_bar_container">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div
+                    class="top_bar_content d-flex flex-row align-items-center justify-content-start"
+                  >
+                    <ul class="top_bar_contact_list">
+                      <li><div class="question">Have any questions?</div></li>
+                      <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <div>+8801626681291</div>
+                      </li>
+                      <li>
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <div>tanjidnafis@gmail.com</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<nav id="navbar">
+       
+        
+    </nav>
+    </header>
 
-</nav>
+      <style>
 
+      .tutor-button {
+        background-color: #14bdee; /* Initial color for Tutor button */
+    }
+    .student-button {
+        background-color: #0056b3; /* Initial color for Student button */
+    }
+    .active-tutor {
+        background-color: #14bdee;
+        color: white;
+    }
+    .active-student {
+        background-color: #0056b3;
+        color: white;
+    }
+    </style>
+	<!-- Home -->
+
+	<div class="home">
+		<div class="breadcrumbs_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="breadcrumbs">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>Login</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</div>
 
 
 
@@ -30,121 +99,130 @@
 <section class="bg-gray-200 py-8">
     <div class="container mx-auto px-6">
         <h2 class="text-3xl font-bold text-center mb-12">Join Our Tuition Media Platform</h2>
-        <div class="flex justify-center mb-8">
-            <button id="showTutorForm" class="px-8 py-3 text-xl font-bold bg-blue-600 text-white rounded hover:bg-blue-700 transition duration-300 shadow-md">Tutor Registration</button>
-            <button id="showStudentForm" class="px-8 py-3 text-xl font-bold bg-green-600 text-white rounded hover:bg-green-700 transition duration-300 shadow-md ml-4">Student Registration</button>
+        <div class="flex flex-col md:flex-row justify-center mb-8">
+            <!-- Tutor Registration Button -->
+            <button id="showTutorForm" class="w-full md:w-auto px-8 py-3 text-xl font-bold text-white rounded transition duration-300 shadow-md mt-4 md:mt-0 md:ml-4 tutor-button active-tutor">
+                Tutor Registration
+            </button>
+            
+            <!-- Student Registration Button -->
+            <button id="showStudentForm" class="w-full md:w-auto px-8 py-3 text-xl font-bold text-white rounded transition duration-300 shadow-md mt-4 md:mt-0 md:ml-4 student-button">
+                Student Registration
+            </button>
         </div>
+        
         <div class="flex justify-center">
             <div class="w-full max-w-3xl">
                 <!-- Tutor Registration Form -->
-                <div id="tutorForm" class="container mx-auto max-w-full bg-white rounded-lg shadow-lg p-8">
-                    <header class="text-2xl font-semibold text-gray-800 mb-6">Tutor Registration</header>
-                    <form id="registration-form" class="relative">
-                        <div class="form first transition-transform duration-300 ease-in-out">
-                            <div class="details personal mb-8">
-                                <span class="block text-lg font-medium text-gray-700 mb-4">Personal Details</span>
-                                <div class="flex flex-wrap -mx-2">
-                                    <!-- Username -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Username</label>
-                                        <input type="text" name="username" placeholder="Enter your username" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- First Name -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">First Name</label>
-                                        <input type="text" name="first_name" placeholder="Enter your first name" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Last Name -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Last Name</label>
-                                        <input type="text" name="last_name" placeholder="Enter your last name" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Email -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Email</label>
-                                        <input type="email" name="email" placeholder="Enter your email" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Password -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Password</label>
-                                        <input type="password" name="password" placeholder="Enter your password" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Confirm Password -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Confirm Password</label>
-                                        <input type="password" name="confirm_password" placeholder="Confirm your password" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Profile Image -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Profile Image</label>
-                                        <input type="file" name="image" accept="image/*" class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Mobile Number -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Mobile Number</label>
-                                        <input type="tel" name="phone_number" placeholder="Enter mobile number" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Gender -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Gender</label>
-                                        <select name="gender" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                            <option value="" disabled selected>Select gender</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                        </select>
-                                    </div>
-                                    <!-- Education -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Education</label>
-                                        <input type="text" name="education" placeholder="Enter your education" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Designation -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Designation</label>
-                                        <input type="text" name="designation" placeholder="Enter your designation" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Location -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Location</label>
-                                        <input type="text" name="location" placeholder="Enter your location" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Salary -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Salary</label>
-                                        <input type="number" name="salary" placeholder="Enter your expected salary" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Tutoring Experience -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Tutoring Experience (Years)</label>
-                                        <input type="number" name="tutoring_experience" placeholder="Enter tutoring experience" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Subject -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Subjects</label>
-                                        <input type="text" name="subjects" placeholder="Enter your subject" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                    </div>
-                                    <!-- Medium of Instruction -->
-                                    <div class="input-field w-1/2 px-2 mb-4">
-                                        <label class="text-sm font-medium text-gray-600">Medium of Instruction</label>
-                                        <select name="medium_of_instruction" class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
-                                            <option value="" disabled selected>Select medium</option>
-                                            <option>Bangla</option>
-                                            <option>English</option>
-                                            <!-- Add more medium options here -->
-                                        </select>
-                                    </div>
-                                </div>
-                                <!-- Submit Button -->
-                                <div class="mt-6 flex justify-end">
-                                    <button type="submit" class="px-6 py-3 bg-blue-600 text-white text-xl font-semibold rounded hover:bg-blue-700 transition">Register</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <div id="loader-overlay" class="flex">
-                        <div class="loader"></div>
+                <div id="tutorForm" class="container mx-auto max-w-full bg-white rounded-lg shadow-lg p-4 max-h-[600px] overflow-y-auto">
+    <header class="text-2xl font-semibold text-gray-800 mb-4">Tutor Registration</header>
+    <form id="registration-form" class="relative">
+        <div class="form first transition-transform duration-300 ease-in-out">
+            <div class="details personal mb-4">
+                <span class="block text-lg font-medium text-gray-700 mb-2">Personal Details</span>
+                <div class="flex flex-wrap -mx-2">
+                    <!-- Username -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Username</label>
+                        <input type="text" name="username" placeholder="Enter your username" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- First Name -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">First Name</label>
+                        <input type="text" name="first_name" placeholder="Enter your first name" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Last Name -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Last Name</label>
+                        <input type="text" name="last_name" placeholder="Enter your last name" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Email -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Email</label>
+                        <input type="email" name="email" placeholder="Enter your email" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Password -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Password</label>
+                        <input type="password" name="password" placeholder="Enter your password" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Confirm Password -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Confirm Password</label>
+                        <input type="password" name="confirm_password" placeholder="Confirm your password" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Profile Image -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Profile Image</label>
+                        <input type="file" name="image" accept="image/*" class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Mobile Number -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Mobile Number</label>
+                        <input type="tel" name="phone_number" placeholder="Enter mobile number" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Gender -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Gender</label>
+                        <select name="gender" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                            <option value="" disabled selected>Select gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                    <!-- Education -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Education</label>
+                        <input type="text" name="education" placeholder="Enter your education" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Designation -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Designation</label>
+                        <input type="text" name="designation" placeholder="Enter your designation" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Location -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Location</label>
+                        <input type="text" name="location" placeholder="Enter your location" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Salary -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Salary</label>
+                        <input type="number" name="salary" placeholder="Enter your expected salary" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Tutoring Experience -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Tutoring Experience (Years)</label>
+                        <input type="number" name="tutoring_experience" placeholder="Enter tutoring experience" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Subject -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Subjects</label>
+                        <input type="text" name="subjects" placeholder="Enter your subject" required class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                    </div>
+                    <!-- Medium of Instruction -->
+                    <div class="input-field w-1/2 px-2 mb-2">
+                        <label class="text-sm font-medium text-gray-600">Medium of Instruction</label>
+                        <select name="medium_of_instruction" class="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400">
+                            <option value="" disabled selected>Select medium</option>
+                            <option>Bangla</option>
+                            <option>English</option>
+                            <!-- Add more medium options here -->
+                        </select>
                     </div>
                 </div>
+                <!-- Submit Button -->
+                <div class="mt-4 flex justify-end">
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white text-lg font-semibold rounded hover:bg-blue-700 transition">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="loader-overlay" class="flex">
+        <div class="loader"></div>
+    </div>
+</div>
+
 
 <!-- Student Registration Form -->
 <div id="studentForm" class="container mx-auto max-w-full bg-white rounded-lg shadow-lg p-8 hidden">
@@ -157,47 +235,47 @@
                     <!-- Username -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Username</label>
-                        <input type="text" name="username" placeholder="Enter your username" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400">
+                        <input type="text" name="username" placeholder="Enter your username" required class="block w-full p-3 border border-gray-400 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
                     </div>
                     <!-- First Name -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">First Name</label>
-                        <input type="text" name="first_name" placeholder="Enter your first name" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400">
+                        <input type="text" name="first_name" placeholder="Enter your first name" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
                     </div>
                     <!-- Last Name -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Last Name</label>
-                        <input type="text" name="last_name" placeholder="Enter your last name" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400">
+                        <input type="text" name="last_name" placeholder="Enter your last name" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
                     </div>
                     <!-- Email -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Email</label>
-                        <input type="email" name="email" placeholder="Enter your email" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400">
+                        <input type="email" name="email" placeholder="Enter your email" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
                     </div>
                     <!-- Password -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Password</label>
-                        <input type="password" name="password" placeholder="Enter your password" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400">
+                        <input type="password" name="password" placeholder="Enter your password" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
                     </div>
                     <!-- Confirm Password -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Confirm Password</label>
-                        <input type="password" name="confirm_password" placeholder="Confirm your password" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400">
+                        <input type="password" name="confirm_password" placeholder="Confirm your password" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
                     </div>
                     <!-- Profile Image -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Profile Image</label>
-                        <input type="file" name="image" accept="image/*" class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400">
+                        <input type="file" name="image" accept="image/*" class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
                     </div>
                     <!-- Mobile Number -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Mobile Number</label>
-                        <input type="tel" name="phone_number" placeholder="Enter mobile number" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400">
+                        <input type="tel" name="phone_number" placeholder="Enter mobile number" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
                     </div>
                     <!-- Gender -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Gender</label>
-                        <select name="gender" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400">
+                        <select name="gender" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
                             <option value="" disabled selected>Select gender</option>
                             <option>Male</option>
                             <option>Female</option>
@@ -206,20 +284,21 @@
                     <!-- Location -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Location</label>
-                        <input type="text" name="location" placeholder="Enter your location" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-400">
+                        <input type="text" name="location" placeholder="Enter your location" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
                     </div>
                 </div>
                 <!-- Submit Button -->
                 <div class="mt-6 flex justify-end">
-                    <button type="submit" class="px-6 py-3 bg-green-600 text-white text-xl font-semibold rounded hover:bg-green-700 transition">Register</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white text-lg font-semibold rounded hover:bg-blue-700 transition">Register</button>
                 </div>
             </div>
         </div>
     </form>
-    <div id="loader-overlay" class="flex">
-        <div class="loader">loading</div>
+    <div id="loader-overlay" class="flex hidden">
+        <div class="loader">Loading...</div>
     </div>
 </div>
+
 
 </section>
 
@@ -245,52 +324,157 @@
 
 
 
-<!-- Success Alert Box -->
-<div id="success-alert" class="fixed top-5 right-5 max-w-xs bg-green-100 text-green-800 p-4 rounded-lg shadow-md border border-green-200 hidden">
-    <div class="flex items-center">
-        <div class="flex-1">
-            <h3 id="success-alert-title" class="text-lg font-semibold mb-2">Success</h3>
-            <p id="success-alert-message" class="text-sm">This is a success message.</p>
-        </div>
-        <button id="close-success-alert" class="ml-4 text-green-600 hover:text-green-900 focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-    </div>
-  </div>
+
   
-  <!-- Failure Alert Box -->
-  <div id="failure-alert" class="fixed top-5 right-5 max-w-xs bg-red-100 text-red-800 p-4 rounded-lg shadow-md border border-red-200 hidden">
-    <div class="flex items-center">
-        <div class="flex-1">
-            <h3 id="failure-alert-title" class="text-lg font-semibold mb-2">Failure</h3>
-            <p id="failure-alert-message" class="text-sm">This is a failure message.</p>
-        </div>
-        <button id="close-failure-alert" class="ml-4 text-red-600 hover:text-red-900 focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
-    </div>
-  </div>
-  
-  
-      <!-- Footer -->
-      <footer class="bg-gray-800 text-white py-8 mt-20">
-        <div class="container mx-auto text-center">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="#" class="hover:text-blue-400">Privacy Policy</a>
-                <a href="#" class="hover:text-blue-400">Terms of Service</a>
-                <a href="#" class="hover:text-blue-400">FAQs</a>
+     <!-- Footer -->
+
+     <footer class="footer">
+        <div
+          class="footer_background"
+          style="background-image: url(images/footer_background.png)"
+        ></div>
+        <div class="container">
+          <div class="row footer_row">
+            <div class="col">
+              <div class="footer_content">
+                <div class="row">
+                  <div class="col-lg-3 footer_col">
+                    <!-- Footer About -->
+                    <div class="footer_section footer_about">
+                      <div class="footer_logo_container">
+                        <a href="index.html">
+                          <div class="footer_logo_text">
+                            Tuition<span>Platform</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="footer_about_text">
+                        <p>
+                          Lorem ipsum dolor sit ametium, consectetur adipiscing
+                          elit.
+                        </p>
+                      </div>
+                      <div class="footer_social">
+                        <ul>
+                          <li>
+                            <a href="#"
+                              ><i class="fa fa-facebook" aria-hidden="true"></i
+                            ></a>
+                          </li>
+                          <li>
+                            <a href="#"
+                              ><i
+                                class="fa fa-google-plus"
+                                aria-hidden="true"
+                              ></i
+                            ></a>
+                          </li>
+                          <li>
+                            <a href="#"
+                              ><i class="fa fa-instagram" aria-hidden="true"></i
+                            ></a>
+                          </li>
+                          <li>
+                            <a href="#"
+                              ><i class="fa fa-twitter" aria-hidden="true"></i
+                            ></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 footer_col">
+                    <!-- Footer Contact -->
+                    <div class="footer_section footer_contact">
+                      <div class="footer_title">Contact Us</div>
+                      <div class="footer_contact_info">
+                        <ul>
+                          <li>Email: tanjidnafis@gmail.com</li>
+                          <li>Phone: +8801626681291</li>
+                          <li>14 no. road rupnagar, Dhaka</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 footer_col">
+                    <!-- Footer links -->
+                    <div class="footer_section footer_links">
+                      <div class="footer_title">Contact Us</div>
+                      <div class="footer_links_container">
+                        <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="about.html">About</a></li>
+                          <li><a href="contact.html">Contact</a></li>
+                          <li><a href="courses.html">Tuitions</a></li>
+                          <li><a href="courses.html">Teachers</a></li>
+                          <li><a href="#">FAQs</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 footer_col clearfix">
+                    <!-- Footer links -->
+                    <div class="footer_section footer_mobile">
+                      <div class="footer_title">Mobile</div>
+                      <div class="footer_mobile_content">
+                        <div class="footer_image">
+                          <a href="#"
+                            ><img src="images/mobile_1.png" alt=""
+                          /></a>
+                        </div>
+                        <div class="footer_image">
+                          <a href="#"
+                            ><img src="images/mobile_2.png" alt=""
+                          /></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p>&copy; 2024 TuitionMedia. All rights reserved.</p>
-            <div class="mt-4">
-                <a href="mailto:info@tuitionmedia.com" class="hover:underline">info@tuitionmedia.com</a>
+          </div>
+
+          <div class="row copyright_row">
+            <div class="col">
+              <div
+                class="copyright d-flex flex-lg-row flex-column align-items-center justify-content-start"
+              >
+                <div class="cr_text">
+                  Copyright &copy;
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  All rights reserved
+                </div>
+                <div class="ml-lg-auto cr_links">
+                  <ul class="cr_list">
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
-  
+      </footer>
+   
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap4/popper.js"></script>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="plugins/greensock/TweenMax.min.js"></script>
+    <script src="plugins/greensock/TimelineMax.min.js"></script>
+    <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="plugins/greensock/animation.gsap.min.js"></script>
+    <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="js/custom.js"></script>
     <script src="./js/home.js"></script>
     <script src="./js/register.js"></script>
     <script src="./js/logout.js"></script>

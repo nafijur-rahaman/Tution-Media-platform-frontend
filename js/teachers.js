@@ -1,42 +1,42 @@
-function showSuccessAlert(message, title = "Success") {
-    const alertBox = document.getElementById("success-alert");
-    const alertTitle = document.getElementById("success-alert-title");
-    const alertMessage = document.getElementById("success-alert-message");
+// function showSuccessAlert(message, title = "Success") {
+//     const alertBox = document.getElementById("success-alert");
+//     const alertTitle = document.getElementById("success-alert-title");
+//     const alertMessage = document.getElementById("success-alert-message");
   
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
+//     alertTitle.innerText = title;
+//     alertMessage.innerText = message;
   
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
+//     alertBox.classList.remove("hidden");
+//     alertBox.classList.add("flex");
   
-    setTimeout(() => {
-      alertBox.classList.add("hidden");
-    }, 5000);
-  }
+//     setTimeout(() => {
+//       alertBox.classList.add("hidden");
+//     }, 5000);
+//   }
   
-  function showFailureAlert(message, title = "Failure") {
-    const alertBox = document.getElementById("failure-alert");
-    const alertTitle = document.getElementById("failure-alert-title");
-    const alertMessage = document.getElementById("failure-alert-message");
+//   function showFailureAlert(message, title = "Failure") {
+//     const alertBox = document.getElementById("failure-alert");
+//     const alertTitle = document.getElementById("failure-alert-title");
+//     const alertMessage = document.getElementById("failure-alert-message");
   
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
+//     alertTitle.innerText = title;
+//     alertMessage.innerText = message;
   
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
+//     alertBox.classList.remove("hidden");
+//     alertBox.classList.add("flex");
   
-    setTimeout(() => {
-      alertBox.classList.add("hidden");
-    }, 5000);
-  }
+//     setTimeout(() => {
+//       alertBox.classList.add("hidden");
+//     }, 5000);
+//   }
   
-  document.getElementById("close-success-alert").addEventListener("click", () => {
-    document.getElementById("success-alert").classList.add("hidden");
-  });
+//   document.getElementById("close-success-alert").addEventListener("click", () => {
+//     document.getElementById("success-alert").classList.add("hidden");
+//   });
   
-  document.getElementById("close-failure-alert").addEventListener("click", () => {
-    document.getElementById("failure-alert").classList.add("hidden");
-  });
+//   document.getElementById("close-failure-alert").addEventListener("click", () => {
+//     document.getElementById("failure-alert").classList.add("hidden");
+//   });
   
   document.addEventListener('DOMContentLoaded', function () {
     fetch('https://tution-media-platform-backend.vercel.app/api/tutor/list/')
@@ -53,8 +53,9 @@ function showSuccessAlert(message, title = "Success") {
     .catch(error => showFailureAlert(error));
 });
 
+
+
 function displayTeachers(teachers) {
-    // console.log(teachers)
     const container = document.getElementById('teacher-container');
     container.innerHTML = ''; 
 
@@ -69,31 +70,28 @@ function displayTeachers(teachers) {
         .then(reviews => {
             const averageRating = calculateAverageRating(reviews);
             const teacherCard = `
-<div class="teacher-card bg-white shadow-lg rounded-lg overflow-hidden transform transition hover:-translate-y-2 hover:shadow-xl w-80 mx-auto">
-    <div style="padding: 8px;" class="flex justify-center">
-        <img src="https://res.cloudinary.com/dwsp8rft8/${teacher.image}" alt="Teacher Image" class="w-32 h-32 object-cover rounded-full transition duration-300 ease-in-out transform hover:scale-105 border-4 border-blue-300">
-    </div>
-    <div class="p-4 bg-gray-50"> <!-- Reduced padding -->
-        <h2 class="text-2xl text-center font-semibold text-gray-900 mb-1 hover:text-blue-600 transition duration-200">${teacher.first_name} ${teacher.last_name}</h2> <!-- Reduced margin -->
-        <p class="text-gray-700 text-xl subject mb-2"><span class="font-bold">Subject:</span> ${teacher.subjects}</p> <!-- Reduced margin -->
-        <p class="text-gray-700 text-xl mb-2"><span class="font-bold">Experience:</span> ${teacher.tutoring_experience} years</p> <!-- Reduced margin -->
-        <p class="text-gray-700 text-xl mb-2"><span class="font-bold">Location:</span> ${teacher.location}</p> <!-- Reduced margin -->
-        <p class="text-yellow-500 text-xl rating mb-2" data-rating="${averageRating}"> <!-- Reduced margin -->
-            ${'★'.repeat(averageRating)}${'☆'.repeat(5 - averageRating)}
-            <span class="text-sm text-gray-500">(${averageRating} / 5)</span>
-        </p>
-        <a href="./teacher_details.html?id=${teacher.id}" class="bg-blue-500 text-xl font-semibold text-white py-2 px-2 rounded-lg shadow hover:bg-blue-600 transition duration-300 ease-in-out inline-block text-center w-full"> <!-- Reduced padding -->
-            View Details
-        </a>
-    </div>
-</div>
-
+                <div class="col-lg-3 teacher-card col-md-6 team_col" data-subject="${teacher.subjects.toLowerCase()}" data-rating="${averageRating}">
+                    <div class="team_item">
+                        <div class="team_image">
+                            <img src="https://res.cloudinary.com/dwsp8rft8/${teacher.image}" alt="teacher_image">
+                        </div>
+                        <div class="team_body">
+                            <div class="team_title"><a href="./teacher_details.html?id=${teacher.id}">${teacher.first_name} ${teacher.last_name}</a></div>
+                            <div class="team_subtitle">${teacher.subjects}</div>
+                            <p class="text-warning fs-5 rating mb-2">
+                                ${'★'.repeat(averageRating)}${'☆'.repeat(5 - averageRating)}
+                                <span class="small text-muted">(${averageRating} / 5)</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             `;
             container.innerHTML += teacherCard;
         })
         .catch(error => showFailureAlert(error));
     });
 }
+
 
 function calculateAverageRating(reviews) {
     if (reviews.length === 0) return 0;
@@ -112,17 +110,16 @@ function filterTeachers() {
     const teacherCards = document.querySelectorAll('.teacher-card');
 
     teacherCards.forEach(card => {
-        const subject = card.querySelector('.subject').textContent.toLowerCase();
-        const rating = card.querySelector('.rating').dataset.rating;
+        const subject = card.getAttribute('data-subject');
+        const rating = card.getAttribute('data-rating');
 
-   
         const subjectMatches = subject.includes(subjectFilter);
         const ratingMatches = (!ratingFilter || rating >= ratingFilter);
 
         if (subjectMatches && ratingMatches) {
-            card.classList.remove('hidden');
+            card.classList.remove('d-none');
         } else {
-            card.classList.add('hidden');
+            card.classList.add('d-none');
         }
     });
 }

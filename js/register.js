@@ -1,58 +1,24 @@
-function showSuccessAlert(message, title = "Success") {
-    const alertBox = document.getElementById("success-alert");
-    const alertTitle = document.getElementById("success-alert-title");
-    const alertMessage = document.getElementById("success-alert-message");
-  
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
-  
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
-  
-    setTimeout(() => {
-      alertBox.classList.add("hidden");
-    }, 5000);
-  }
-  
-  function showFailureAlert(message, title = "Failure") {
-    const alertBox = document.getElementById("failure-alert");
-    const alertTitle = document.getElementById("failure-alert-title");
-    const alertMessage = document.getElementById("failure-alert-message");
-  
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
-  
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
-  
-    setTimeout(() => {
-      alertBox.classList.add("hidden");
-    }, 5000);
-  }
-  
-  document.getElementById("close-success-alert").addEventListener("click", () => {
-    document.getElementById("success-alert").classList.add("hidden");
-  });
-  
-  document.getElementById("close-failure-alert").addEventListener("click", () => {
-    document.getElementById("failure-alert").classList.add("hidden");
-  });
 
 
 
- document.getElementById('showTutorForm').addEventListener('click', function() {
+document.getElementById('showTutorForm').addEventListener('click', function() {
     document.getElementById('tutorForm').classList.remove('hidden');
     document.getElementById('studentForm').classList.add('hidden');
-    document.getElementById('showTutorForm').classList.add('bg-blue-600', 'text-white');
-    document.getElementById('showStudentForm').classList.remove('bg-green-600', 'text-white');
+    
+    // Apply active styles to the Tutor button, remove from Student button
+    document.getElementById('showTutorForm').classList.add('active-tutor');
+    document.getElementById('showStudentForm').classList.remove('active-student');
 });
 
 document.getElementById('showStudentForm').addEventListener('click', function() {
     document.getElementById('studentForm').classList.remove('hidden');
     document.getElementById('tutorForm').classList.add('hidden');
-    document.getElementById('showStudentForm').classList.add('bg-green-600', 'text-white');
-    document.getElementById('showTutorForm').classList.remove('bg-blue-600', 'text-white');
+    
+    // Apply active styles to the Student button, remove from Tutor button
+    document.getElementById('showStudentForm').classList.add('active-student');
+    document.getElementById('showTutorForm').classList.remove('active-tutor');
 });
+
 const form = document.getElementById("registration-form");
 const loaderOverlay = document.getElementById("loader-overlay");
 

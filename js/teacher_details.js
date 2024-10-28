@@ -58,7 +58,7 @@ const getTutorDetails = () => {
         <img src="https://res.cloudinary.com/dwsp8rft8/${data.image}" alt="Teacher Image" class="w-24 h-24 rounded-full mr-6">
         <div>
             <h1 class="text-2xl font-semibold">${data.first_name}${data.last_name} </h1>
-            <p class="text-gray-600">Subject: ${data.subject_name}</p>
+            <p class="text-gray-600">Subject: ${data.subjects}</p>
             <p class="text-gray-600">Location: ${data.location} </p>
         </div>
     </div>
@@ -68,8 +68,8 @@ const getTutorDetails = () => {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-gray-50 p-4 rounded-lg">
                 <h3 class="font-semibold">Contact Information</h3>
-                <p>Email: ${data.email} </p>
-                <p>Phone: ${data.phone_number} </p>
+                <span style="margin-top: 50px;">Email: ${data.email} </span> </br>
+                <span>Phone: ${data.phone_number} </span>
             </div>
             <div class="bg-gray-50 p-4 rounded-lg">
                 <h3 class="font-semibold">Experience</h3>
