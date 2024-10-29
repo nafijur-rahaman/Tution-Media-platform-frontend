@@ -19,7 +19,54 @@
 <link rel="stylesheet" type="text/css" href="styles/index.css">
 <link rel="stylesheet" type="text/css" href="styles/about.css">
 <link rel="stylesheet" type="text/css" href="styles/about_responsive.css">
+  <style>
+    .btn-custom {
+      background-color: #14bdee;
+      border-color: #14bdee;
+      color: white;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .btn-custom:hover {
+      background-color: #119bcb; /* Darker shade for hover */
+      border-color: #119bcb;
+  }
+  
+    .hover-effect {
+        background-color: #14bdee;
+        transition: background-color 0.2s ease-in-out;
+    }
+    
+    .hover-effect:hover {
+        background-color: #0ea5e9; /* Darker shade for hover */
+    }
 
+
+    .form-control {
+      display: block;
+      width: 100%;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      color: #495057;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      box-sizing: border-box;
+    }
+    
+    .form-control:focus {
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    }
+    
+    .form-control:disabled, .form-control[readonly] {
+      background-color: #e9ecef;
+      opacity: 1;
+    }
+    
+    
+</style>
 </head>
 <body>
 
@@ -58,29 +105,7 @@
 </nav>
 </header>
 
-  <style>
-    .btn-custom {
-      background-color: #14bdee;
-      border-color: #14bdee;
-      color: white;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-  
-  .btn-custom:hover {
-      background-color: #119bcb; /* Darker shade for hover */
-      border-color: #119bcb;
-  }
-  
-    .hover-effect {
-        background-color: #14bdee;
-        transition: background-color 0.2s ease-in-out;
-    }
-    
-    .hover-effect:hover {
-        background-color: #0ea5e9; /* Darker shade for hover */
-    }
-    
-</style>
+
 <!-- Home -->
 
 <div class="home">
@@ -104,7 +129,7 @@
 <div class="container my-4">
   <div class="row">
       <div class="col-lg-4 mb-4">
-          <div id="student_details" class="bg-white p-4 rounded shadow">
+          <div id="student_details" class="bg-white p-4 rounded shadow-lg border">
               <!-- Student details will be populated here -->
           </div>
       </div>
