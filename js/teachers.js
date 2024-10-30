@@ -1,4 +1,4 @@
-// function showSuccessAlert(message, title = "Success") {
+// function alert(message, title = "Success") {
 //     const alertBox = document.getElementById("success-alert");
 //     const alertTitle = document.getElementById("success-alert-title");
 //     const alertMessage = document.getElementById("success-alert-message");
@@ -14,7 +14,7 @@
 //     }, 5000);
 //   }
   
-//   function showFailureAlert(message, title = "Failure") {
+//   function alert(message, title = "Failure") {
 //     const alertBox = document.getElementById("failure-alert");
 //     const alertTitle = document.getElementById("failure-alert-title");
 //     const alertMessage = document.getElementById("failure-alert-message");
@@ -50,7 +50,7 @@
         const tutors = data;
         displayTeachers(tutors);
     })
-    .catch(error => showFailureAlert(error));
+    .catch(error => alert(error));
 });
 
 
@@ -88,7 +88,7 @@ function displayTeachers(teachers) {
             `;
             container.innerHTML += teacherCard;
         })
-        .catch(error => showFailureAlert(error));
+        .catch(error => alert(error));
     });
 }
 

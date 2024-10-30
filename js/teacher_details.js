@@ -1,4 +1,4 @@
-function showSuccessAlert(message, title = "Success") {
+function alert(message, title = "Success") {
     const alertBox = document.getElementById("success-alert");
     const alertTitle = document.getElementById("success-alert-title");
     const alertMessage = document.getElementById("success-alert-message");
@@ -14,7 +14,7 @@ function showSuccessAlert(message, title = "Success") {
     }, 5000);
   }
   
-  function showFailureAlert(message, title = "Failure") {
+  function alert(message, title = "Failure") {
     const alertBox = document.getElementById("failure-alert");
     const alertTitle = document.getElementById("failure-alert-title");
     const alertMessage = document.getElementById("failure-alert-message");
@@ -68,13 +68,14 @@ const getTutorDetails = () => {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-gray-50 p-4 rounded-lg">
                 <h3 class="font-semibold">Contact Information</h3>
-                <span style="margin-top: 50px;">Email: ${data.email} </span> </br>
-                <span>Phone: ${data.phone_number} </span>
+                <span style="color:black;"> <span class="font-semibold"> Email: </span>  ${data.email} </span> </br>
+                <span style="color:black;"> <span class="font-semibold"> Phone: </span> ${data.phone_number} </span>
             </div>
             <div class="bg-gray-50 p-4 rounded-lg">
                 <h3 class="font-semibold">Experience</h3>
-                <p>Years of Experience: ${data.tutoring_experience}</p>
-                <p>Medium of Instruction: English</p>
+                <span style="color:black;"> <span class="font-semibold">Years of Experience:</span> ${data.tutoring_experience}</span> 
+                </br>
+                <span style="color:black;"><span class="font-semibold"> Medium of Instruction: </span> ${data.medium_of_instruction}</span>
             </div>
             <div class="bg-gray-50 p-4 rounded-lg">
                 <h3 class="font-semibold">Education</h3>
@@ -138,16 +139,16 @@ function submitReview(event) {
     .then(response => response.json())
     .then(data => {
         if (data.id) {
-            showSuccessAlert('Review submitted successfully!');
+            alert('Review submitted successfully!');
             document.getElementById('reviewForm').reset();
             fetchReviews()
         } else {
-            showFailureAlert('Failed to submit review. Please try again.');
+            alert('Failed to submit review. Please try again.');
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        showFailureAlert('An error occurred while submitting your review.');
+        alert('An error occurred while submitting your review.');
     });
 }
 
@@ -188,7 +189,7 @@ function fetchReviews() {
     })
     .catch(error => {
         console.error('Error:', error);
-        showFailureAlert('An error occurred while fetching reviews.');
+        alert('An error occurred while fetching reviews.');
     });
 }
 

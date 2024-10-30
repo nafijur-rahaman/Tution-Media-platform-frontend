@@ -1,3 +1,8 @@
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const studentToken = localStorage.getItem('student_token');
     const applyButtonContainer = document.getElementById('applyButton');
@@ -7,45 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function showSuccessAlert(message, title = "Success") {
-    const alertBox = document.getElementById("success-alert");
-    const alertTitle = document.getElementById("success-alert-title");
-    const alertMessage = document.getElementById("success-alert-message");
 
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
-
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
-
-    setTimeout(() => {
-        alertBox.classList.add("hidden");
-    }, 5000);
-}
-
-function showFailureAlert(message, title = "Failure") {
-    const alertBox = document.getElementById("failure-alert");
-    const alertTitle = document.getElementById("failure-alert-title");
-    const alertMessage = document.getElementById("failure-alert-message");
-
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
-
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
-
-    setTimeout(() => {
-        alertBox.classList.add("hidden");
-    }, 5000);
-}
-
-document.getElementById("close-success-alert").addEventListener("click", () => {
-    document.getElementById("success-alert").classList.add("hidden");
-});
-
-document.getElementById("close-failure-alert").addEventListener("click", () => {
-    document.getElementById("failure-alert").classList.add("hidden");
-});
 
 const getQueryParams = (param) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -63,29 +30,29 @@ const getPostDetail = () => {
             return res.json();
         })
         .then((data) => {
-            console.log(data)
+            // console.log(data)
             const heading = document.getElementById("tuition_heading");
             heading.innerHTML = `
 
-                        <div class="course_title">${data.title}</div>
-                          <div class="course_info d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+                        <div class="tuitions_title">${data.title}</div>
+                          <div class="tuitions_info d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
   
-                              <!-- Course Info Item -->
-                              <div class="course_info_item">
-                                  <div class="course_info_title">Student:</div>
-                                  <div class="course_info_text"><a href="#"> ${data.author_name}  </a></div>
+                              <!-- tuitions Info Item -->
+                              <div class="tuitions_info_item">
+                                  <div class="tuitions_info_title">Student:</div>
+                                  <div class="tuitions_info_text"><a href="#"> ${data.author_name}  </a></div>
                               </div>
   
-                              <!-- Course Info Item -->
-                              <div class="course_info_item">
-                                  <div class="course_info_title">Posted On:</div>
-                                      <div class="course_info_text"><p>${data.created}</p></div>
+                              <!-- tuitions Info Item -->
+                              <div class="tuitions_info_item">
+                                  <div class="tuitions_info_title">Posted On:</div>
+                                      <div class="tuitions_info_text"><p>${data.created}</p></div>
                               </div>
   
-                              <!-- Course Info Item -->
-                              <div class="course_info_item">
-                                  <div class="course_info_title">Subject:</div>
-                                  <div class="course_info_text"><a href="#">${data.subject_name}  </a></div>
+                              <!-- tuitions Info Item -->
+                              <div class="tuitions_info_item">
+                                  <div class="tuitions_info_title">Subject:</div>
+                                  <div class="tuitions_info_text"><a href="#">${data.subject_name}  </a></div>
                               </div>
   
                           </div>
@@ -151,7 +118,7 @@ const getPostDetail = () => {
             const detail = document.getElementById("tuition_detail");
             detail.innerHTML=`
              <div class="sidebar_feature">
-                                  <div class="course_price">${data.salary} BDT</div>
+                                  <div class="tuitions_price">${data.salary} BDT</div>
   
                                   <!-- Features -->
                                   <div class="feature_list">
@@ -188,7 +155,7 @@ const getPostDetail = () => {
 
         })
         .catch((error) => {
-            showFailureAlert("Error fetching tuition details");
+            alert("Error fetching tuition details");
         });
 };
 
@@ -245,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyButton.addEventListener('click', () => {
         if (!user_id) {
-            showFailureAlert('You must be logged in to apply for tuition.');
+            alert('You must be logged in to apply for tuition.');
             return;
         }
 
@@ -265,20 +232,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
 
                 if (hasApplied) {
-                    showFailureAlert('You have already applied for this tuition.');
+                    alert('You have already applied for this tuition.');
                 } else {
                     applyModal.classList.remove('hidden');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                showFailureAlert('An error occurred while checking your application status. Please try again.');
+                alert('An error occurred while checking your application status. Please try again.');
             });
     });
-
+if(closeModal){
     closeModal.addEventListener('click', () => {
         applyModal.classList.add('hidden');
     });
+}
+
 
     applyForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -305,15 +274,172 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(result => {
-            showSuccessAlert('Application submitted successfully!');
+            alert('Application submitted successfully!');
             applyModal.classList.add('hidden');
             applyForm.reset();
         })
         .catch(error => {
             console.error('Error:', error);
-            showFailureAlert('An error occurred while submitting your application. Please try again.');
+            alert('An error occurred while submitting your application. Please try again.');
         });
     });
 });
 
+
+
+
+// page functionality
+
+
+
+$(document).ready(function()
+{
+	"use strict";
+
+	/* 
+
+	1. Vars and Inits
+
+	*/
+
+	var header = $('.header');
+	var menuActive = false;
+	var menu = $('.menu');
+	var burger = $('.hamburger');
+
+	setHeader();
+
+	$(window).on('resize', function()
+	{
+		setHeader();
+	});
+
+	$(document).on('scroll', function()
+	{
+		setHeader();
+	});
+
+	initMenu();
+	initHeaderSearch();
+	initTabs();
+
+
+
+	/* 
+
+	2. Set Header
+
+	*/
+
+	function setHeader()
+	{
+		if($(window).scrollTop() > 100)
+		{
+			header.addClass('scrolled');
+		}
+		else
+		{
+			header.removeClass('scrolled');
+		}
+	}
+
+	/* 
+
+	3. Init Menu
+
+	*/
+
+	function initMenu()
+	{
+		if($('.menu').length)
+		{
+			var menu = $('.menu');
+			if($('.hamburger').length)
+			{
+				burger.on('click', function()
+				{
+					if(menuActive)
+					{
+						closeMenu();
+					}
+					else
+					{
+						openMenu();
+
+						$(document).one('click', function cls(e)
+						{
+							if($(e.target).hasClass('menu_mm'))
+							{
+								$(document).one('click', cls);
+							}
+							else
+							{
+								closeMenu();
+							}
+						});
+					}
+				});
+			}
+		}
+	}
+
+	function openMenu()
+	{
+		menu.addClass('active');
+		menuActive = true;
+	}
+
+	function closeMenu()
+	{
+		menu.removeClass('active');
+		menuActive = false;
+	}
+
+	/* 
+
+	4. Init Header Search
+
+	*/
+
+	function initHeaderSearch()
+	{
+		if($('.search_button').length)
+		{
+			$('.search_button').on('click', function()
+			{
+				if($('.header_search_container').length)
+				{
+					$('.header_search_container').toggleClass('active');
+				}
+			});
+		}
+	}
+
+	/* 
+
+	5. Init Tabs
+
+	*/
+
+	function initTabs()
+	{
+		if($('.tab').length)
+		{
+			$('.tab').on('click', function()
+			{
+				$('.tab').removeClass('active');
+				$(this).addClass('active');
+				var clickedIndex = $('.tab').index(this);
+
+				var panels = $('.tab_panel');
+				panels.removeClass('active');
+				$(panels[clickedIndex]).addClass('active');
+			});
+		}
+	}
+
+
+
+
+});
 

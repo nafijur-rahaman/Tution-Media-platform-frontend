@@ -1,42 +1,42 @@
-function showSuccessAlert(message, title = "Success") {
-    const alertBox = document.getElementById("success-alert");
-    const alertTitle = document.getElementById("success-alert-title");
-    const alertMessage = document.getElementById("success-alert-message");
+// function alert(message, title = "Success") {
+//     const alertBox = document.getElementById("success-alert");
+//     const alertTitle = document.getElementById("success-alert-title");
+//     const alertMessage = document.getElementById("success-alert-message");
   
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
+//     alertTitle.innerText = title;
+//     alertMessage.innerText = message;
   
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
+//     alertBox.classList.remove("hidden");
+//     alertBox.classList.add("flex");
   
-    setTimeout(() => {
-      alertBox.classList.add("hidden");
-    }, 5000);
-  }
+//     setTimeout(() => {
+//       alertBox.classList.add("hidden");
+//     }, 5000);
+//   }
   
-  function showFailureAlert(message, title = "Failure") {
-    const alertBox = document.getElementById("failure-alert");
-    const alertTitle = document.getElementById("failure-alert-title");
-    const alertMessage = document.getElementById("failure-alert-message");
+//   function alert(message, title = "Failure") {
+//     const alertBox = document.getElementById("failure-alert");
+//     const alertTitle = document.getElementById("failure-alert-title");
+//     const alertMessage = document.getElementById("failure-alert-message");
   
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
+//     alertTitle.innerText = title;
+//     alertMessage.innerText = message;
   
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
+//     alertBox.classList.remove("hidden");
+//     alertBox.classList.add("flex");
   
-    setTimeout(() => {
-      alertBox.classList.add("hidden");
-    }, 5000);
-  }
+//     setTimeout(() => {
+//       alertBox.classList.add("hidden");
+//     }, 5000);
+//   }
   
-  document.getElementById("close-success-alert").addEventListener("click", () => {
-    document.getElementById("success-alert").classList.add("hidden");
-  });
+//   document.getElementById("close-success-alert").addEventListener("click", () => {
+//     document.getElementById("success-alert").classList.add("hidden");
+//   });
   
-  document.getElementById("close-failure-alert").addEventListener("click", () => {
-    document.getElementById("failure-alert").classList.add("hidden");
-  });
+//   document.getElementById("close-failure-alert").addEventListener("click", () => {
+//     document.getElementById("failure-alert").classList.add("hidden");
+//   });
 
 
   const loadTuition = () => {
@@ -68,7 +68,7 @@ function showSuccessAlert(message, title = "Success") {
         })
         .catch((error) => {
            
-            showFailureAlert(error);
+            alert(error);
         });
 };
 
@@ -123,7 +123,7 @@ function openEditModal(tuitionId) {
        
             
         })
-        .catch(error => showFailureAlert('Error fetching tuition data:', error));
+        .catch(error => alert('Error fetching tuition data:', error));
 }
 
 
@@ -158,13 +158,13 @@ function saveChanges() {
     })
     .then(response => response.json())
     .then(data => {
-        showSuccessAlert("Tuition update successfully")
+        alert("Tuition update successfully")
         loadTuition()
         
         document.getElementById('modal').classList.add('hidden');
  
     })
-    .catch(error => showFailureAlert('Error updating tuition'));
+    .catch(error => alert('Error updating tuition'));
 }
 
 
@@ -206,7 +206,7 @@ function deleteTuition(tuitionId) {
           
             if (response.status === 204) {
               
-                showSuccessAlert('Tuition deleted successfully');
+                alert('Tuition deleted successfully');
              loadTuition()
             } else {
                 return response.json(); 
@@ -271,13 +271,13 @@ function addTuition() {
     .then(response => response.json())
     .then(data => {
     
-        showSuccessAlert("Tuition add successfully");
+        alert("Tuition add successfully");
        loadTuition()
         closeAddTuitionModal();
        
     })
     .catch((error) => {
-        showFailureAlert('Error:');
+        alert('Error:');
     });
 }
 
@@ -315,13 +315,13 @@ function fetchTutorApplications() {
             });
         })
         .catch(error => {
-           showFailureAlert('Error fetching applications:', error);
+           alert('Error fetching applications:', error);
         });
 }
 
 function acceptApplication(id, tutor, tuition, status) {
     if (status === 'accepted') {
-        showFailureAlert('This application has already been accepted.');
+        alert('This application has already been accepted.');
         return;
     }
     fetch(`https://tution-media-platform-backend.vercel.app/api/application/${id}/`, {
@@ -339,11 +339,11 @@ function acceptApplication(id, tutor, tuition, status) {
         if (!response.ok) {
             throw new Error('Failed to accept application');
         }
-        showSuccessAlert("Application accepted successfully");
+        alert("Application accepted successfully");
         fetchTutorApplications();
     })
     .catch(error => {
-       showFailureAlert('Error accepting application:', error);
+       alert('Error accepting application:', error);
     });
 }
 
@@ -359,10 +359,10 @@ function rejectApplication(id) {
             throw new Error('Failed to reject application');
         }
         fetchTutorApplications();
-        showSuccessAlert("application rejected successfully")
+        alert("application rejected successfully")
     })
     .catch(error => {
-       showFailureAlert('Error rejecting application:', error);
+       alert('Error rejecting application:', error);
     });
 }
 
@@ -378,7 +378,7 @@ function fetchDashboardStatistics() {
             const totalStudents = data.length;
             document.getElementById('total-students').textContent = totalStudents;
         })
-        .catch(error =>showFailureAlert('Error fetching total students:', error));
+        .catch(error =>alert('Error fetching total students:', error));
 
     fetch('https://tution-media-platform-backend.vercel.app/api/tuition/list/')
         .then(response => response.json())
@@ -386,7 +386,7 @@ function fetchDashboardStatistics() {
             const totalTuitions = data.length;
             document.getElementById('total-tuitions').textContent = totalTuitions;
         })
-        .catch(error =>showFailureAlert('Error fetching total tuitions:', error));
+        .catch(error =>alert('Error fetching total tuitions:', error));
 
     fetch('https://tution-media-platform-backend.vercel.app/api/tutor/list/')
         .then(response => response.json())
@@ -394,7 +394,7 @@ function fetchDashboardStatistics() {
             const activeTutors = data.length
             document.getElementById('active-tutors').textContent = activeTutors;
         })
-        .catch(error =>showFailureAlert('Error fetching active tutors:', error));
+        .catch(error =>alert('Error fetching active tutors:', error));
 
     fetch('https://tution-media-platform-backend.vercel.app/api/application/')
         .then(response => response.json())
@@ -402,7 +402,7 @@ function fetchDashboardStatistics() {
             const pendingApplications = data.filter(application => application.status === 'applied').length;
             document.getElementById('pending-applications').textContent = pendingApplications;
         })
-        .catch(error =>showFailureAlert('Error fetching pending applications:', error));
+        .catch(error =>alert('Error fetching pending applications:', error));
 }
 
 document.addEventListener('DOMContentLoaded', fetchDashboardStatistics);
@@ -448,7 +448,7 @@ function changePassword() {
         return response.json();
     })
     .then(data => {
-        showSuccessAlert("Password changed successfully.");
+        alert("Password changed successfully.");
         closeChangePasswordModal;
         setTimeout(() => {
             window.location.reload();

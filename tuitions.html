@@ -1,28 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tuition Media -tuition</title>
-    <link rel="icon" type="image/x-icon" href="/images/fav.png">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="styles/tuitions.css">
-    <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="icon" type="image/x-icon" href="/images/fav.png" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="styles/bootstrap4/bootstrap.min.css"
+    />
+    <link
+      href="plugins/font-awesome-4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="plugins/colorbox/colorbox.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/tuitions.css" />
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
     <style>
-        /* CSS to make all cards the same height */
-.same-height-card {
-min-height: 270px; /* Adjust height as necessary */
-}
-.course_body {
-flex-grow: 1;
-}
+      /* CSS to make all cards the same height */
+      .same-height-card {
+        min-height: 270px;
+        /* Adjust height as necessary */
+      }
 
+      .course_body {
+        flex-grow: 1;
+      }
 
+      .loader {
+        width: 50px;
+        aspect-ratio: 1;
+        display: none;
+        border: 4px solid #0000;
+        border-radius: 50%;
+        border-right-color: #25b09b;
+        animation: l15 1s infinite linear;
+      }
+      .loader::before,
+      .loader::after {
+        content: "";
+        grid-area: 1/1;
+        margin: 2px;
+        border: inherit;
+        border-radius: 50%;
+        animation: l15 2s infinite;
+      }
+      .loader::after {
+        margin: 8px;
+        animation-duration: 3s;
+      }
+      @keyframes l15 {
+        100% {
+          transform: rotate(1turn);
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+
+    <div class="super_container">
       <!-- Header -->
 
       <header class="header">
@@ -36,7 +78,9 @@ flex-grow: 1;
                     class="top_bar_content d-flex flex-row align-items-center justify-content-start"
                   >
                     <ul class="top_bar_contact_list">
-                      <li><div class="question">Have any questions?</div></li>
+                      <li>
+                        <div class="question">Have any questions?</div>
+                      </li>
                       <li>
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         <div>+8801626681291</div>
@@ -52,324 +96,432 @@ flex-grow: 1;
             </div>
           </div>
         </div>
-<nav id="navbar">
-       
-        
-    </nav>
-    </header>
-	<!-- Home -->
+        <nav id="navbar"></nav>
+      </header>
+      <!-- Home -->
 
-	<div class="home">
-		<div class="breadcrumbs_container">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="breadcrumbs">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li>Tuitions</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>			
-	</div>
-
-
-
-
-
-<div class="courses">
-    <div class="container">
-        <div class="row">
-				<!-- Courses Main Content -->
-				<div class="col-lg-8">
-
-					<div class="courses_search_container">
-                        <div class="courses_search_form d-flex flex-row align-items-center justify-content-start">
-
-
-
-                            <input id="locationFilter" type="text" class="courses_search_input" placeholder="Search Location" required="required">
-
-                            <select id="classFilter" class="courses_search_select courses_search_input">
-								<option value="">All Classes</option>
-								<option value="Class 1">Class 1</option>
-								<option value="Class 2">Class 2</option>
-								<option value="Class 3">Class 3</option>
-								<option value="Class 4">Class 4</option>
-								<option value="Class 5">Class 5</option>
-								<option value="Class 6">Class 6</option>
-								<option value="Class 7">Class 7</option>
-								<option value="Class 8">Class 8</option>
-								<option value="Class 9">Class 9</option>
-								<option value="Class 10">Class 10</option>
-								<option value="HSC 1">HSC 1</option>
-								<option value="HSC 2">HSC 2</option>
-							</select>
-
-                            </div>
-
-                    </div>
-
-                    <div class="courses_container">
-						<div id="tuitions-container" class="row courses_row">
-							
-							<!-- Course -->
-							<div class="col-lg-6 course_col">
-								<div class="course">
-									<div class="course_body">
-										<h3 class="course_title"><a href="course.html">Tuition For chemistry and physics</a></h3>
-										<div class="course_text">
-											<p>i need a very talented and well known teacher for ...</p>
-										</div>
-									</div>
-									<div class="course_footer">
-										<div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-											<div class="course_info">
-												<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-												<span>HSC 1</span>
-											</div>
-											<div class="course_info">
-												<i class="fa fa-map-marker" aria-hidden="true"></i>
-												<span>mirpur,Dhaka</span>
-											</div>
-											<div class="course_price ml-auto">13000 BDT</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-							
-							<!-- Course -->
-							<div class="col-lg-6 course_col">
-								<div class="course">
-									<div class="course_body">
-										<h3 class="course_title"><a href="course.html">Tuition For chemistry and physics</a></h3>
-										<div class="course_text">
-											<p>i need a very talented and well known teacher for ...</p>
-										</div>
-										<span style="color: black;">Subjects: bangla ,english</span>
-									</div>
-									<div class="course_footer">
-										<div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-											<div class="course_info">
-												<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-												<span>HSC 1</span>
-											</div>
-											<div class="course_info">
-												<i class="fa fa-map-marker" aria-hidden="true"></i>
-												<span>mirpur,Dhaka</span>
-											</div>
-											<div class="course_price ml-auto">130 BDT</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- Course -->
-							<div class="col-lg-6 course_col">
-								<div class="course">
-									<div class="course_body">
-										<h3 class="course_title"><a href="course.html">Tuition For chemistry and physics</a></h3>
-										<div class="course_text">
-											<p>i need a very talented and well known teacher for ...</p>
-										</div>
-									</div>
-									<div class="course_footer">
-										<div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-											<div class="course_info">
-												<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-												<span>HSC 1</span>
-											</div>
-											<div class="course_info">
-												<i class="fa fa-map-marker" aria-hidden="true"></i>
-												<span>mirpur,Dhaka</span>
-											</div>
-											<div class="course_price ml-auto">130 BDT</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- Course -->
-							<div class="col-lg-6 course_col">
-								<div class="course">
-									<div class="course_body">
-										<h3 class="course_title"><a href="course.html">Tuition For chemistry and physics</a></h3>
-										<div class="course_text">
-											<p>i need a very talented and well known teacher for ...</p>
-										</div>
-									</div>
-									<div class="course_footer">
-										<div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-											<div class="course_info">
-												<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-												<span>HSC 1</span>
-											</div>
-											<div class="course_info">
-												<i class="fa fa-map-marker" aria-hidden="true"></i>
-												<span>mirpur,Dhaka</span>
-											</div>
-											<div class="course_price ml-auto">130 BDT</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- Course -->
-							<div class="col-lg-6 course_col">
-								<div class="course">
-									<div class="course_body">
-										<h3 class="course_title"><a href="course.html">Tuition For chemistry and physics</a></h3>
-										<div class="course_text">
-											<p>i need a very talented and well known teacher for ...</p>
-										</div>
-									</div>
-									<div class="course_footer">
-										<div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-											<div class="course_info">
-												<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-												<span>HSC 1</span>
-											</div>
-											<div class="course_info">
-												<i class="fa fa-map-marker" aria-hidden="true"></i>
-												<span>mirpur,Dhaka</span>
-											</div>
-											<div class="course_price ml-auto">130 BDT</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- Course -->
-							<div class="col-lg-6 course_col">
-								<div class="course">
-									<div class="course_body">
-										<h3 class="course_title"><a href="course.html">Tuition For chemistry and physics</a></h3>
-										<div class="course_text">
-											<p>i need a very talented and well known teacher for ...</p>
-										</div>
-									</div>
-									<div class="course_footer">
-										<div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-											<div class="course_info">
-												<i class="fa fa-graduation-cap" aria-hidden="true"></i>
-												<span>HSC 1</span>
-											</div>
-											<div class="course_info">
-												<i class="fa fa-map-marker" aria-hidden="true"></i>
-												<span>mirpur,Dhaka</span>
-											</div>
-											<div class="course_price ml-auto">130 BDT</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						
-
-						</div>
-                        
-					</div>
-
+      <div class="home">
+        <div class="breadcrumbs_container">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="breadcrumbs">
+                  <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>Tuitions</li>
+                  </ul>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loader"></div>
+      <!-- tuitions -->
 
+      <div class="tuitions">
+        <div class="container">
+          <div class="row">
+            <!-- tuitions Main Content -->
+            <div class="col-lg-8">
+              <div class="tuitions_search_container">
+                <div
+                  class="tuitions_search_form d-flex flex-row align-items-center justify-content-start"
+                >
+                  <input
+                    id="locationFilter"
+                    type="text"
+                    class="tuitions_search_input"
+                    placeholder="Search Location"
+                    required="required"
+                  />
 
+                  <select
+                    id="classFilter"
+                    class="tuitions_search_select tuitions_search_input"
+                  >
+                    <option value="">All Classes</option>
+                    <option value="Class 1">Class 1</option>
+                    <option value="Class 2">Class 2</option>
+                    <option value="Class 3">Class 3</option>
+                    <option value="Class 4">Class 4</option>
+                    <option value="Class 5">Class 5</option>
+                    <option value="Class 6">Class 6</option>
+                    <option value="Class 7">Class 7</option>
+                    <option value="Class 8">Class 8</option>
+                    <option value="Class 9">Class 9</option>
+                    <option value="Class 10">Class 10</option>
+                    <option value="HSC 1">HSC 1</option>
+                    <option value="HSC 2">HSC 2</option>
+                  </select>
+                </div>
+              </div>
 
-	<!-- Courses Sidebar -->
-    <div class="col-lg-4">
-        <div class="sidebar">
-            <div class="mb-3">
-                <h3 class="mb-3 t">Price Range</h3>
-                <input type="range" min="0" max="30000" class="form-range mb-2" id="priceRange" oninput="updatePriceLabel(this.value)" />
-                <div class="d-flex justify-content-between">
+              <div class="tuitions_container">
+                <div id="tuitions-container" class="row tuitions_row">
+                  <!-- Course -->
+                  <div class="col-lg-6 course_col">
+                    <div class="course">
+                      <div class="course_body">
+                        <h3 class="course_title">
+                          <a href="course.html"
+                            >Tuition For chemistry and physics</a
+                          >
+                        </h3>
+                        <div class="course_text">
+                          <p>
+                            i need a very talented and well known teacher for
+                            ...
+                          </p>
+                        </div>
+                      </div>
+                      <div class="course_footer">
+                        <div
+                          class="course_footer_content d-flex flex-row align-items-center justify-content-start"
+                        >
+                          <div class="course_info">
+                            <i
+                              class="fa fa-graduation-cap"
+                              aria-hidden="true"
+                            ></i>
+                            <span>HSC 1</span>
+                          </div>
+                          <div class="course_info">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>mirpur,Dhaka</span>
+                          </div>
+                          <div class="course_price ml-auto">13000 BDT</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Course -->
+                  <div class="col-lg-6 course_col">
+                    <div class="course">
+                      <div class="course_body">
+                        <h3 class="course_title">
+                          <a href="course.html"
+                            >Tuition For chemistry and physics</a
+                          >
+                        </h3>
+                        <div class="course_text">
+                          <p>
+                            i need a very talented and well known teacher for
+                            ...
+                          </p>
+                        </div>
+                        <span style="color: black"
+                          >Subjects: bangla ,english</span
+                        >
+                      </div>
+                      <div class="course_footer">
+                        <div
+                          class="course_footer_content d-flex flex-row align-items-center justify-content-start"
+                        >
+                          <div class="course_info">
+                            <i
+                              class="fa fa-graduation-cap"
+                              aria-hidden="true"
+                            ></i>
+                            <span>HSC 1</span>
+                          </div>
+                          <div class="course_info">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>mirpur,Dhaka</span>
+                          </div>
+                          <div class="course_price ml-auto">130 BDT</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Course -->
+                  <div class="col-lg-6 course_col">
+                    <div class="course">
+                      <div class="course_body">
+                        <h3 class="course_title">
+                          <a href="course.html"
+                            >Tuition For chemistry and physics</a
+                          >
+                        </h3>
+                        <div class="course_text">
+                          <p>
+                            i need a very talented and well known teacher for
+                            ...
+                          </p>
+                        </div>
+                      </div>
+                      <div class="course_footer">
+                        <div
+                          class="course_footer_content d-flex flex-row align-items-center justify-content-start"
+                        >
+                          <div class="course_info">
+                            <i
+                              class="fa fa-graduation-cap"
+                              aria-hidden="true"
+                            ></i>
+                            <span>HSC 1</span>
+                          </div>
+                          <div class="course_info">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>mirpur,Dhaka</span>
+                          </div>
+                          <div class="course_price ml-auto">130 BDT</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Course -->
+                  <div class="col-lg-6 course_col">
+                    <div class="course">
+                      <div class="course_body">
+                        <h3 class="course_title">
+                          <a href="course.html"
+                            >Tuition For chemistry and physics</a
+                          >
+                        </h3>
+                        <div class="course_text">
+                          <p>
+                            i need a very talented and well known teacher for
+                            ...
+                          </p>
+                        </div>
+                      </div>
+                      <div class="course_footer">
+                        <div
+                          class="course_footer_content d-flex flex-row align-items-center justify-content-start"
+                        >
+                          <div class="course_info">
+                            <i
+                              class="fa fa-graduation-cap"
+                              aria-hidden="true"
+                            ></i>
+                            <span>HSC 1</span>
+                          </div>
+                          <div class="course_info">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>mirpur,Dhaka</span>
+                          </div>
+                          <div class="course_price ml-auto">130 BDT</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Course -->
+                  <div class="col-lg-6 course_col">
+                    <div class="course">
+                      <div class="course_body">
+                        <h3 class="course_title">
+                          <a href="course.html"
+                            >Tuition For chemistry and physics</a
+                          >
+                        </h3>
+                        <div class="course_text">
+                          <p>
+                            i need a very talented and well known teacher for
+                            ...
+                          </p>
+                        </div>
+                      </div>
+                      <div class="course_footer">
+                        <div
+                          class="course_footer_content d-flex flex-row align-items-center justify-content-start"
+                        >
+                          <div class="course_info">
+                            <i
+                              class="fa fa-graduation-cap"
+                              aria-hidden="true"
+                            ></i>
+                            <span>HSC 1</span>
+                          </div>
+                          <div class="course_info">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>mirpur,Dhaka</span>
+                          </div>
+                          <div class="course_price ml-auto">130 BDT</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Course -->
+                  <div class="col-lg-6 course_col">
+                    <div class="course">
+                      <div class="course_body">
+                        <h3 class="course_title">
+                          <a href="course.html"
+                            >Tuition For chemistry and physics</a
+                          >
+                        </h3>
+                        <div class="course_text">
+                          <p>
+                            i need a very talented and well known teacher for
+                            ...
+                          </p>
+                        </div>
+                      </div>
+                      <div class="course_footer">
+                        <div
+                          class="course_footer_content d-flex flex-row align-items-center justify-content-start"
+                        >
+                          <div class="course_info">
+                            <i
+                              class="fa fa-graduation-cap"
+                              aria-hidden="true"
+                            ></i>
+                            <span>HSC 1</span>
+                          </div>
+                          <div class="course_info">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>mirpur,Dhaka</span>
+                          </div>
+                          <div class="course_price ml-auto">130 BDT</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- tuitions Sidebar -->
+            <div class="col-lg-4">
+              <div class="sidebar">
+                <div class="mb-3">
+                  <h3 class="mb-3 t">Price Range</h3>
+                  <input
+                    type="range"
+                    min="0"
+                    max="30000"
+                    class="form-range mb-2"
+                    id="priceRange"
+                    oninput="updatePriceLabel(this.value)"
+                  />
+                  <div class="d-flex justify-content-between">
                     <span id="priceValue">BDT 0</span>
                     <span>BDT 30,000</span>
+                  </div>
                 </div>
-            </div>
-            
-            <!-- Categories -->
-            <div class="sidebar_section">
-                <div class="sidebar_section_title">Categories</div>
-                <div class="sidebar_categories">
-                    <ul  id="category-list">
-                        <li style="cursor: pointer;"><p  value="General_Math">General Math</p></li>
-                        <li style="cursor: pointer;"><p  value="Bangla">Bangla</p></li>
-                        <li style="cursor: pointer;"><p  value="English">English</p></li>
-                        <li style="cursor: pointer;"><p  value="General_Science">General Science</p></li>
-                        <li style="cursor: pointer;"><p  value="Religion">Religion</p></li>
-                        <li style="cursor: pointer;"><p  value="Physics">Physics</p></li>
-                        <li style="cursor: pointer;"><p  value="Chemistry">Chemistry</p></li>
-                        <li style="cursor: pointer;"><p  value="Biology">Biology</p></li>
-                        <li style="cursor: pointer;"><p  value="Higher_Math">Higher Math</p></li>
-                        <li style="cursor: pointer;"><p  value="All_Subject">All Subject</p></li>
+
+                <!-- Categories -->
+                <div class="sidebar_section">
+                  <div class="sidebar_section_title">Categories</div>
+                  <div class="sidebar_categories">
+                    <ul id="category-list">
+                      <li style="cursor: pointer">
+                        <p value="General_Math">General Math</p>
+                      </li>
+                      <li style="cursor: pointer">
+                        <p value="Bangla">Bangla</p>
+                      </li>
+                      <li style="cursor: pointer">
+                        <p value="English">English</p>
+                      </li>
+                      <li style="cursor: pointer">
+                        <p value="General_Science">General Science</p>
+                      </li>
+                      <li style="cursor: pointer">
+                        <p value="Religion">Religion</p>
+                      </li>
+                      <li style="cursor: pointer">
+                        <p value="Physics">Physics</p>
+                      </li>
+                      <li style="cursor: pointer">
+                        <p value="Chemistry">Chemistry</p>
+                      </li>
+                      <li style="cursor: pointer">
+                        <p value="Biology">Biology</p>
+                      </li>
+                      <li style="cursor: pointer">
+                        <p value="Higher_Math">Higher Math</p>
+                      </li>
+                      <li style="cursor: pointer">
+                        <p value="All_Subject">All Subject</p>
+                      </li>
                     </ul>
-                 
+                  </div>
                 </div>
-            </div>
 
-        
-
-            <!-- Gallery -->
-            <div class="sidebar_section">
-                <div class="sidebar_section_title">Gallery Of Our Tutitions</div>
-                <div class="sidebar_gallery">
-                    <ul class="gallery_items d-flex flex-row align-items-start justify-content-between flex-wrap">
-                        <li class="gallery_item">
-                            <div class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center">+</div>
-                            <a class="colorbox" href="images/gallery_1_large.jpg">
-                                <img src="images/gallery_1.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="gallery_item">
-                            <div class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center">+</div>
-                            <a class="colorbox" href="images/gallery_2_large.jpg">
-                                <img src="images/gallery_2.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="gallery_item">
-                            <div class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center">+</div>
-                            <a class="colorbox" href="images/gallery_3_large.jpg">
-                                <img src="images/gallery_3.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="gallery_item">
-                            <div class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center">+</div>
-                            <a class="colorbox" href="images/gallery_4_large.jpg">
-                                <img src="images/gallery_4.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="gallery_item">
-                            <div class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center">+</div>
-                            <a class="colorbox" href="images/gallery_5_large.jpg">
-                                <img src="images/gallery_5.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="gallery_item">
-                            <div class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center">+</div>
-                            <a class="colorbox" href="images/gallery_6_large.jpg">
-                                <img src="images/gallery_6.jpg" alt="">
-                            </a>
-                        </li>
+                <!-- Gallery -->
+                <div class="sidebar_section">
+                  <div class="sidebar_section_title">
+                    Gallery Of Our Tutitions
+                  </div>
+                  <div class="sidebar_gallery">
+                    <ul
+                      class="gallery_items d-flex flex-row align-items-start justify-content-between flex-wrap"
+                    >
+                      <li class="gallery_item">
+                        <div
+                          class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center"
+                        >
+                          +
+                        </div>
+                        <a class="colorbox" href="images/gallery_1_large.jpg">
+                          <img src="images/gallery_1.jpg" alt="" />
+                        </a>
+                      </li>
+                      <li class="gallery_item">
+                        <div
+                          class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center"
+                        >
+                          +
+                        </div>
+                        <a class="colorbox" href="images/gallery_2_large.jpg">
+                          <img src="images/gallery_2.jpg" alt="" />
+                        </a>
+                      </li>
+                      <li class="gallery_item">
+                        <div
+                          class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center"
+                        >
+                          +
+                        </div>
+                        <a class="colorbox" href="images/gallery_3_large.jpg">
+                          <img src="images/gallery_3.jpg" alt="" />
+                        </a>
+                      </li>
+                      <li class="gallery_item">
+                        <div
+                          class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center"
+                        >
+                          +
+                        </div>
+                        <a class="colorbox" href="images/gallery_4_large.jpg">
+                          <img src="images/gallery_4.jpg" alt="" />
+                        </a>
+                      </li>
+                      <li class="gallery_item">
+                        <div
+                          class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center"
+                        >
+                          +
+                        </div>
+                        <a class="colorbox" href="images/gallery_5_large.jpg">
+                          <img src="images/gallery_5.jpg" alt="" />
+                        </a>
+                      </li>
+                      <li class="gallery_item">
+                        <div
+                          class="gallery_item_overlay d-flex flex-column align-items-center justify-content-center"
+                        >
+                          +
+                        </div>
+                        <a class="colorbox" href="images/gallery_6_large.jpg">
+                          <img src="images/gallery_6.jpg" alt="" />
+                        </a>
+                      </li>
                     </ul>
+                  </div>
                 </div>
+              </div>
             </div>
-
-            
+          </div>
         </div>
-    </div>
+      </div>
 
-
-		</div>
-    </div>
-</div>
-
-
-
-
-  
       <!-- Footer -->
 
-	<footer class="footer">
+      <footer class="footer">
         <div
           class="footer_background"
           style="background-image: url(images/footer_background.png)"
@@ -448,8 +600,8 @@ flex-grow: 1;
                           <li><a href="index.html">Home</a></li>
                           <li><a href="about.html">About</a></li>
                           <li><a href="contact.html">Contact</a></li>
-                          <li><a href="courses.html">Tuitions</a></li>
-                          <li><a href="courses.html">Teachers</a></li>
+                          <li><a href="tuitions.html">Tuitions</a></li>
+                          <li><a href="tuitions.html">Teachers</a></li>
                           <li><a href="#">FAQs</a></li>
                         </ul>
                       </div>
@@ -503,18 +655,13 @@ flex-grow: 1;
         </div>
       </footer>
 
-
-
       <script src="js/jquery-3.2.1.min.js"></script>
       <script src="styles/bootstrap4/popper.js"></script>
       <script src="styles/bootstrap4/bootstrap.min.js"></script>
-      <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-      <script src="plugins/easing/easing.js"></script>
-      <script src="plugins/parallax-js-master/parallax.min.js"></script>
       <script src="plugins/colorbox/jquery.colorbox-min.js"></script>
-     <script src="js/home.js"></script>
-     <script src="js/courses.js"></script>
-     <script src="./js/tutions.js"></script>
-     <!-- <script src="./js/logout.js"></script> -->
-</body>
+      <script src="js/home.js"></script>
+      <script src="./js/tutions.js"></script>
+      <script src="./js/logout.js"></script>
+    </div>
+  </body>
 </html>

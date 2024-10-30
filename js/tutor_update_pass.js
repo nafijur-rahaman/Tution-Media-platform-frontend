@@ -27,14 +27,14 @@ document.getElementById('changePasswordForm').addEventListener('submit', async f
        const result = await response.json();
        if (response.ok) {
         //  console.log(response)
-           showSuccessAlerta('Password changed successfully');
+           alerta('Password changed successfully');
            window.location.href = "./teacher_profile.html"
        } else {
         //    alert('Error: ' + result.detail);
-        showFailureAlert(result.detail)
+        alert(result.detail)
        }
    } catch (error) {
     //    console.error('Error:', error);
-    showFailureAlert("password not updated");
+    alert("password not updated");
    }
 });

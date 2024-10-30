@@ -19,7 +19,7 @@ if (token) {
                   </div>
                   <nav class="main_nav_contaner ml-auto">
                     <ul class="main_nav">
-                      <li class="active"><a href="#">Home</a></li>
+                      <li class="active"><a href="index.html">Home</a></li>
                       <li><a href="tuitions.html">Tuitions</a></li>
                       <li><a href="teachers.html">Teachers</a></li>
                       <li><a href="about.html">About</a></li>
@@ -33,7 +33,7 @@ if (token) {
             </button>
             <button
               type="button"
-              class="login_button menu_mm"
+              class="logout_button menu_mm"
               onclick="TutorHandleLogout()"
             >
               Logout
@@ -81,7 +81,7 @@ if (token) {
             </button>
             <button
               type="button"
-              class="m_login_button menu_mm"
+              class="m_logout_button menu_mm"
               onclick="TutorHandleLogout()"
             >
               Logout
@@ -107,7 +107,7 @@ if (token) {
                   </div>
                   <nav class="main_nav_contaner ml-auto">
                     <ul class="main_nav">
-                      <li class="active"><a href="#">Home</a></li>
+                      <li class="active"><a href="index.html">Home</a></li>
                       <li><a href="tuitions.html">Tuitions</a></li>
                       <li><a href="teachers.html">Teachers</a></li>
                       <li><a href="about.html">About</a></li>
@@ -121,7 +121,7 @@ if (token) {
             </button>
             <button
               type="button"
-              class="login_button menu_mm"
+              class="logout_button menu_mm"
               onclick="StudentHandleLogout()"
             >
               Logout
@@ -169,7 +169,7 @@ if (token) {
             </button>
             <button
               type="button"
-              class="m_login_button menu_mm"
+              class="m_logout_button menu_mm"
               onclick="StudentHandleLogout()"
             >
               Logout
@@ -198,7 +198,7 @@ if (token) {
                   </div>
                   <nav class="main_nav_contaner ml-auto">
                     <ul class="main_nav">
-                      <li class="active"><a href="#">Home</a></li>
+                      <li class="active"><a href="index.html">Home</a></li>
                       <li><a href="tuitions.html">Tuitions</a></li>
                       <li><a href="teachers.html">Teachers</a></li>
                       <li><a href="about.html">About</a></li>

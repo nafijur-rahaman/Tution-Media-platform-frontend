@@ -37,21 +37,21 @@ form.addEventListener("submit", async (event) => {
     const password = form.password.value;
 
     if (!usernamePattern.test(username)) {
-        showFailureAlert("Username must be 3-15 characters long, containing only letters, numbers, and underscores.");
+        alert("Username must be 3-15 characters long, containing only letters, numbers, and underscores.");
         loaderOverlay.style.display = 'none';
     
         return;
     }
 
     if (!emailPattern.test(email)) {
-        showFailureAlert("Please enter a valid email address.");
+        alert("Please enter a valid email address.");
         loaderOverlay.style.display = 'none';
      
         return;
     }
 
     if (!passwordPattern.test(password)) {
-        showFailureAlert("Password must be at least 8 characters long and contain at least one Capital letter and one number.");
+        alert("Password must be at least 8 characters long and contain at least one Capital letter and one number.");
         loaderOverlay.style.display = 'none';
 
         return;
@@ -66,13 +66,13 @@ form.addEventListener("submit", async (event) => {
 
         if (response.ok) {
             const data = await response.json();
-            showSuccessAlert(data.message || "Registration successful!");
+            alert(data.message || "Registration successful!");
             window.location.href = "login.html";
         } else {
             const errorData = await response.json();
             for (const [key, value] of Object.entries(errorData)) {
                 value.forEach(errorMessage => {
-                    showFailureAlert(`${key}: ${errorMessage}`);
+                    alert(`${key}: ${errorMessage}`);
                 });
             }
         }
@@ -103,21 +103,21 @@ StudentForm.addEventListener("submit", async (event) => {
     const password = StudentForm.password.value;
 
     if (!studentUsernamePattern.test(username)) {
-        showFailureAlert("Username must be 3-15 characters long, containing only letters, numbers, and underscores.");
+        alert("Username must be 3-15 characters long, containing only letters, numbers, and underscores.");
         loader.style.display = 'none';
    
         return;
     }
 
     if (!studentEmailPattern.test(email)) {
-        showFailureAlert("Please enter a valid email address.");
+        alert("Please enter a valid email address.");
         loader.style.display = 'none';
       
         return;
     }
 
     if (!studentPasswordPattern.test(password)) {
-        showFailureAlert("Password must be at least 8 characters long and contain at least one capital letter and one number.");
+        alert("Password must be at least 8 characters long and contain at least one capital letter and one number.");
         loader.style.display = 'none';
        
         return;
@@ -132,7 +132,7 @@ StudentForm.addEventListener("submit", async (event) => {
 
         if (response.ok) {
             const data = await response.json();
-            showSuccessAlert(data.message || "Registration successful!");
+            alert(data.message || "Registration successful!");
            
                 window.location.href = "login.html";
   
@@ -140,12 +140,12 @@ StudentForm.addEventListener("submit", async (event) => {
             const errorData = await response.json();
             for (const [key, value] of Object.entries(errorData)) {
                 value.forEach(errorMessage => {
-                    showFailureAlert(`${key}: ${errorMessage}`);
+                    alert(`${key}: ${errorMessage}`);
                 });
             }
         }
     } catch (error) {
-        showFailureAlert("An error occurred during registration!");
+        alert("An error occurred during registration!");
     } finally {
         loader.style.display = 'none';
        

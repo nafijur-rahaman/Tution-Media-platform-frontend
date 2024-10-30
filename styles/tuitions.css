@@ -1,30 +1,30 @@
 
 
 
-.courses
+.tuitions
 {
 	width: 100%;
 	padding-top: 100px;
 	padding-bottom: 100px;
 }
-.courses_search_container
+.tuitions_search_container
 {
 	padding-left: 20px;
 	padding-right: 20px;
 	background: #f2f4f5;
 }
-.courses_container {
+.tuitions_container {
 	max-height: 1000px; 
 	overflow-y: auto; 
 	overflow-x: hidden; 
 	padding: 10px; 
 }
-.courses_search_form
+.tuitions_search_form
 {
 	width: 100%;
 	height: 92px;
 }
-.courses_search_input
+.tuitions_search_input
 {
 	width: 240px;
 	height: 46px;
@@ -33,15 +33,15 @@
 	background: #FFFFFF;
 	padding-left: 20px;
 }
-.courses_search_input:focus
+.tuitions_search_input:focus
 {
 	outline: solid 1px #14bdee;
 }
-.courses_search_form > input
+.tuitions_search_form > input
 {
 	margin-right: 19px;
 }
-.courses_search_select
+.tuitions_search_select
 {
 	position: relative;
 	-webkit-appearance: none;
@@ -56,7 +56,7 @@
 	background-repeat: no-repeat;
 	cursor: pointer;
 }
-.courses_search_button
+.tuitions_search_button
 {
 	width: 161px;
 	height: 46px;
@@ -70,7 +70,7 @@
 	border-radius: 3px;
 	cursor: pointer;
 }
-.courses_row
+.tuitions_row
 {
 	margin-top: 25px;
 }
@@ -184,7 +184,7 @@
 	color: #b5b8be;
 	margin-right: 10px;
 }
-.courses_button
+.tuitions_button
 {
 	width: 210px;
 	height: 46px;
@@ -195,11 +195,11 @@
 	margin-top: 41px;
 	box-shadow: 0px 5px 40px rgba(29,34,47,0.15);
 }
-.courses_button:hover
+.tuitions_button:hover
 {
 	box-shadow: 0px 5px 40px rgba(29,34,47,0.45);
 }
-.courses_button a
+.tuitions_button a
 {
 	display: block;
 	font-size: 14px;
@@ -209,31 +209,31 @@
 	color: #FFFFFF;
 }
 
-.courses_show_text
+.tuitions_show_text
 {
 	display: inline-block;
 }
-.courses_show_content
+.tuitions_show_content
 {
 	display: inline-block;
 	width: 144px;
 	border: solid 1px #ecedee;
 }
-.courses_show_content span
+.tuitions_show_content span
 {
 	line-height: 40px;
 	padding-left: 20px;
 	font-size: 16px;
 	color: #384158;
 }
-.courses_show_text
+.tuitions_show_text
 {
 	font-size: 16px;
 	font-weight: 400;
 	color: #384158;
 	margin-right: 16px;
 }
-.courses_show_select
+.tuitions_show_select
 {
 	position: relative;
 	float: right;
@@ -255,7 +255,7 @@
 	border: none;
 	outline: none;
 }
-.courses_show_select option
+.tuitions_show_select option
 {
 	padding-left: 20px;
 	text-align: right;
@@ -373,32 +373,6 @@
 }
 
 
-@charset "utf-8";
-/* CSS Document */
-
-/******************************
-
-[Table of Contents]
-
-1. 1600px
-2. 1440px
-3. 1280px
-4. 1199px
-5. 1024px
-6. 991px
-7. 959px
-8. 880px
-9. 768px
-10. 767px
-11. 539px
-12. 479px
-13. 400px
-
-******************************/
-
-/************
-1. 1600px
-************/
 
 @media only screen and (max-width: 1600px)
 {

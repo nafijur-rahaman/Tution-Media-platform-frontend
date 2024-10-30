@@ -1,4 +1,4 @@
-// function showSuccessAlert(message, title = "Success") {
+// function alert(message, title = "Success") {
 //     const alertBox = document.getElementById("success-alert");
 //     const alertTitle = document.getElementById("success-alert-title");
 //     const alertMessage = document.getElementById("success-alert-message");
@@ -14,7 +14,7 @@
 //     }, 5000);
 // }
 
-// function showFailureAlert(message, title = "Failure") {
+// function alert(message, title = "Failure") {
 //     const alertBox = document.getElementById("failure-alert");
 //     const alertTitle = document.getElementById("failure-alert-title");
 //     const alertMessage = document.getElementById("failure-alert-message");
@@ -85,7 +85,7 @@ const loadUserDetails = () => {
             
         })
         .catch((error) => {
-            showFailureAlert("Error fetching user details");
+            alert("Error fetching user details");
         });
 };
 
@@ -129,7 +129,7 @@ const loadTuition = () => {
                 
             });
         })
-        .catch((error) => showFailureAlert(error));
+        .catch((error) => alert(error));
 };
 
 window.onload = loadTuition;
@@ -204,12 +204,12 @@ function saveChanges() {
     })
     .then(response => response.json())
     .then(data => {
-        showSuccessAlert("Tuition change successfully");
+        alert("Tuition change successfully");
         loadTuition();
         const myModal = bootstrap.Modal.getInstance(document.getElementById('modal'));
     myModal.hide();
     })
-    .catch(error => showFailureAlert('Error updating tuition:', error));
+    .catch(error => alert('Error updating tuition:', error));
 }
 
 
@@ -242,13 +242,13 @@ function deleteTuition(tuitionId) {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
             if (response.status === 204) {
-                showSuccessAlert('Tuition deleted successfully!');
+                alert('Tuition deleted successfully!');
                 loadTuition();
             } else {
                 return response.json(); 
             }
         })
-        .catch(error => showFailureAlert(error));
+        .catch(error => alert(error));
     }
 }
 
@@ -314,11 +314,11 @@ function addTuition() {
         return response.json();
     })
     .then(data => {
-        showSuccessAlert('Tuition added successfully!');
+        alert('Tuition added successfully!');
         closeAddTuitionModal();
         loadTuition();
     })
-    .catch(error => showFailureAlert(error));
+    .catch(error => alert(error));
 }
 
 let passwordModal;
@@ -344,7 +344,7 @@ function changePassword() {
     const confirmNewPassword = document.getElementById('confirmNewPassword').value;
 
     if (newPassword !== confirmNewPassword) {
-        showFailureAlert("New passwords do not match.");
+        alert("New passwords do not match.");
         return;
     }
 
@@ -370,13 +370,13 @@ function changePassword() {
         return response.json();
     })
     .then(data => {
-        showSuccessAlert("Password changed successfully.");
+        alert("Password changed successfully.");
         closePasswordModal();
         setTimeout(() => {
             window.location.reload();
         }, 1000);
     })
     .catch(error => {
-        showFailureAlert(error.message);
+        alert(error.message);
     });
 }

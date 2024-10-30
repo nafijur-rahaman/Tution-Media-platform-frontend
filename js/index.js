@@ -40,41 +40,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
 //counter
+document.addEventListener("DOMContentLoaded", function () {
+  const milestones = [
+    { url: "https://tution-media-platform-backend.vercel.app/api/tutor/list/", elementId: "tutorsCount" },
+    { url: "https://tution-media-platform-backend.vercel.app/api/student/list/", elementId: "studentsCount" },
+    { url: "https://tution-media-platform-backend.vercel.app/api/tuition/list/", elementId: "tuitionsCount" }
+  ];
 
-    fetch("https://tution-media-platform-backend.vercel.app/api/tutor/list/")
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (tutors) {
-        document.getElementById("tutorsCount").innerText = tutors.length;
-      })
-      .catch(function (error) {
-        console.error("Error fetching data:", error);
-      });
-  
-    fetch("https://tution-media-platform-backend.vercel.app/api/student/list/")
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (students) {
+  let completedFetches = 0;
 
-        document.getElementById("studentsCount").innerText = students.length;
+  milestones.forEach(milestone => {
+    fetch(milestone.url)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById(milestone.elementId).setAttribute("data-end-value", data.length);
+        completedFetches++;
+        if (completedFetches === milestones.length) {
+          milestones.forEach(milestone => animateCounter(milestone.elementId));
+        }
       })
-      .catch(function (error) {
-        console.error("Error fetching data:", error);
-      });
-  
-    fetch("https://tution-media-platform-backend.vercel.app/api/tuition/list/")
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (tuitions) {
-        document.getElementById("tuitionsCount").innerText = tuitions.length;
-      })
-      .catch(function (error) {
-        console.error("Error fetching data:", error);
-      });
-  
+      .catch(error => console.error("Error fetching data:", error));
+  });
+
+  function animateCounter(elementId) {
+    const element = document.getElementById(elementId);
+    const endValue = parseInt(element.getAttribute("data-end-value"), 10);
+    let count = 0;
+    const duration = 1000;
+    const increment = Math.ceil(endValue / (duration / 10));
+
+    const counter = setInterval(() => {
+      count += increment;
+      if (count >= endValue) {
+        count = endValue;
+        clearInterval(counter);
+      }
+      element.innerText = count;
+    }, 10);
+  }
+});
+
 //tutors
 
     fetch("https://tution-media-platform-backend.vercel.app/api/tutor/list/")

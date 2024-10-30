@@ -269,12 +269,12 @@ function changePassword() {
     const confirmNewPassword = document.getElementById('confirmNewPassword').value;
 
     if (newPassword !== confirmNewPassword) {
-        showFailureAlert("New passwords do not match.");
+        alert("New passwords do not match.");
         return;
     }
 
     const user_id = localStorage.getItem("user_id");
-    const token=localStorage.getItem("student_token");
+    const token=localStorage.getItem("teacher_token");
     fetch(`https://tution-media-platform-backend.vercel.app/api/tutor/change-password/`, {
         method: 'PUT',
         headers: {
@@ -295,13 +295,13 @@ function changePassword() {
         return response.json();
     })
     .then(data => {
-        showSuccessAlert("Password changed successfully.");
-        closePasswordModal();
+        alert("Password changed successfully.");
+        passwordModal.hide();
         setTimeout(() => {
             window.location.reload();
         }, 1000);
     })
     .catch(error => {
-        showFailureAlert(error.message);
+        alert(error.message);
     });
 }
