@@ -1,42 +1,42 @@
-function showSuccessAlert(message, title = "Success") {
-    const alertBox = document.getElementById("success-alert");
-    const alertTitle = document.getElementById("success-alert-title");
-    const alertMessage = document.getElementById("success-alert-message");
+// function alert(message, title = "Success") {
+//     const alertBox = document.getElementById("success-alert");
+//     const alertTitle = document.getElementById("success-alert-title");
+//     const alertMessage = document.getElementById("success-alert-message");
 
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
+//     alertTitle.innerText = title;
+//     alertMessage.innerText = message;
 
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
+//     alertBox.classList.remove("hidden");
+//     alertBox.classList.add("flex");
 
-    setTimeout(() => {
-        alertBox.classList.add("hidden");
-    }, 5000);
-}
+//     setTimeout(() => {
+//         alertBox.classList.add("hidden");
+//     }, 5000);
+// }
 
-function showFailureAlert(message, title = "Failure") {
-    const alertBox = document.getElementById("failure-alert");
-    const alertTitle = document.getElementById("failure-alert-title");
-    const alertMessage = document.getElementById("failure-alert-message");
+// function alert(message, title = "Failure") {
+//     const alertBox = document.getElementById("failure-alert");
+//     const alertTitle = document.getElementById("failure-alert-title");
+//     const alertMessage = document.getElementById("failure-alert-message");
 
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
+//     alertTitle.innerText = title;
+//     alertMessage.innerText = message;
 
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
+//     alertBox.classList.remove("hidden");
+//     alertBox.classList.add("flex");
 
-    setTimeout(() => {
-        alertBox.classList.add("hidden");
-    }, 5000);
-}
+//     setTimeout(() => {
+//         alertBox.classList.add("hidden");
+//     }, 5000);
+// }
 
-document.getElementById("close-success-alert").addEventListener("click", () => {
-    document.getElementById("success-alert").classList.add("hidden");
-});
+// document.getElementById("close-success-alert").addEventListener("click", () => {
+//     document.getElementById("success-alert").classList.add("hidden");
+// });
 
-document.getElementById("close-failure-alert").addEventListener("click", () => {
-    document.getElementById("failure-alert").classList.add("hidden");
-});
+// document.getElementById("close-failure-alert").addEventListener("click", () => {
+//     document.getElementById("failure-alert").classList.add("hidden");
+// });
 
 const loadUserDetails = () => {
     const user_id = localStorage.getItem("user_id");
@@ -48,21 +48,44 @@ const loadUserDetails = () => {
             return res.json();
         })
         .then((data) => {
+            console.log(data);
             const profile_header = document.getElementById("student_details");
             profile_header.innerHTML = `
-              <img src="https://res.cloudinary.com/dwsp8rft8/${data.image}" alt="Profile Picture" class="w-32 h-32 rounded-full mr-6">
-            <div>
-                <h2 class="text-3xl font-bold mb-2"> ${data.user.first_name} ${data.user.last_name} </h2>
-                <p class="text-gray-600 mb-4">Student</p>
-                <p class="text-gray-800 mb-4">
-                    Hello! I am ${data.user.username} a passionate student looking for a tutor to help me with my math and science subjects. Feel free to reach out if you think you can help!
-                </p>
-                <button class="bg-green-600 text-white text-xl font-semibold py-2 px-4 rounded-lg hover:bg-green-700" onclick="openPasswordModal()">Change Password</button>
-            </div>
-        `;
+                <div class="text-center">
+                    <img src="https://res.cloudinary.com/dwsp8rft8/${data.image}" alt="Admin" class="rounded-circle border border-primary mb-3" style="width: 200px; height: 200px;">
+            
+                    <div>
+                        <h4 class=" font-weight-bold">${data.user.first_name} ${data.user.last_name}</h4>
+                        <p >Student</p>
+                        <button class="btn  btn-custom" onclick="openPasswordModal()">Change Password</button>
+
+
+                    </div>
+                </div>
+                <hr class="my-4">
+                <ul class="list-unstyled">
+                    <li class="d-flex justify-content-between">
+                        <p class="font-weight-bold">Email:</p>
+                        <p>${data.user.email}</p>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <p class="font-weight-bold">Mobile:</p>
+                        <p>${data.phone_number}</p>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <p class="font-weight-bold">Gender:</p>
+                        <p>${data.gender}</p>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <p class="font-weight-bold">Location:</p>
+                        <p>${data.location}</p>
+                    </li>
+                </ul>
+            `;
+            
         })
         .catch((error) => {
-            showFailureAlert("Error fetching user details");
+            alert("Error fetching user details");
         });
 };
 
@@ -86,33 +109,36 @@ const loadTuition = () => {
                 child.classList.add(
                     "bg-white",
                     "p-4",
-                    "rounded-lg",
-                    "shadow-md",
+                    "rounded",
+                    "shadow",
                     "mb-4"
                 );
-
+                
                 child.innerHTML = `
-                    <h4 class="text-xl font-bold mb-2">${tuition.title}</h4>
-                    <p class="text-gray-700 mb-2">Description: ${tuition.description.slice(0, 20)}....</p>
-                    <p class="text-gray-700 mb-2">Fee: ${tuition.salary} BDT</p>
-                    <p class="text-gray-700 mb-2">Location: ${tuition.location} BDT</p>
-                    <div class="flex space-x-2">
-                        <button onclick="openEditModal(${tuition.id})" class="text-blue-600 hover:underline">Edit</button>
-                        <button onclick="deleteTuition(${tuition.id})" class="text-red-600 hover:underline">Delete</button>
+                    <h4 class=" font-weight-bold mb-2">${tuition.title}</h4>
+                    <p class="text-muted mb-2">Description: ${tuition.description.slice(0, 20)}....</p>
+                    <p class="text-muted mb-2">Fee: ${tuition.salary} BDT</p>
+                    <p class="text-muted mb-2">Location: ${tuition.location}</p>
+                    <div class="d-flex justify-content-between">
+                        <button onclick="openEditModal(${tuition.id})" class="btn btn-link text-primary">Edit</button>
+                        <button onclick="deleteTuition(${tuition.id})" class="btn btn-link text-danger">Delete</button>
                     </div>
                 `;
-
+                
                 parent.appendChild(child);
+                
             });
         })
-        .catch((error) => showFailureAlert(error));
+        .catch((error) => alert(error));
 };
 
 window.onload = loadTuition;
 
 function openEditModal(tuitionId) {
     document.getElementById('tuitionId').value = tuitionId;
-    document.getElementById('modal').classList.remove('hidden');
+    const myModal = new bootstrap.Modal(document.getElementById('modal'));
+    myModal.show();
+
 
     fetch(`https://tution-media-platform-backend.vercel.app/api/tuition/list/${tuitionId}/`)
         .then(response => response.json())
@@ -178,15 +204,21 @@ function saveChanges() {
     })
     .then(response => response.json())
     .then(data => {
-        showSuccessAlert("Tuition change successfully");
-        document.getElementById('modal').classList.add('hidden');
+        alert("Tuition change successfully");
+        loadTuition();
+        const myModal = bootstrap.Modal.getInstance(document.getElementById('modal'));
+    myModal.hide();
     })
-    .catch(error => showFailureAlert('Error updating tuition:', error));
+    .catch(error => alert('Error updating tuition:', error));
 }
 
-document.getElementById('closeModal').addEventListener('click', function() {
-    document.getElementById('modal').classList.add('hidden');
-});
+
+    const myModal = bootstrap.Modal.getInstance(document.getElementById('modal'));
+    if(myModal){
+        myModal.hide();
+    }
+   
+
 
 function mapGender(genderValue) {
     if (genderValue === 'M') {
@@ -210,23 +242,30 @@ function deleteTuition(tuitionId) {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
             if (response.status === 204) {
-                showSuccessAlert('Tuition deleted successfully!');
+                alert('Tuition deleted successfully!');
                 loadTuition();
             } else {
                 return response.json(); 
             }
         })
-        .catch(error => showFailureAlert(error));
+        .catch(error => alert(error));
     }
 }
 
 function openAddTuitionModal() {
-    document.getElementById('addTuitionModal').classList.remove('hidden');
+    const modalElement = document.getElementById('addTuitionModal');
+    const modalInstance = new bootstrap.Modal(modalElement);
+    modalInstance.show();
 }
 
 function closeAddTuitionModal() {
-    document.getElementById('addTuitionModal').classList.add('hidden');
+    const modalElement = document.getElementById('addTuitionModal');
+    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (modalInstance) {
+        modalInstance.hide();
+    }
 }
+
 
 function addTuition() {
     const title = document.getElementById('add_title').value;
@@ -275,19 +314,28 @@ function addTuition() {
         return response.json();
     })
     .then(data => {
-        showSuccessAlert('Tuition added successfully!');
+        alert('Tuition added successfully!');
         closeAddTuitionModal();
         loadTuition();
     })
-    .catch(error => showFailureAlert(error));
+    .catch(error => alert(error));
 }
 
+let passwordModal;
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    passwordModal = new bootstrap.Modal(document.getElementById('passwordModal'), {
+        backdrop: 'static'
+    });
+});
+
 function openPasswordModal() {
-    document.getElementById('passwordModal').classList.remove('hidden');
+    passwordModal.show();
 }
 
 function closePasswordModal() {
-    document.getElementById('passwordModal').classList.add('hidden');
+    passwordModal.hide();
 }
 
 function changePassword() {
@@ -296,7 +344,7 @@ function changePassword() {
     const confirmNewPassword = document.getElementById('confirmNewPassword').value;
 
     if (newPassword !== confirmNewPassword) {
-        showFailureAlert("New passwords do not match.");
+        alert("New passwords do not match.");
         return;
     }
 
@@ -322,13 +370,13 @@ function changePassword() {
         return response.json();
     })
     .then(data => {
-        showSuccessAlert("Password changed successfully.");
+        alert("Password changed successfully.");
         closePasswordModal();
         setTimeout(() => {
             window.location.reload();
         }, 1000);
     })
     .catch(error => {
-        showFailureAlert(error.message);
+        alert(error.message);
     });
 }

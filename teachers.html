@@ -1,113 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuition Media -student profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="/images/fav.png">
-    <link rel="stylesheet" href="./css/style.css">
+<title>About</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Tuition Platform project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" href="styles/index.css">
+<link rel="stylesheet" href="styles/teachers.css">
 
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body>
 
-    <!-- Navigation Bar -->
+  
+       <!-- Header -->
 
-<nav id="navbar" class="bg-gray-800 text-white py-4 shadow-md">
-
-</nav>
-
-
-<main class="pb-32">
-    <div class="container mx-auto py-12">
-        <h1 class="text-4xl font-extrabold text-center mb-12 text-gray-900">Meet Our Teachers</h1>
-
-        <!-- Filter Section -->
-        <div class="mb-12 flex flex-col md:flex-row gap-6 justify-center">
-            <!-- Subject Filter -->
-            <input type="text" id="subject-filter" onkeyup="filterTeachers()" 
-                placeholder="Search by subject..." 
-                class="w-full md:w-1/3 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
-
-            <!-- Ratings Filter -->
-            <select id="rating-filter" onchange="filterTeachers()" 
-                class="w-full md:w-1/3 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
-                <option value="">Filter by rating</option>
-                <option value="1">★</option>
-                <option value="2">★★</option>
-                <option value="3">★★★</option>
-                <option value="4">★★★★</option>
-                <option value="5">★★★★★</option>
-            </select>
-        </div>
-
-        <!-- Teachers Grid -->
-        <div id="teacher-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-            <!-- Example Teacher Card -->
-            <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col">
-                <h2 class="text-lg font-bold mb-2">Teacher Name</h2>
-                <p class="text-gray-600 mb-4">Subject: Math</p>
-                <div class="flex items-center mb-2">
-                    <span class="text-yellow-500">★★★★★</span>
+       <header class="header">
+        <!-- Top Bar -->
+        <div class="top_bar">
+          <div class="top_bar_container">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div
+                    class="top_bar_content d-flex flex-row align-items-center justify-content-start"
+                  >
+                    <ul class="top_bar_contact_list">
+                      <li><div class="question">Have any questions?</div></li>
+                      <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <div>+8801626681291</div>
+                      </li>
+                      <li>
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <div>tanjidnafis@gmail.com</div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <button class="mt-auto bg-blue-500 text-white rounded-lg py-2 hover:bg-blue-600 transition">View Profile</button>
+              </div>
             </div>
-            <!-- Add more teacher cards as needed -->
+          </div>
         </div>
-    </div>
-</main>
+<nav id="navbar">
+       
+        
+    </nav>
+    </header>
+	<!-- Home -->
+
+	<div class="home">
+		<div class="breadcrumbs_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="breadcrumbs">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>Teachers</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</div>
 
 
 
 
 
-<!-- Success Alert Box -->
-<div id="success-alert" class="fixed top-5 right-5 max-w-xs bg-green-100 text-green-800 p-4 rounded-lg shadow-md border border-green-200 hidden">
-    <div class="flex items-center">
-        <div class="flex-1">
-            <h3 id="success-alert-title" class="text-lg font-semibold mb-2">Success</h3>
-            <p id="success-alert-message" class="text-sm">This is a success message.</p>
+  <!-- Tutors -->
+
+  <div class="team">
+
+    <div  class="container">
+      <div class="row">
+        <div class="col">
+          <div class="section_title_container text-center">
+            <h2 class="section_title">The Best Tutors in Town</h2>
+            <div class="section_subtitle">
+                Discover top-rated, dedicated tutors ready to help you excel in your studies.
+                With expertise across subjects and personalized teaching styles, our tutors
+                are committed to supporting your educational journey.
+              </>
+            </div>
+          </div>
         </div>
-        <button id="close-success-alert" class="ml-4 text-green-600 hover:text-green-900 focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
+      </div>
+
+<!-- Filter Section -->
+<div class="filter-section">
+    <!-- Subject Filter -->
+    <input type="text" id="subject-filter" onkeyup="filterTeachers()" 
+           placeholder="Search by subject..." class="filter-input">
+
+    <!-- Ratings Filter -->
+    <select id="rating-filter" onchange="filterTeachers()" class="filter-input">
+        <option value="">Filter by rating</option>
+        <option value="1">★</option>
+        <option value="2">★★</option>
+        <option value="3">★★★</option>
+        <option value="4">★★★★</option>
+        <option value="5">★★★★★</option>
+    </select>
+</div>
+
+      <div id="teacher-container" class="row team_row">
+        <!-- Team Item -->
+        <div class="col-lg-3 col-md-6 team_col">
+          <div class="team_item">
+            <div class="team_image">
+              <img src="images/team_1.jpg" alt="" />
+            </div>
+            <div class="team_body">
+              <div class="team_title"><a href="#">Jacke Masito</a></div>
+              <div class="team_subtitle">Marketing & Management</div>
+              <div class="flex items-center mb-2">
+                <span class="text-warning">★★★★★</span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Item -->
+        <div class="col-lg-3 col-md-6 team_col">
+          <div class="team_item">
+            <div class="team_image">
+              <img src="images/team_2.jpg" alt="" />
+            </div>
+            <div class="team_body">
+              <div class="team_title"><a href="#">William James</a></div>
+              <div class="team_subtitle">Designer & Website</div>
+              <div class="flex items-center mb-2">
+                <span class="text-warning">★★★★★</span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Item -->
+        <div class="col-lg-3 col-md-6 team_col">
+          <div class="team_item">
+            <div class="team_image">
+              <img src="images/team_3.jpg" alt="" />
+            </div>
+            <div class="team_body">
+              <div class="team_title"><a href="#">John Tyler</a></div>
+              <div class="team_subtitle">Quantum mechanics</div>
+              <div class="flex items-center mb-2">
+                <span class="text-warning">★★★★★</span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Item -->
+        <div class="col-lg-3 col-md-6 team_col">
+          <div class="team_item">
+            <div class="team_image">
+              <img src="images/team_4.jpg" alt="" />
+            </div>
+            <div class="team_body">
+              <div class="team_title"><a href="#">Veronica Vahn</a></div>
+              <div class="team_subtitle">Math & Physics</div>
+              <div class="flex items-center mb-2">
+                <span class="text-warning">★★★★★</span>
+            </div>
+                              </div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+
+
+
+
+
   
-  <!-- Failure Alert Box -->
-  <div id="failure-alert" class="fixed top-5 right-5 max-w-xs bg-red-100 text-red-800 p-4 rounded-lg shadow-md border border-red-200 hidden">
-    <div class="flex items-center">
-        <div class="flex-1">
-            <h3 id="failure-alert-title" class="text-lg font-semibold mb-2">Failure</h3>
-            <p id="failure-alert-message" class="text-sm">This is a failure message.</p>
+       <!-- Footer -->
+
+       <footer class="footer">
+        <div
+          class="footer_background"
+          style="background-image: url(images/footer_background.png)"
+        ></div>
+        <div class="container">
+          <div class="row footer_row">
+            <div class="col">
+              <div class="footer_content">
+                <div class="row">
+                  <div class="col-lg-3 footer_col">
+                    <!-- Footer About -->
+                    <div class="footer_section footer_about">
+                      <div class="footer_logo_container">
+                        <a href="index.html">
+                          <div class="footer_logo_text">
+                            Tuition<span>Platform</span>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="footer_about_text">
+                        <p>
+                          Lorem ipsum dolor sit ametium, consectetur adipiscing
+                          elit.
+                        </p>
+                      </div>
+                      <div class="footer_social">
+                        <ul>
+                          <li>
+                            <a href="#"
+                              ><i class="fa fa-facebook" aria-hidden="true"></i
+                            ></a>
+                          </li>
+                          <li>
+                            <a href="#"
+                              ><i
+                                class="fa fa-google-plus"
+                                aria-hidden="true"
+                              ></i
+                            ></a>
+                          </li>
+                          <li>
+                            <a href="#"
+                              ><i class="fa fa-instagram" aria-hidden="true"></i
+                            ></a>
+                          </li>
+                          <li>
+                            <a href="#"
+                              ><i class="fa fa-twitter" aria-hidden="true"></i
+                            ></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 footer_col">
+                    <!-- Footer Contact -->
+                    <div class="footer_section footer_contact">
+                      <div class="footer_title">Contact Us</div>
+                      <div class="footer_contact_info">
+                        <ul>
+                          <li>Email: tanjidnafis@gmail.com</li>
+                          <li>Phone: +8801626681291</li>
+                          <li>14 no. road rupnagar, Dhaka</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 footer_col">
+                    <!-- Footer links -->
+                    <div class="footer_section footer_links">
+                      <div class="footer_title">Contact Us</div>
+                      <div class="footer_links_container">
+                        <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="about.html">About</a></li>
+                          <li><a href="contact.html">Contact</a></li>
+                          <li><a href="courses.html">Tuitions</a></li>
+                          <li><a href="courses.html">Teachers</a></li>
+                          <li><a href="#">FAQs</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-3 footer_col clearfix">
+                    <!-- Footer links -->
+                    <div class="footer_section footer_mobile">
+                      <div class="footer_title">Mobile</div>
+                      <div class="footer_mobile_content">
+                        <div class="footer_image">
+                          <a href="#"
+                            ><img src="images/mobile_1.png" alt=""
+                          /></a>
+                        </div>
+                        <div class="footer_image">
+                          <a href="#"
+                            ><img src="images/mobile_2.png" alt=""
+                          /></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row copyright_row">
+            <div class="col">
+              <div
+                class="copyright d-flex flex-lg-row flex-column align-items-center justify-content-start"
+              >
+                <div class="cr_text">
+                  Copyright &copy;
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  All rights reserved
+                </div>
+                <div class="ml-lg-auto cr_links">
+                  <ul class="cr_list">
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <button id="close-failure-alert" class="ml-4 text-red-600 hover:text-red-900 focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
+      </footer>
     </div>
-  </div>
-  
-  
-      <!-- Footer -->
-      <footer style="margin-top: 60px;" class="bg-gray-800 text-white py-4 shadow-md  w-full">
-        <div class="container mx-auto text-center">
-            <div class="flex justify-center space-x-6 mb-4">
-                <a href="#" class="hover:text-blue-400">Privacy Policy</a>
-                <a href="#" class="hover:text-blue-400">Terms of Service</a>
-                <a href="#" class="hover:text-blue-400">FAQs</a>
-            </div>
-            <p>&copy; 2024 TuitionMedia. All rights reserved.</p>
-            <div class="mt-4">
-                <a href="mailto:info@tuitionmedia.com" class="hover:underline">info@tuitionmedia.com</a>
-            </div>
-        </div>
-    </footer>
-  
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap4/popper.js"></script>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="plugins/greensock/TweenMax.min.js"></script>
+    <script src="plugins/greensock/TimelineMax.min.js"></script>
+    <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="plugins/greensock/animation.gsap.min.js"></script>
+    <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="js/custom.js"></script>
     <script src="./js/home.js"></script>
     <script src="./js/teachers.js"></script>
   </body>

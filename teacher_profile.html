@@ -1,204 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuition Media -teacher profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="/images/fav.png">
-    <style>
-      .modal { display: none; }
-.modal.modal-active { display: flex; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuition Media -teacher profile</title>
+  <link rel="icon" type="image/x-icon" href="/images/fav.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+  <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="styles/index.css">
+  <style>
+    .modal {
+      display: none;
+    }
+
+    .modal.modal-active {
+      display: flex;
+    }
+
+    .btn-custom {
+      background-color: #14bdee;
+      border-color: #14bdee;
+      color: white;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #119bcb;
+      /* Darker shade for hover */
+      border-color: #119bcb;
+    }
+
+    .hover-effect {
+      background-color: #14bdee;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .hover-effect:hover {
+      background-color: #0ea5e9;
+      /* Darker shade for hover */
+    }
+
+    .form-control {
+      display: block;
+      width: 100%;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      color: #495057;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      box-sizing: border-box;
+    }
+
+    .form-control:focus {
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+    }
+
+    .form-control:disabled,
+    .form-control[readonly] {
+      background-color: #e9ecef;
+      opacity: 1;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
 
-    <!-- Navigation Bar -->
+<body>
 
-<nav id="navbar" class="bg-gray-800 text-white py-4 shadow-md">
+  <!-- Header -->
 
-</nav>
-
-
-
-
-  <!-- Main Profile Section -->
-  <section class="container mx-auto py-12">
-   <div  class="bg-white shadow-xl rounded-xl p-8 max-w-4xl mx-auto">
-     <!-- Profile Header -->
-     <div class="flex items-center justify-between">
-       <div id="profile-header" class="flex items-center">
-     
-       </div>
-       <div>
-         <button id="editProfileBtn" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500">Edit Profile</button>
-       </div>
-     </div>
-
-     <!-- Profile Details -->
-     <div  class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div id="profile_details">
-        <div class="bg-gray-50 p-6 rounded-md">
-          <h2 class="text-xl font-semibold text-gray-800">Bio</h2>
-          <p class="text-gray-600 mt-4">
-          </p>
-        </div>
-        <div class="bg-gray-50 p-6 rounded-md">
-          <h2 class="text-xl font-semibold text-gray-800">General Information</h2>
-          <ul class="list-disc list-inside mt-4 text-gray-600">
-            <ol>Phone: 01626681291</ol>
-            <ol>Gender: Male</ol>
-            <ol>Location: Jamalpur,Mymensignh</ol>
-          </ul>
-        </div>
-
-        <div class="bg-gray-50 p-6 rounded-md">
-          <h2 class="text-xl font-semibold text-gray-800">Subjects</h2>
-          <ul class="list-disc list-inside mt-4 text-gray-600">
-          </ul>
+  <header class="header">
+    <!-- Top Bar -->
+    <div class="top_bar">
+      <div class="top_bar_container">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                <ul class="top_bar_contact_list">
+                  <li>
+                    <div class="question">Have any questions?</div>
+                  </li>
+                  <li>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <div>+8801626681291</div>
+                  </li>
+                  <li>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    <div>tanjidnafis@gmail.com</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      
-      
-<!-- Tuition Section -->
-<div id="tuition-details" class="max-h-60 overflow-y-auto">
-  <div class="bg-gray-50 p-6 rounded-md">
-    <h2 class="text-xl font-semibold text-gray-800">Tuitions</h2>
-    <table class="min-w-full mt-4 text-gray-600">
-      <thead>
-        <tr>
-          <th class="py-2 text-left">Title</th>
-          <th class="py-2 text-left">Fee</th>
-          <th class="py-2 text-left">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Rows will be dynamically inserted here -->
-      </tbody>
-    </table>
+    </div>
+    <nav id="navbar">
+
+
+    </nav>
+  </header>
+
+
+  <!-- Home -->
+
+  <div class="home">
+    <div class="breadcrumbs_container">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="breadcrumbs">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>About</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-   </div>
 
 
 
-<!-- Edit Profile Modal -->
-<div id="editProfileModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center modal">
-  <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-2xl">
-    <h2 class="text-xl font-bold text-gray-800 mb-4">Edit Profile</h2>
-    <form id="editProfileForm">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- First Section -->
-        <div class="mb-4">
-          <label for="first_name" class="block text-gray-700 text-sm font-semibold">First Name</label>
-          <input type="text" id="first_name" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Enter your first name" required>
-        </div>
-        <div class="mb-4">
-          <label for="last_name" class="block text-gray-700 text-sm font-semibold">Last Name</label>
-          <input type="text" id="last_name" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Enter your last name" required>
-        </div>
-        <div class="mb-4">
-          <label for="email" class="block text-gray-700 text-sm font-semibold">Email</label>
-          <input type="email" id="email" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Enter your email" required>
-        </div>
-        <div class="mb-4">
-          <label for="phone_number" class="block text-gray-700 text-sm font-semibold">Phone Number</label>
-          <input type="text" id="phone_number" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Enter your phone number" required>
-        </div>
-        <div class="mb-4">
-          <label for="gender" class="block text-gray-700 text-sm font-semibold">Gender</label>
-          <select id="gender" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-        </div>
-        <div class="mb-4">
-          <label for="designation" class="block text-gray-700 text-sm font-semibold">Designation</label>
-          <input type="text" id="designation" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Enter your designation" required>
-        </div>
-        <div class="mb-4">
-          <label for="location" class="block text-gray-700 text-sm font-semibold">Location</label>
-          <input type="text" id="location" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Enter your location" required>
+ 
+<!-- tutor details and tuitions -->
+
+  <div class="container my-4">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="bg-white p-4 rounded shadow-lg">
+          <div id="profile-header">
+            <!-- teacher details will be populated here -->
+          </div>
+          <div>
+            <button style="cursor: pointer; " id="editProfileBtn" class="btn  btn-custom">Change Profile</button>
+            <button style="cursor: pointer;" onclick="openPasswordModal()"
+              class="btn btn-primary  btn-custom_pass">Change Password</button>
+          </div>
         </div>
 
-        <!-- Second Section -->
-        <div class="mb-4">
-          <label for="subjects" class="block text-gray-700 text-sm font-semibold">Subjects</label>
-          <input type="text" id="subjects" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Enter subjects (comma-separated)" required>
-        </div>
-        <div class="mb-4">
-          <label for="bio" class="block text-gray-700 text-sm font-semibold">Bio</label>
-          <textarea id="bio" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Write a short bio" rows="2"></textarea>
-        </div>
-        <div class="mb-4">
-          <label for="salary" class="block text-gray-700 text-sm font-semibold">Salary</label>
-          <input type="number" id="salary" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Enter your salary" required>
-        </div>
-        <div class="mb-4">
-          <label for="tutoring_experience" class="block text-gray-700 text-sm font-semibold">Tutoring Experience</label>
-          <input type="text" id="tutoring_experience" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Enter your tutoring experience" required>
-        </div>
-        <div class="mb-4">
-          <label for="medium_of_instruction" class="block text-gray-700 text-sm font-semibold">Medium of Instruction</label>
-          <select id="medium_of_instruction" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-            <option value="Bangla">Bangla Medium</option>
-            <option value="English">English Version</option>
-          </select>
-        </div>
       </div>
 
-      <!-- Change Password and Delete Account -->
-      <div class="mt-4">
-        <button id="changePasswordBtn" type="button" class="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-400 w-full">Change Password</button>
-      </div>
+      <div class="col-lg-8">
+        <div class="bg-white p-4 rounded shadow-lg mb-4">
+          <section class="py-4">
+            <div class="text-center">
+              <h2 class=" font-weight-bold text-dark">Your tuitions</h2>
+            </div>
 
-      <div class="flex justify-end mt-4">
-        <button type="button" id="closeModalBtn" class="bg-gray-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-gray-400">Cancel</button>
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500">Save Changes</button>
+            <!-- Posts Section -->
+            <section class="mt-4">
+              <!-- Tuition Section -->
+              <div id="tuition-details" class="max-height-60 overflow-auto">
+                <div class="bg-light p-4 rounded">
+
+                  <table class="table table-striped mt-3 text-secondary">
+                    <thead>
+                      <tr>
+                        <th style="font-size:20px; font-weight: bolder; color:#14bdee" scope="col">Title</th>
+                        <th style="font-size:20px; font-weight: bolder; color:#14bdee" scope="col">Fees</th>
+                        <th style="font-size:20px; font-weight: bolder; color:#14bdee" scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Rows will be dynamically inserted here -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          </section>
+        </div>
       </div>
-    </form>
+    </div>
   </div>
-</div>
 
 
 
 
 
 
-<!-- Change Password Modal -->
-<div id="changePasswordModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center modal">
-  <div class="bg-white rounded-lg p-8 w-1/3">
-    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Change Password</h2>
-    <form id="changePasswordForm">
-      <div class="mb-4">
-        <label for="currentPassword" class="block text-gray-700">Current Password</label>
-        <input type="password" id="currentPassword" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Enter current password" required>
+
+
+  <!-- Edit Profile Modal -->
+  <div id="editProfileModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="editProfileForm">
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" class="form-control" placeholder="Enter your first name" required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" class="form-control" placeholder="Enter your last name" required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="phone_number">Phone Number</label>
+                <input type="text" id="phone_number" class="form-control" placeholder="Enter your phone number"
+                  required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="gender">Gender</label>
+                <select id="gender" class="form-control" required>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="designation">Designation</label>
+                <input type="text" id="designation" class="form-control" placeholder="Enter your designation" required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="location">Location</label>
+                <input type="text" id="location" class="form-control" placeholder="Enter your location" required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="subjects">Subjects</label>
+                <input type="text" id="subjects" class="form-control" placeholder="Enter subjects (comma-separated)"
+                  required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="bio">Bio</label>
+                <textarea id="bio" class="form-control" placeholder="Write a short bio" rows="2"></textarea>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="salary">Salary</label>
+                <input type="number" id="salary" class="form-control" placeholder="Enter your salary" required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="tutoring_experience">Tutoring Experience</label>
+                <input type="text" id="tutoring_experience" class="form-control"
+                  placeholder="Enter your tutoring experience" required>
+              </div>
+              <div class="col-md-6 mb-2">
+                <label for="medium_of_instruction">Medium of Instruction</label>
+                <select id="medium_of_instruction" class="form-control" required>
+                  <option value="Bangla">Bangla Medium</option>
+                  <option value="English">English Version</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="saveChangesBtn">Save Changes</button>
+        </div>
       </div>
-      <div class="mb-4">
-        <label for="newPassword" class="block text-gray-700">New Password</label>
-        <input type="password" id="newPassword" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Enter new password" required>
-      </div>
-      <div class="mb-4">
-        <label for="confirmPassword" class="block text-gray-700">Confirm New Password</label>
-        <input type="password" id="confirmPassword" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Confirm new password" required>
-      </div>
-      <div class="flex justify-end">
-        <button type="button" id="closeChangePasswordModalBtn" class="bg-gray-500 text-white px-4 py-2 rounded-md mr-2 hover:bg-gray-400">Cancel</button>
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500">Change Password</button>
-      </div>
-    </form>
+    </div>
   </div>
-</div>
-
-
-   
-</section>
 
 
 
-<!-- Success Alert Box -->
-<div id="success-alert" class="fixed top-5 right-5 max-w-xs bg-green-100 text-green-800 p-4 rounded-lg shadow-md border border-green-200 hidden">
+
+
+
+
+
+
+  <!-- Password Change Modal -->
+  <div id="passwordModal" class="modal fade" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="passwordModalLabel">Change Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form onsubmit="event.preventDefault(); changePassword();">
+            <div class="mb-3">
+              <label for="currentPassword" class="form-label">Current Password</label>
+              <input type="password" id="currentPassword" name="currentPassword" class="form-control"
+                placeholder="Enter current password" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="newPassword" class="form-label">New Password</label>
+              <input type="password" id="newPassword" name="newPassword" class="form-control"
+                placeholder="Enter new password" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+              <input type="password" id="confirmNewPassword" name="confirmNewPassword" class="form-control"
+                placeholder="Confirm new password" required>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="pass_modal" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="changePassword()">Change Password</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- Success Alert Box -->
+  <!-- <div id="success-alert" class="fixed top-5 right-5 max-w-xs bg-green-100 text-green-800 p-4 rounded-lg shadow-md border border-green-200 hidden">
    <div class="flex items-center">
        <div class="flex-1">
            <h3 id="success-alert-title" class="text-lg font-semibold mb-2">Success</h3>
@@ -211,9 +336,9 @@
        </button>
    </div>
  </div>
- 
- <!-- Failure Alert Box -->
- <div id="failure-alert" class="fixed top-5 right-5 max-w-xs bg-red-100 text-red-800 p-4 rounded-lg shadow-md border border-red-200 hidden">
+  -->
+  <!-- Failure Alert Box -->
+  <!-- <div id="failure-alert" class="fixed top-5 right-5 max-w-xs bg-red-100 text-red-800 p-4 rounded-lg shadow-md border border-red-200 hidden">
    <div class="flex items-center">
        <div class="flex-1">
            <h3 id="failure-alert-title" class="text-lg font-semibold mb-2">Failure</h3>
@@ -225,63 +350,137 @@
            </svg>
        </button>
    </div>
- </div>
+ </div> -->
 
 
 
-    <!-- Footer -->
-    <footer  class="bg-gray-800 text-white py-8">
-      <div class="container mx-auto text-center">
-          <div class="flex justify-center space-x-6 mb-4">
-              <a href="#" class="hover:text-blue-400">Privacy Policy</a>
-              <a href="#" class="hover:text-blue-400">Terms of Service</a>
-              <a href="#" class="hover:text-blue-400">FAQs</a>
+  <!-- Footer -->
+
+  <footer class="footer">
+    <div class="footer_background" style="background-image: url(images/footer_background.png)"></div>
+    <div class="container">
+      <div class="row footer_row">
+        <div class="col">
+          <div class="footer_content">
+            <div class="row">
+              <div class="col-lg-3 footer_col">
+                <!-- Footer About -->
+                <div class="footer_section footer_about">
+                  <div class="footer_logo_container">
+                    <a href="index.html">
+                      <div class="footer_logo_text">
+                        Tuition<span>Platform</span>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="footer_about_text">
+                    <p>
+                      Lorem ipsum dolor sit ametium, consectetur adipiscing
+                      elit.
+                    </p>
+                  </div>
+                  <div class="footer_social">
+                    <ul>
+                      <li>
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 footer_col">
+                <!-- Footer Contact -->
+                <div class="footer_section footer_contact">
+                  <div class="footer_title">Contact Us</div>
+                  <div class="footer_contact_info">
+                    <ul>
+                      <li>Email: tanjidnafis@gmail.com</li>
+                      <li>Phone: +8801626681291</li>
+                      <li>14 no. road rupnagar, Dhaka</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 footer_col">
+                <!-- Footer links -->
+                <div class="footer_section footer_links">
+                  <div class="footer_title">Contact Us</div>
+                  <div class="footer_links_container">
+                    <ul>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="about.html">About</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                      <li><a href="courses.html">Tuitions</a></li>
+                      <li><a href="courses.html">Teachers</a></li>
+                      <li><a href="#">FAQs</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 footer_col clearfix">
+                <!-- Footer links -->
+                <div class="footer_section footer_mobile">
+                  <div class="footer_title">Mobile</div>
+                  <div class="footer_mobile_content">
+                    <div class="footer_image">
+                      <a href="#"><img src="images/mobile_1.png" alt="" /></a>
+                    </div>
+                    <div class="footer_image">
+                      <a href="#"><img src="images/mobile_2.png" alt="" /></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <p>&copy; 2024 TuitionMedia. All rights reserved.</p>
-          <div class="mt-4">
-              <a href="mailto:info@tuitionmedia.com" class="hover:underline">info@tuitionmedia.com</a>
-          </div>
+        </div>
       </div>
+
+      <div class="row copyright_row">
+        <div class="col">
+          <div class="copyright d-flex flex-lg-row flex-column align-items-center justify-content-start">
+            <div class="cr_text">
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved
+            </div>
+            <div class="ml-lg-auto cr_links">
+              <ul class="cr_list">
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
-
-  <script>
-  
-   const editProfileBtn = document.getElementById('editProfileBtn');
-   const editProfileModal = document.getElementById('editProfileModal');
-   const closeModalBtn = document.getElementById('closeModalBtn');
-
-   const changePasswordBtn = document.getElementById('changePasswordBtn');
-   const changePasswordModal = document.getElementById('changePasswordModal');
-   const closeChangePasswordModalBtn = document.getElementById('closeChangePasswordModalBtn');
-
-   const deleteAccountBtn = document.getElementById('deleteAccountBtn');
-
-  
-   editProfileBtn.addEventListener('click', () => {
-     editProfileModal.classList.add('modal-active');
-   });
-
-   
-   closeModalBtn.addEventListener('click', () => {
-     editProfileModal.classList.remove('modal-active');
-   });
-
-   
-   changePasswordBtn.addEventListener('click', () => {
-     editProfileModal.classList.remove('modal-active');
-     changePasswordModal.classList.add('modal-active');
-   });
-
-   
-   closeChangePasswordModalBtn.addEventListener('click', () => {
-     changePasswordModal.classList.remove('modal-active');
-     editProfileModal.classList.add('modal-active');
-   });
+  </div>
 
 
-</script>
-   <script src="./js/home.js"></script>
-   <script src="./js/teacher_profile.js"></script>
-   <script src="./js/logout.js"></script>
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="styles/bootstrap4/popper.js"></script>
+  <script src="styles/bootstrap4/bootstrap.min.js"></script>
+  <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+  <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="./js/home.js"></script>
+  <script src="./js/teacher_profile.js"></script>
+  <script src="./js/logout.js"></script>
 </body>
+
 </html>

@@ -1,3 +1,8 @@
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const studentToken = localStorage.getItem('student_token');
     const applyButtonContainer = document.getElementById('applyButton');
@@ -8,45 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function showSuccessAlert(message, title = "Success") {
-    const alertBox = document.getElementById("success-alert");
-    const alertTitle = document.getElementById("success-alert-title");
-    const alertMessage = document.getElementById("success-alert-message");
-
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
-
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
-
-    setTimeout(() => {
-        alertBox.classList.add("hidden");
-    }, 5000);
-}
-
-function showFailureAlert(message, title = "Failure") {
-    const alertBox = document.getElementById("failure-alert");
-    const alertTitle = document.getElementById("failure-alert-title");
-    const alertMessage = document.getElementById("failure-alert-message");
-
-    alertTitle.innerText = title;
-    alertMessage.innerText = message;
-
-    alertBox.classList.remove("hidden");
-    alertBox.classList.add("flex");
-
-    setTimeout(() => {
-        alertBox.classList.add("hidden");
-    }, 5000);
-}
-
-document.getElementById("close-success-alert").addEventListener("click", () => {
-    document.getElementById("success-alert").classList.add("hidden");
-});
-
-document.getElementById("close-failure-alert").addEventListener("click", () => {
-    document.getElementById("failure-alert").classList.add("hidden");
-});
 
 const getQueryParams = (param) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -64,50 +30,176 @@ const getPostDetail = () => {
             return res.json();
         })
         .then((data) => {
-            console.log(data)
-            const tuition = document.getElementById("tuition-details");
-            tuition.innerHTML = `
-             <div class="border-b pb-4 mb-6">
-            <h2 class="text-3xl font-bold text-gray-800">Tuition Details</h2>
-            <p class="text-sm text-gray-500">Posted on: ${data.created}</p>
-            </div>
+            // console.log(data)
+            const heading = document.getElementById("tuition_heading");
+            heading.innerHTML = `
 
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-700">
-        <div>
-        <h3 class="text-xl font-semibold mb-2">General Information</h3>
-        <p class="mb-2"><strong>Subject:</strong> <span class="text-blue-600"> ${data.subject_name} </span></p>
-        <p class="mb-2"><strong>Grade Level:</strong> <span class="text-blue-600">${data.tuition_class} </span></p>
-        <p class="mb-2"><strong>Location:</strong> <span class="text-blue-600"> ${data.location} </span></p>
-        </div>
-        <div>
-        <h3 class="text-xl font-semibold mb-2">Timing & Payment</h3>
-        <p class="mb-2"><strong>Time:</strong> <span class="text-blue-600">${data.tutoring_time} </span></p>
-        <p class="mb-2"><strong>Payment:</strong> <span class="text-blue-600">${data.salary}BDT /month</span></p>
-        </div>
-        </div
-
-
-
-        <div class="mt-6">
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Requirements</h3>
-        <ul class="list-disc list-inside space-y-2 text-gray-700">
-        <li> ${data.requirement}  </li>
-        <li>Proficiency in explaining complex concepts in a simple manner.</li>
-        <li>Availability for all mentioned time slots and days.</li>
-        </ul>
-        </div>
-            
+                        <div class="tuitions_title">${data.title}</div>
+                          <div class="tuitions_info d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+  
+                              <!-- tuitions Info Item -->
+                              <div class="tuitions_info_item">
+                                  <div class="tuitions_info_title">Student:</div>
+                                  <div class="tuitions_info_text"><a href="#"> ${data.author_name}  </a></div>
+                              </div>
+  
+                              <!-- tuitions Info Item -->
+                              <div class="tuitions_info_item">
+                                  <div class="tuitions_info_title">Posted On:</div>
+                                      <div class="tuitions_info_text"><p>${data.created}</p></div>
+                              </div>
+  
+                              <!-- tuitions Info Item -->
+                              <div class="tuitions_info_item">
+                                  <div class="tuitions_info_title">Subject:</div>
+                                  <div class="tuitions_info_text"><a href="#">${data.subject_name}  </a></div>
+                              </div>
+  
+                          </div>
             `;
+
+            const des = document.getElementById("tuition_des");
+            des.innerHTML=`
+                    <div class="tab_panel active">
+                                      <div class="tab_panel_title">${data.title}</div>
+                                      <div class="tab_panel_content">
+                                          <div class="tab_panel_text">
+                                          ${data.description}
+                                              </p>
+                                          </div>
+                                          <div class="tab_panel_section">
+                                              <div class="tab_panel_subtitle">Requirements</div>
+                                              <ul class="tab_panel_bullets">
+                                                  <li>${data.requirement}</li>
+                                             
+                                              </ul>
+                                          </div>
+  
+                                      </div>
+                                  </div>
+            
+            
+            `
+            const info = document.getElementById("tuition_info");
+            info.innerHTML=`
+<div class="tab_panel tab_panel_2 p-4  text-white rounded">
+    <div class="tab_panel_content">
+        <h5 class="tab_panel_title mb-3">${data.title}</h5>
+        <div class="tab_panel_text">
+            <p>
+                <strong>Subject:</strong> ${data.subject_name}
+                <br>
+                <strong>Grade Level:</strong> ${data.tuition_class}
+                <br>
+                <strong>Location:</strong> ${data.location}
+            </p>
+        </div>
+    </div>
+</div>
+
+            
+            `
+            const other = document.getElementById("other");
+            other.innerHTML=`
+                <div class="tab_panel tab_panel_3 p-4 text-white rounded">
+                                      <h5 class="tab_panel_title mb-3">Tuitions Timing</h5>
+                                      <div class="tab_panel_content">
+                                          <p>
+                                              <strong>Time:</strong> ${data.tutoring_time}
+                                          </p>
+                                                  <h5 class="tab_panel_title mb-3">Tuitions Payment</h5>
+                                          <p>
+                                              <strong>Payment:</strong> ${data.salary} BDT / month
+                                          </p>
+                                      </div>
+                                  </div>
+            
+            `
+            const detail = document.getElementById("tuition_detail");
+            detail.innerHTML=`
+             <div class="sidebar_feature">
+                                  <div class="tuitions_price">${data.salary} BDT</div>
+  
+                                  <!-- Features -->
+                                  <div class="feature_list">
+  
+                             
+                                      <!-- Feature -->
+                                      <div class="feature d-flex flex-row align-items-center justify-content-start">
+                                          <div class="feature_title"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Class:</span></div>
+                                          <div class="feature_text ml-auto">${data.tuition_class}</div>
+                                      </div>
+                                      <div class="feature d-flex flex-row align-items-center justify-content-start">
+                                          <div class="feature_title"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Time:</span></div>
+                                          <div class="feature_text ml-auto">${data.tutoring_time}</div>
+                                      </div>
+  
+                                      <!-- Feature -->
+                                      <div class="feature d-flex flex-row align-items-center justify-content-start">
+                                          <div class="feature_title"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>Subjects:</span></div>
+                                          <div class="feature_text ml-auto">${data.subject_name}</div>
+                                      </div>
+  
+                                      <!-- Feature -->
+                                      <div class="feature d-flex flex-row align-items-center justify-content-start">
+                                          <div class="feature_title"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Locations:</span></div>
+                                          <div class="feature_text ml-auto">${data.location}</div>
+                                      </div>
+  
+  
+  
+                                  </div>
+                              </div>
+            `
+
+
         })
         .catch((error) => {
-            showFailureAlert("Error fetching tuition details");
+            alert("Error fetching tuition details");
         });
 };
 
 
 
+
+
+
+
 document.addEventListener("DOMContentLoaded", getPostDetail);
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const apiUrl = "https://tution-media-platform-backend.vercel.app/api/tuition/list";
+
+    
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const latestTuitionsContainer = document.getElementById("latest-tuitions");
+            latestTuitionsContainer.innerHTML = ''; 
+
+       
+            const latestTuitions = data.slice(0, 3);
+
+        
+            latestTuitions.forEach(tuition => {
+                const tuitionDiv = document.createElement('div');
+                tuitionDiv.className = 'latest d-flex flex-row align-items-start justify-content-start';
+
+                tuitionDiv.innerHTML = `
+                    <div class="latest_content">
+                        <div class="latest_title"><a href="tuitions_details.html?id=${tuition.id}">${tuition.title}</a></div>
+                        <div class="latest_price">${tuition.salary} BDT</div>
+                    </div>
+                `;
+
+                latestTuitionsContainer.appendChild(tuitionDiv);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -120,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyButton.addEventListener('click', () => {
         if (!user_id) {
-            showFailureAlert('You must be logged in to apply for tuition.');
+            alert('You must be logged in to apply for tuition.');
             return;
         }
 
@@ -140,20 +232,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
 
                 if (hasApplied) {
-                    showFailureAlert('You have already applied for this tuition.');
+                    alert('You have already applied for this tuition.');
                 } else {
                     applyModal.classList.remove('hidden');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                showFailureAlert('An error occurred while checking your application status. Please try again.');
+                alert('An error occurred while checking your application status. Please try again.');
             });
     });
-
+if(closeModal){
     closeModal.addEventListener('click', () => {
         applyModal.classList.add('hidden');
     });
+}
+
 
     applyForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -180,15 +274,172 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(result => {
-            showSuccessAlert('Application submitted successfully!');
+            alert('Application submitted successfully!');
             applyModal.classList.add('hidden');
             applyForm.reset();
         })
         .catch(error => {
             console.error('Error:', error);
-            showFailureAlert('An error occurred while submitting your application. Please try again.');
+            alert('An error occurred while submitting your application. Please try again.');
         });
     });
 });
 
+
+
+
+// page functionality
+
+
+
+$(document).ready(function()
+{
+	"use strict";
+
+	/* 
+
+	1. Vars and Inits
+
+	*/
+
+	var header = $('.header');
+	var menuActive = false;
+	var menu = $('.menu');
+	var burger = $('.hamburger');
+
+	setHeader();
+
+	$(window).on('resize', function()
+	{
+		setHeader();
+	});
+
+	$(document).on('scroll', function()
+	{
+		setHeader();
+	});
+
+	initMenu();
+	initHeaderSearch();
+	initTabs();
+
+
+
+	/* 
+
+	2. Set Header
+
+	*/
+
+	function setHeader()
+	{
+		if($(window).scrollTop() > 100)
+		{
+			header.addClass('scrolled');
+		}
+		else
+		{
+			header.removeClass('scrolled');
+		}
+	}
+
+	/* 
+
+	3. Init Menu
+
+	*/
+
+	function initMenu()
+	{
+		if($('.menu').length)
+		{
+			var menu = $('.menu');
+			if($('.hamburger').length)
+			{
+				burger.on('click', function()
+				{
+					if(menuActive)
+					{
+						closeMenu();
+					}
+					else
+					{
+						openMenu();
+
+						$(document).one('click', function cls(e)
+						{
+							if($(e.target).hasClass('menu_mm'))
+							{
+								$(document).one('click', cls);
+							}
+							else
+							{
+								closeMenu();
+							}
+						});
+					}
+				});
+			}
+		}
+	}
+
+	function openMenu()
+	{
+		menu.addClass('active');
+		menuActive = true;
+	}
+
+	function closeMenu()
+	{
+		menu.removeClass('active');
+		menuActive = false;
+	}
+
+	/* 
+
+	4. Init Header Search
+
+	*/
+
+	function initHeaderSearch()
+	{
+		if($('.search_button').length)
+		{
+			$('.search_button').on('click', function()
+			{
+				if($('.header_search_container').length)
+				{
+					$('.header_search_container').toggleClass('active');
+				}
+			});
+		}
+	}
+
+	/* 
+
+	5. Init Tabs
+
+	*/
+
+	function initTabs()
+	{
+		if($('.tab').length)
+		{
+			$('.tab').on('click', function()
+			{
+				$('.tab').removeClass('active');
+				$(this).addClass('active');
+				var clickedIndex = $('.tab').index(this);
+
+				var panels = $('.tab_panel');
+				panels.removeClass('active');
+				$(panels[clickedIndex]).addClass('active');
+			});
+		}
+	}
+
+
+
+
+});
 
