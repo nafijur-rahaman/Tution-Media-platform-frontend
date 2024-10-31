@@ -171,18 +171,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const apiUrl = "https://tution-media-platform-backend.vercel.app/api/tuition/list";
 
-    
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
             const latestTuitionsContainer = document.getElementById("latest-tuitions");
             latestTuitionsContainer.innerHTML = ''; 
 
-       
-            const latestTuitions = data.slice(0, 3);
+            // Shuffle the array of tuitions
+            const shuffledTuitions = data.sort(() => 0.5 - Math.random());
 
-        
-            latestTuitions.forEach(tuition => {
+            // Select the first 3 tuitions from the shuffled array
+            const randomTuitions = shuffledTuitions.slice(0, 3);
+
+            // Display each tuition
+            randomTuitions.forEach(tuition => {
                 const tuitionDiv = document.createElement('div');
                 tuitionDiv.className = 'latest d-flex flex-row align-items-start justify-content-start';
 
@@ -202,39 +204,44 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const applyButton = document.getElementById('applyButton');
-    const applyModal = document.getElementById('applyModal');
-    const closeModal = document.getElementById('closeModal');
+    const applyModalElement = document.getElementById('applyModal');
     const applyForm = document.getElementById('applyForm');
     const tuition_id = getQueryParams("id");
     const user_id = window.localStorage.getItem("user_id");
 
+    // Bootstrap Modal instance
+    const applyModal = new bootstrap.Modal(applyModalElement);
+
+    function getQueryParams(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Event listener for the Apply button
     applyButton.addEventListener('click', () => {
         if (!user_id) {
             alert('You must be logged in to apply for tuition.');
             return;
         }
 
-        // Check application status
         fetch(`https://tution-media-platform-backend.vercel.app/api/application/?tutor_id=${user_id}`)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to check application status.');
-                }
+                if (!response.ok) throw new Error('Failed to check application status.');
                 return response.json();
             })
             .then(applications => {
-              
-
-                const hasApplied = applications.some(application => 
+                const hasApplied = applications.some(application =>
                     application.tuition === parseInt(tuition_id) && application.status === 'applied'
                 );
 
                 if (hasApplied) {
                     alert('You have already applied for this tuition.');
                 } else {
-                    applyModal.classList.remove('hidden');
+                    // Show the modal if the user hasn't applied
+                    applyModal.show();
                 }
             })
             .catch(error => {
@@ -242,13 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('An error occurred while checking your application status. Please try again.');
             });
     });
-if(closeModal){
-    closeModal.addEventListener('click', () => {
-        applyModal.classList.add('hidden');
-    });
-}
 
-
+    // Event listener for form submission
     applyForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const message = document.getElementById('message').value;
@@ -262,20 +264,16 @@ if(closeModal){
 
         fetch('https://tution-media-platform-backend.vercel.app/api/application/', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to submit application.');
-            }
+            if (!response.ok) throw new Error('Failed to submit application.');
             return response.json();
         })
-        .then(result => {
+        .then(() => {
             alert('Application submitted successfully!');
-            applyModal.classList.add('hidden');
+            applyModal.hide(); // Close the modal after submission
             applyForm.reset();
         })
         .catch(error => {
@@ -284,6 +282,8 @@ if(closeModal){
         });
     });
 });
+
+
 
 
 

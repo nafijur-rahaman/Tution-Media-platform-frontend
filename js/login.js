@@ -41,9 +41,7 @@ const handleTeacherLogin = (event) => {
                 localStorage.setItem("teacher_token", data.Token);
                 localStorage.setItem("user_id", data.tutor_id);
                 alert("Login successful!");
-                setTimeout(() => {
                     window.location.href = "teacher_profile.html"; 
-                }, 3000);
             } else {
                 alert(data.error || "Login failed! Please check your credentials.");
             }

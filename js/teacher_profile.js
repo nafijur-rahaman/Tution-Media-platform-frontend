@@ -221,11 +221,11 @@ function updateProfile() {
         subjects: document.getElementById('subjects').value,
     };
 
-    fetch(`https://tution-media-platform-backend.vercel.app/api/tutor/update/${tutorId}/`, {
+    fetch(`https://tution-media-platform-backend.vercel.app/api/tutor/list/${tutorId}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Token ${localStorage.getItem('token')}`
+            'Authorization': `Token ${localStorage.getItem('teacher_token')}`
         },
         body: JSON.stringify(formData)
     })
@@ -234,7 +234,8 @@ function updateProfile() {
             throw new Error('Network response was not ok');
         }
         alert('Profile updated successfully');
-        $('#editProfileModal').modal('hide'); // Hide the modal
+        $('#editProfileModal').modal('hide');
+        window.location.reload(); // Hide the modal
     })
     .catch(error => {
         console.error('Error updating profile:', error);
