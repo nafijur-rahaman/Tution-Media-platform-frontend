@@ -1,42 +1,4 @@
-// function alert(message, title = "Success") {
-//     const alertBox = document.getElementById("success-alert");
-//     const alertTitle = document.getElementById("success-alert-title");
-//     const alertMessage = document.getElementById("success-alert-message");
 
-//     alertTitle.innerText = title;
-//     alertMessage.innerText = message;
-
-//     alertBox.classList.remove("hidden");
-//     alertBox.classList.add("flex");
-
-//     setTimeout(() => {
-//         alertBox.classList.add("hidden");
-//     }, 5000);
-// }
-
-// function alert(message, title = "Failure") {
-//     const alertBox = document.getElementById("failure-alert");
-//     const alertTitle = document.getElementById("failure-alert-title");
-//     const alertMessage = document.getElementById("failure-alert-message");
-
-//     alertTitle.innerText = title;
-//     alertMessage.innerText = message;
-
-//     alertBox.classList.remove("hidden");
-//     alertBox.classList.add("flex");
-
-//     setTimeout(() => {
-//         alertBox.classList.add("hidden");
-//     }, 5000);
-// }
-
-// document.getElementById("close-success-alert").addEventListener("click", () => {
-//     document.getElementById("success-alert").classList.add("hidden");
-// });
-
-// document.getElementById("close-failure-alert").addEventListener("click", () => {
-//     document.getElementById("failure-alert").classList.add("hidden");
-// });
 
 const loadUserDetails = () => {
     const user_id = localStorage.getItem("user_id");
@@ -104,18 +66,19 @@ const loadTuition = () => {
             const parent = document.getElementById("parent");
             parent.innerHTML = ""; // Clear previous content
 
+            // Create a new Bootstrap row for the tuition cards
+            const row = document.createElement("div");
+            row.classList.add("row", "g-4"); // g-4 adds spacing between the columns
+            
             data.forEach((tuition) => {
+                const col = document.createElement("div");
+                col.classList.add("col-12", "col-md-6","mb-4"); // Use col-12 for mobile and col-md-6 for larger screens
+
                 const child = document.createElement("div");
-                child.classList.add(
-                    "bg-white",
-                    "p-4",
-                    "rounded",
-                    "shadow",
-                    "mb-4"
-                );
+                child.classList.add("bg-white", "p-4", "shadow", "h-100",); // Added mb-4 for bottom margin
                 
                 child.innerHTML = `
-                    <h4 class=" font-weight-bold mb-2">${tuition.title}</h4>
+                    <h4 class="font-weight-bold mb-2">${tuition.title}</h4>
                     <p class="text-muted mb-2">Description: ${tuition.description.slice(0, 20)}....</p>
                     <p class="text-muted mb-2">Fee: ${tuition.salary} BDT</p>
                     <p class="text-muted mb-2">Location: ${tuition.location}</p>
@@ -125,12 +88,17 @@ const loadTuition = () => {
                     </div>
                 `;
                 
-                parent.appendChild(child);
-                
+                col.appendChild(child);
+                row.appendChild(col);
             });
+
+            // Append the row to the parent container
+            parent.appendChild(row);
         })
         .catch((error) => alert(error));
 };
+
+
 
 window.onload = loadTuition;
 

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/images/fav.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tuition Media -tuition details</title>
+  <title>Tuition details</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
   <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="styles/index.css">
   <link rel="stylesheet" type="text/css" href="styles/tuitions_details.css">
+  
 
 </head>
 
@@ -27,16 +28,17 @@
               <div class="col">
                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
                   <ul class="top_bar_contact_list">
-                    <li>
-                      <div class="question">Have any questions?</div>
-                    </li>
+                    <li style="cursor: pointer;">
+                      <a style="color: white;" href="about.html" class="question">Have any questions?</a></li>
                     <li>
                       <i class="fa fa-phone" aria-hidden="true"></i>
                       <div>+8801626681291</div>
                     </li>
                     <li>
                       <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                      <div>tanjidnafis@gmail.com</div>
+                      <div>
+                        <a href="mailto:tanjidnafis@gmail.com" style="color: inherit; text-decoration: none;">tanjidnafis@gmail.com</a>
+                    </div>
                     </li>
                   </ul>
                 </div>
@@ -45,7 +47,10 @@
           </div>
         </div>
       </div>
-      <nav id="navbar"></nav>
+      <nav id="navbar">
+  
+  
+      </nav>
     </header>
 
 
@@ -176,7 +181,7 @@
                 </div>
                 <!-- Apply Button -->
                 <div class="text-end mt-4">
-                  <button id="applyButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyModal">
+                  <button id="applyButton" class="btn btn-primary">
                     Apply for this Tuition
                   </button>
                 </div>
@@ -216,32 +221,30 @@
 
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
+   <!-- Modal -->
+<div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="applyModalLabel">Apply for Tuition</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title" id="applyModalLabel">Apply for Tuition</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form id="applyForm">
-              <!-- Message Field -->
-              <div class="mb-3">
-                <label for="message" class="form-label">Message to Admin</label>
-                <textarea id="message" name="message" rows="4" class="form-control"
-                  placeholder="Write your message..."></textarea>
-              </div>
-              <!-- Action Buttons -->
-              <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Send Application</button>
-              </div>
-            </form>
+              <form id="applyForm">
+                  <div class="mb-3">
+                      <label for="message" class="form-label">Message to Admin</label>
+                      <textarea id="message" name="message" rows="4" class="form-control"
+                          placeholder="Write your message..."></textarea>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                      <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn btn-primary">Send Application</button>
+                  </div>
+              </form>
           </div>
-        </div>
       </div>
-    </div>
+  </div>
+</div>
 
 
 
@@ -269,8 +272,7 @@
                     </div>
                     <div class="footer_about_text">
                       <p>
-                        Lorem ipsum dolor sit ametium, consectetur adipiscing
-                        elit.
+                        "Connect, Learn, Succeed"
                       </p>
                     </div>
                     <div class="footer_social">
@@ -317,7 +319,7 @@
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="tuitions.html">Tuitions</a></li>
                         <li><a href="teachers.html">Teachers</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a href="about.html">FAQs</a></li>
                       </ul>
                     </div>
                   </div>
@@ -370,10 +372,6 @@
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="styles/bootstrap4/popper.js"></script>
   <script src="styles/bootstrap4/bootstrap.min.js"></script>
-  <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-  <script src="plugins/easing/easing.js"></script>
-  <script src="plugins/parallax-js-master/parallax.min.js"></script>
-  <script src="plugins/colorbox/jquery.colorbox-min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
   <script src="./js/home.js"></script>

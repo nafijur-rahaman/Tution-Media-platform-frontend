@@ -3,6 +3,7 @@
 <head>
 <title>About</title>
 <meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="/images/fav.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Tuition Platform project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,14 +19,14 @@ input{
     background-color: #14bdee; /* Initial color for Tutor button */
 }
 .student-button {
-    background-color: #0056b3; /* Initial color for Student button */
+    background-color: #0d6efd; /* Initial color for Student button */
 }
 .active-tutor {
     background-color: #14bdee;
     color: white;
 }
 .active-student {
-    background-color: #0056b3;
+    background-color: #0d6efd;
     color: white;
 }
 .loader {
@@ -87,18 +88,19 @@ input{
             <div class="container">
               <div class="row">
                 <div class="col">
-                  <div
-                    class="top_bar_content d-flex flex-row align-items-center justify-content-start"
-                  >
+                  <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
                     <ul class="top_bar_contact_list">
-                      <li><div class="question">Have any questions?</div></li>
+                      <li style="cursor: pointer;">
+                        <a style="color: white;" href="about.html" class="question">Have any questions?</a></li>
                       <li>
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         <div>+8801626681291</div>
                       </li>
                       <li>
                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        <div>tanjidnafis@gmail.com</div>
+                        <div>
+                          <a href="mailto:tanjidnafis@gmail.com" style="color: inherit; text-decoration: none;">tanjidnafis@gmail.com</a>
+                      </div>
                       </li>
                     </ul>
                   </div>
@@ -142,7 +144,7 @@ input{
 
 
 <!-- Main Section -->
-<section class="bg-gray-200 py-8">
+<section class=" py-8">
     <div class="container mx-auto px-6">
         <h2 class="text-3xl font-bold text-center mb-12">Join Our Tuition Media Platform</h2>
         <div class="flex flex-col md:flex-row justify-center mb-8">
@@ -160,7 +162,7 @@ input{
         <div class="flex justify-center">
             <div class="w-full max-w-3xl">
                 <!-- Tutor Registration Form -->
-                <div id="tutorForm" class="container mx-auto max-w-full bg-white rounded-lg shadow-lg p-4 max-h-[600px] overflow-y-auto">
+                <div id="tutorForm" class="container mx-auto max-w-full bg-gray-100 rounded-lg shadow-lg p-4 max-h-[600px] overflow-y-auto">
     <header class="text-2xl font-semibold text-gray-800 mb-4">Tutor Registration</header>
     <form id="registration-form" class="relative">
         <div class="form first transition-transform duration-300 ease-in-out">
@@ -271,7 +273,7 @@ input{
 
 
 <!-- Student Registration Form -->
-<div id="studentForm" class="container mx-auto max-w-full bg-white rounded-lg shadow-lg p-8 hidden">
+<div id="studentForm" class="container mx-auto max-w-full bg-gray-100 rounded-lg shadow-lg p-8 hidden">
     <header class="text-xl font-semibold text-gray-800 mb-6">Student Registration</header>
     <form id="student-registration-form" class="relative">
         <div class="form first transition-transform duration-300 ease-in-out">
@@ -281,47 +283,47 @@ input{
                     <!-- Username -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Username</label>
-                        <input type="text" name="username" placeholder="Enter your username" required class="block w-full p-3 border border-gray-400 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
+                        <input type="text" name="username" placeholder="Enter your username" required class="block w-full p-3 border border-gray-400 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     </div>
                     <!-- First Name -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">First Name</label>
-                        <input type="text" name="first_name" placeholder="Enter your first name" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
+                        <input type="text" name="first_name" placeholder="Enter your first name" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     </div>
                     <!-- Last Name -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Last Name</label>
-                        <input type="text" name="last_name" placeholder="Enter your last name" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
+                        <input type="text" name="last_name" placeholder="Enter your last name" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     </div>
                     <!-- Email -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Email</label>
-                        <input type="email" name="email" placeholder="Enter your email" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
+                        <input type="email" name="email" placeholder="Enter your email" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     </div>
                     <!-- Password -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Password</label>
-                        <input type="password" name="password" placeholder="Enter your password" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
+                        <input type="password" name="password" placeholder="Enter your password" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     </div>
                     <!-- Confirm Password -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Confirm Password</label>
-                        <input type="password" name="confirm_password" placeholder="Confirm your password" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
+                        <input type="password" name="confirm_password" placeholder="Confirm your password" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     </div>
                     <!-- Profile Image -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Profile Image</label>
-                        <input type="file" name="image" accept="image/*" class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
+                        <input type="file" name="image" accept="image/*" class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     </div>
                     <!-- Mobile Number -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Mobile Number</label>
-                        <input type="tel" name="phone_number" placeholder="Enter mobile number" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
+                        <input type="tel" name="phone_number" placeholder="Enter mobile number" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     </div>
                     <!-- Gender -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Gender</label>
-                        <select name="gender" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
+                        <select name="gender" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                             <option value="" disabled selected>Select gender</option>
                             <option>Male</option>
                             <option>Female</option>
@@ -330,12 +332,12 @@ input{
                     <!-- Location -->
                     <div class="input-field w-1/2 px-2 mb-4">
                         <label class="text-sm font-medium text-gray-600">Location</label>
-                        <input type="text" name="location" placeholder="Enter your location" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-700">
+                        <input type="text" name="location" placeholder="Enter your location" required class="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500">
                     </div>
                 </div>
                 <!-- Submit Button -->
                 <div class="mt-6 flex justify-end">
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white text-lg font-semibold rounded hover:bg-blue-700 transition">Register</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white text-lg font-semibold rounded hover:bg-blue-700 transition">Register</button>
                 </div>
             </div>
         </div>
@@ -355,138 +357,117 @@ input{
      <!-- Footer -->
 
      <footer class="footer">
-        <div
-          class="footer_background"
-          style="background-image: url(images/footer_background.png)"
-        ></div>
-        <div class="container">
-          <div class="row footer_row">
-            <div class="col">
-              <div class="footer_content">
-                <div class="row">
-                  <div class="col-lg-3 footer_col">
-                    <!-- Footer About -->
-                    <div class="footer_section footer_about">
-                      <div class="footer_logo_container">
-                        <a href="index.html">
-                          <div class="footer_logo_text">
-                            Tuition<span>Platform</span>
-                          </div>
-                        </a>
-                      </div>
-                      <div class="footer_about_text">
-                        <p>
-                          Lorem ipsum dolor sit ametium, consectetur adipiscing
-                          elit.
-                        </p>
-                      </div>
-                      <div class="footer_social">
-                        <ul>
-                          <li>
-                            <a href="#"
-                              ><i class="fa fa-facebook" aria-hidden="true"></i
-                            ></a>
-                          </li>
-                          <li>
-                            <a href="#"
-                              ><i
-                                class="fa fa-google-plus"
-                                aria-hidden="true"
-                              ></i
-                            ></a>
-                          </li>
-                          <li>
-                            <a href="#"
-                              ><i class="fa fa-instagram" aria-hidden="true"></i
-                            ></a>
-                          </li>
-                          <li>
-                            <a href="#"
-                              ><i class="fa fa-twitter" aria-hidden="true"></i
-                            ></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-3 footer_col">
-                    <!-- Footer Contact -->
-                    <div class="footer_section footer_contact">
-                      <div class="footer_title">Contact Us</div>
-                      <div class="footer_contact_info">
-                        <ul>
-                          <li>Email: tanjidnafis@gmail.com</li>
-                          <li>Phone: +8801626681291</li>
-                          <li>14 no. road rupnagar, Dhaka</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-3 footer_col">
-                    <!-- Footer links -->
-                    <div class="footer_section footer_links">
-                      <div class="footer_title">Contact Us</div>
-                      <div class="footer_links_container">
-                        <ul>
-                          <li><a href="index.html">Home</a></li>
-                          <li><a href="about.html">About</a></li>
-                          <li><a href="contact.html">Contact</a></li>
-                          <li><a href="courses.html">Tuitions</a></li>
-                          <li><a href="courses.html">Teachers</a></li>
-                          <li><a href="#">FAQs</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-3 footer_col clearfix">
-                    <!-- Footer links -->
-                    <div class="footer_section footer_mobile">
-                      <div class="footer_title">Mobile</div>
-                      <div class="footer_mobile_content">
-                        <div class="footer_image">
-                          <a href="#"
-                            ><img src="images/mobile_1.png" alt=""
-                          /></a>
+      <div class="footer_background" style="background-image: url(images/footer_background.png)"></div>
+      <div class="container">
+        <div class="row footer_row">
+          <div class="col">
+            <div class="footer_content">
+              <div class="row">
+                <div class="col-lg-3 footer_col">
+                  <!-- Footer About -->
+                  <div class="footer_section footer_about">
+                    <div class="footer_logo_container">
+                      <a href="index.html">
+                        <div class="footer_logo_text">
+                          Tuition<span>Platform</span>
                         </div>
-                        <div class="footer_image">
-                          <a href="#"
-                            ><img src="images/mobile_2.png" alt=""
-                          /></a>
-                        </div>
-                      </div>
+                      </a>
+                    </div>
+                    <div class="footer_about_text">
+                      <p>
+                        "Connect, Learn, Succeed"
+                      </p>
+                    </div>
+                    <div class="footer_social">
+                      <ul>
+                        <li>
+                          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="row copyright_row">
-            <div class="col">
-              <div
-                class="copyright d-flex flex-lg-row flex-column align-items-center justify-content-start"
-              >
-                <div class="cr_text">
-                  Copyright &copy;
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  All rights reserved
+                <div class="col-lg-3 footer_col">
+                  <!-- Footer Contact -->
+                  <div class="footer_section footer_contact">
+                    <div class="footer_title">Contact Us</div>
+                    <div class="footer_contact_info">
+                      <ul>
+                        <li>Email: tanjidnafis@gmail.com</li>
+                        <li>Phone: +8801626681291</li>
+                        <li>14 no. road rupnagar, Dhaka</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                <div class="ml-lg-auto cr_links">
-                  <ul class="cr_list">
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                  </ul>
+
+                <div class="col-lg-3 footer_col">
+                  <!-- Footer links -->
+                  <div class="footer_section footer_links">
+                    <div class="footer_title">Contact Us</div>
+                    <div class="footer_links_container">
+                      <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="tuitions.html">Tuitions</a></li>
+                        <li><a href="teachers.html">Teachers</a></li>
+                        <li><a href="about.html">FAQs</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3 footer_col clearfix">
+                  <!-- Footer links -->
+                  <div class="footer_section footer_mobile">
+                    <div class="footer_title">Mobile</div>
+                    <div class="footer_mobile_content">
+                      <div class="footer_image">
+                        <a href="#"><img src="images/mobile_1.png" alt="" /></a>
+                      </div>
+                      <div class="footer_image">
+                        <a href="#"><img src="images/mobile_2.png" alt="" /></a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </footer>
+
+        <div class="row copyright_row">
+          <div class="col">
+            <div class="copyright d-flex flex-lg-row flex-column align-items-center justify-content-start">
+              <div class="cr_text">
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                All rights reserved
+              </div>
+              <div class="ml-lg-auto cr_links">
+                <ul class="cr_list">
+                  <li><a href="#">Terms of Use</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
    
 
     <script src="js/jquery-3.2.1.min.js"></script>
