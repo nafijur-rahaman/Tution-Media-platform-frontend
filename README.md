@@ -19,7 +19,7 @@ Welcome to the Tuition Media Platform frontend! This project serves as the user 
 - **Frontend**: 
 - **HTML5**: Markup language for structuring content.
 - **CSS**: Styling the application for a polished look.
-- **[Tailwind CSS](https://tailwindcss.com/)**: Utility-first CSS framework for rapid UI development.
+- **[Bootstrap CSS](https://getbootstrap.com/docs/5.3/getting-started/introduction/)**: Utility-first CSS framework for rapid UI development.
 - **JavaScript**: Programming language for interactive features and dynamic content.
   
 - **Backend**:
